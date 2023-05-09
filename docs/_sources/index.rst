@@ -19,5 +19,4 @@ Conteúdo
 --------
 
 .. toctree::
-
-   ListaControle
+	ListaControle
