@@ -57,7 +57,7 @@ Solução:
 		import matplotlib.pyplot as plt
 		import control
 
-		G = control.tf([1,1],[1,5,10])
+		G = control.tf([1,1],[1,7,10])
 		plt.clf()
 		control.root_locus(G, plot=True, xlim=[-5,5], ylim=[-5,5], plotstr='k')
 
