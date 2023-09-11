@@ -302,6 +302,32 @@ document.write(`
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-nyquist">Diagrama de Nyquist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercício 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-1">Ganho K=1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-10">Ganho K=10</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-50">Ganho K=50</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercício 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-1">Controlador 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-2">Controlador 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-3">Controlador 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-na-frequencia">Projeto na Frequência</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-do-livro">Exercícios do Livro</a></li>
 </ul>
             </nav>
         </div>
@@ -587,6 +613,231 @@ k=8\]</div>
 </section>
 </section>
 </section>
+<section id="diagrama-de-bode">
+<h2>Diagrama de Bode<a class="headerlink" href="#diagrama-de-bode" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="id8">
+<h3>Exercício 1<a class="headerlink" href="#id8" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Esboce o diagrama de Bode para os sistemas representados pelas seguintes funções de transferência:</p>
+<div class="math notranslate nohighlight">
+\[G_1=\frac{5}{s+5}\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode1a.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode1a.png" src="_images/exBode1a.png" />
+</figure>
+</div>
+<div class="math notranslate nohighlight">
+\[G_2=\frac{10(s+0,1)}{s(s+2)}\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode1b.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode1b.png" src="_images/exBode1b.png" />
+</figure>
+</div>
+<div class="math notranslate nohighlight">
+\[G_3=\frac{(s+0,5)}{(s+0,25)}\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.25</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode1c.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode1c.png" src="_images/exBode1c.png" />
+</figure>
+</div>
+</section>
+<section id="id9">
+<h3>Exercício 2<a class="headerlink" href="#id9" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A estabilidade de um sistema de controle em malha fechada pode ser analisada a partir do diagrama de Bode do sistema em malha aberta. Para um sistema representado pela função de transferência <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+0,1)(s+5)}\)</span>, que pode ser representado pelo diagrama de Bode</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([],[</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode2.png" src="_images/exBode2.png" />
+</figure>
+<p>determine as margens de ganho e fase, bem como as frequências associadas à essas métricas.</p>
+</section>
+</section>
+<section id="diagrama-de-nyquist">
+<h2>Diagrama de Nyquist<a class="headerlink" href="#diagrama-de-nyquist" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="id10">
+<h3>Exercício 1<a class="headerlink" href="#id10" title="Link permanente para este cabeçalho">#</a></h3>
+<p>O diagrama de Nyquist é uma ferramenta usada para avaliar a estabilidade de sistemas em malha fechada a partir das funções de transferência em malha aberta do controlador e processo. Considerando um sistema cuja função de transferência é <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+2)(s+5)}\)</span> e o controlador é representado por <span class="math notranslate nohighlight">\(C(s)=\frac{K}{(s+0,1)(s+10)}\)</span>. Para esse sistema, o diagrama do lugar das raízes indica que existe uma faixa de valores do ganho K que faz com que o sistema de controle seja instável. Avalie, por meio do diagrama de Nyquist quais das opções de valores de K retorna um sistema de controle estável.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([],[</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">C</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([],[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 9</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist1a.png&#39;</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">15</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">16</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">17</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">18</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">19</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist1b.png&#39;</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="n">K</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="linenos">22</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">23</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">24</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">25</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">26</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist1c.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="ganho-k-1">
+<h4>Ganho K=1<a class="headerlink" href="#ganho-k-1" title="Link permanente para este cabeçalho">#</a></h4>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist1a.png" src="_images/exNyquist1a.png" />
+</figure>
+</section>
+<section id="ganho-k-10">
+<h4>Ganho K=10<a class="headerlink" href="#ganho-k-10" title="Link permanente para este cabeçalho">#</a></h4>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist1b.png" src="_images/exNyquist1b.png" />
+</figure>
+</section>
+<section id="ganho-k-50">
+<h4>Ganho K=50<a class="headerlink" href="#ganho-k-50" title="Link permanente para este cabeçalho">#</a></h4>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist1c.png" src="_images/exNyquist1c.png" />
+</figure>
+</section>
+</section>
+<section id="id11">
+<h3>Exercício 2<a class="headerlink" href="#id11" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Uma das virtudes do diagrama de Nyquist é permitir a análise da estabilidade em malha fechada de sistemas instáveis em malha aberta. Por exemplo, para o sistema representado por <span class="math notranslate nohighlight">\(G(s)=\frac{(s+1)}{(s-2)(s+5)}\)</span>, discuta sobre a estabilidade de um sistema de controle em malha fechada para as seguintes opções de ganho:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 7</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 8</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist2a.png&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">14</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">15</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">16</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">17</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">18</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist2b.png&#39;</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">K</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="linenos">21</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">22</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">23</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">24</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">25</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist2c.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="controlador-1">
+<h4>Controlador 1<a class="headerlink" href="#controlador-1" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="math notranslate nohighlight">
+\[C_1=1\]</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist2a.png" src="_images/exNyquist2a.png" />
+</figure>
+</section>
+<section id="controlador-2">
+<h4>Controlador 2<a class="headerlink" href="#controlador-2" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="math notranslate nohighlight">
+\[C_2=10\]</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist2b.png" src="_images/exNyquist2b.png" />
+</figure>
+</section>
+<section id="controlador-3">
+<h4>Controlador 3<a class="headerlink" href="#controlador-3" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="math notranslate nohighlight">
+\[C_3=20\]</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist2c.png" src="_images/exNyquist2c.png" />
+</figure>
+</section>
+</section>
+</section>
+<section id="projeto-na-frequencia">
+<h2>Projeto na Frequência<a class="headerlink" href="#projeto-na-frequencia" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="id12">
+<h3>Exercício 1<a class="headerlink" href="#id12" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Para um sistema definido pela função de transferência <span class="math notranslate nohighlight">\(G(s)=\frac{10}{(s+10)}\)</span>, projete um controlador que faça com que exista erro nulo para referências do tipo degrau sem que o desempenho do sistema seja afetado.</p>
+</section>
+<section id="id13">
+<h3>Exercício 2<a class="headerlink" href="#id13" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Usando as técnicas de projeto no domínio da frequência, projete um controlador para o processo <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+2)}\)</span>, fazendo com que exista erro nulo para referências do tipo degrau, sobressinal máximo de 10%, e o tempo de acomodação (2% próximo do valor final) seja 1,3 segundos.</p>
+</section>
+</section>
+<section id="exercicios-do-livro">
+<h2>Exercícios do Livro<a class="headerlink" href="#exercicios-do-livro" title="Link permanente para este cabeçalho">#</a></h2>
+<p>Lista de exercícios selecionados do livro “Nise, N. S., Engenharia de Sistemas de Controle - 7ª Edição”.</p>
+<p>Capítulo 8</p>
+<p>8.1</p>
+<p>8.2</p>
+<p>8.4</p>
+<p>8.6</p>
+<p>8.12</p>
+<p>8.19</p>
+<p>Capítulo 9</p>
+<p>9.1</p>
+<p>9.8</p>
+<p>9.13</p>
+<p>Capítulo 10</p>
+<p>10.4</p>
+<p>10.6</p>
+<p>Capítulo 11</p>
+<p>11.1 a)</p>
+<p>11.3 a)</p>
+<p>11.9</p>
+</section>
 </section>
 
 
@@ -654,6 +905,32 @@ k=8\]</div>
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-nyquist">Diagrama de Nyquist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercício 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-1">Ganho K=1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-10">Ganho K=10</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-50">Ganho K=50</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercício 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-1">Controlador 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-2">Controlador 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-3">Controlador 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-na-frequencia">Projeto na Frequência</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-do-livro">Exercícios do Livro</a></li>
 </ul>
   </nav></div>
 

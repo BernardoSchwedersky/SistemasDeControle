@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Sistemas e Sinais &#8212; Sistemas de Controle</title>
+    <title>&lt;no title&gt; &#8212; Sistemas de Controle</title>
   
   
   
@@ -47,10 +47,9 @@
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Figuras';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Buscar" href="search.html" />
-    <link rel="next" title="Lista de Exercícios" href="ListaControle.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt-BR"/>
   </head>
@@ -116,7 +115,7 @@
         <div class="sidebar-primary-item">
   
 
-<a class="navbar-brand logo" href="#">
+<a class="navbar-brand logo" href="index.html">
   
   
   
@@ -183,7 +182,7 @@
       
       
       
-      <li><a href="_sources/index.rst" target="_blank"
+      <li><a href="_sources/Figuras.rst" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Baixar arquivo fonte"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -265,7 +264,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Sistemas e Sinais</h1>
+    <h1><no title></h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -274,9 +273,9 @@ document.write(`
                 <h2> Conteúdo </h2>
             </div>
             <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteudo">Conteúdo</a></li>
+                <ul class="simple visible nav section-nav flex-column">
 </ul>
+
             </nav>
         </div>
     </div>
@@ -287,75 +286,34 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="sistemas-e-sinais">
-<h1>Sistemas e Sinais<a class="headerlink" href="#sistemas-e-sinais" title="Link permanente para este cabeçalho">#</a></h1>
-<p>Bem vindo ao conteúdo da disciplina de Sistemas de Controle.
-Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenharia de Computação da Universidade Federal de Pelotas (UFPel).</p>
-<div class="toctree-wrapper compound">
+  <div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="c1">#ag,phase,omega = control.bode(G,Hz=True,dB=True,margins=True,color=&#39;k&#39;)</span>
+<span class="linenos"> 8</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeD.png&#39;</span><span class="p">)</span>
+</pre></div>
 </div>
-<section id="conteudo">
-<h2>Conteúdo<a class="headerlink" href="#conteudo" title="Link permanente para este cabeçalho">#</a></h2>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="ListaControle.html">Lista de Exercícios</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#lugar-geometrico-das-raizes">Lugar Geométrico das Raízes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-1">Exercício 1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#solucao">Solução:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id1">Solução:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id2">Solução:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id3">Solução:</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-2">Exercício 2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id4">Solução:</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-3">Exercício 3</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id5">Solução:</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-4">Exercício 4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id6">Solução:</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-5">Exercício 5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id7">Solução:</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#diagrama-de-bode">Diagrama de Bode</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id8">Exercício 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id9">Exercício 2</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#diagrama-de-nyquist">Diagrama de Nyquist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id10">Exercício 1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#ganho-k-1">Ganho K=1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#ganho-k-10">Ganho K=10</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#ganho-k-50">Ganho K=50</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id11">Exercício 2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#controlador-1">Controlador 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#controlador-2">Controlador 2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#controlador-3">Controlador 3</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#projeto-na-frequencia">Projeto na Frequência</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id12">Exercício 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id13">Exercício 2</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#exercicios-do-livro">Exercícios do Livro</a></li>
-</ul>
-</li>
-</ul>
 </div>
-</section>
-</section>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="c1">#ag,phase,omega = control.bode(G,Hz=True,dB=True,margins=True,color=&#39;k&#39;)</span>
+<span class="linenos"> 8</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">Hz</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exemploBodeE.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 
 
                 </article>
@@ -369,15 +327,6 @@ Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenha
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-    <a class="right-next"
-       href="ListaControle.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">próximo</p>
-        <p class="prev-next-title">Lista de Exercícios</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div></div>
   
 </div>
@@ -395,9 +344,9 @@ Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenha
     <i class="fa-solid fa-list"></i> Conteúdo
   </div>
   <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conteudo">Conteúdo</a></li>
+    <ul class="simple visible nav section-nav flex-column">
 </ul>
+
   </nav></div>
 
 </div></div>

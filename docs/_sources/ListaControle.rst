@@ -340,3 +340,303 @@ Solução:
 		.. figure:: /figures/rl5b.png
 			:figwidth: 80%
 			:align: center	
+			
+			
+
+Diagrama de Bode
+================
+
+-----------
+Exercício 1
+-----------
+
+Esboce o diagrama de Bode para os sistemas representados pelas seguintes funções de transferência:
+
+.. math::
+	G_1=\frac{5}{s+5}
+
+.. container:: toggle, toggle-hidden
+
+	.. exec_code:: realCTsignals signalplots
+		:linenos:
+		:hide_output:
+		
+		import numpy as np
+		import matplotlib.pyplot as plt
+		import control
+
+		G = control.tf([5],[1,5])
+		plt.clf()
+		ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k')
+		plt.ylabel("Fase (graus)")
+		plt.xlabel("Frequência (rad/s)")
+		plt.savefig('source/figures/exBode1a.png')
+
+	.. figure:: /figures/exBode1a.png
+		:figwidth: 80%
+		:align: center	
+
+		
+.. math::
+	G_2=\frac{10(s+0,1)}{s(s+2)}	
+
+.. container:: toggle, toggle-hidden
+
+	.. exec_code:: realCTsignals signalplots
+		:linenos:
+		:hide_output:
+		
+		import numpy as np
+		import matplotlib.pyplot as plt
+		import control
+
+		G = control.tf([10,1],[1,2,0])
+		plt.clf()
+		ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k')
+		plt.ylabel("Fase (graus)")
+		plt.xlabel("Frequência (rad/s)")
+		plt.savefig('source/figures/exBode1b.png')
+
+	.. figure:: /figures/exBode1b.png
+		:figwidth: 80%
+		:align: center	
+
+.. math::
+	G_3=\frac{(s+0,5)}{(s+0,25)}
+
+.. container:: toggle, toggle-hidden
+
+	.. exec_code:: realCTsignals signalplots
+		:linenos:
+		:hide_output:
+		
+		import numpy as np
+		import matplotlib.pyplot as plt
+		import control
+
+		G = control.tf([1,0.5],[1,0.25])
+		plt.clf()
+		ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k',omega_limits=[0.001,100]) 
+		plt.ylabel("Fase (graus)")
+		plt.xlabel("Frequência (rad/s)")
+		plt.savefig('source/figures/exBode1c.png')
+
+	.. figure:: /figures/exBode1c.png
+		:figwidth: 80%
+		:align: center	
+	
+-----------
+Exercício 2
+-----------
+
+A estabilidade de um sistema de controle em malha fechada pode ser analisada a partir do diagrama de Bode do sistema em malha aberta. Para um sistema representado pela função de transferência :math:`G(s)=\frac{1}{s(s+0,1)(s+5)}`, que pode ser representado pelo diagrama de Bode 
+
+.. exec_code:: realCTsignals signalplots
+	:linenos:
+	:hide_output:
+	
+	import numpy as np
+	import matplotlib.pyplot as plt
+	import control
+
+	G = control.zpk([],[-0,-0.1,-5],gain=1)
+	plt.clf()
+	ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k',omega_limits=[0.001,100]) 
+	plt.ylabel("Fase (graus)")
+	plt.xlabel("Frequência (rad/s)")
+	plt.savefig('source/figures/exBode2.png')
+
+.. figure:: /figures/exBode2.png
+	:figwidth: 80%
+	:align: center	
+
+determine as margens de ganho e fase, bem como as frequências associadas à essas métricas.
+
+
+Diagrama de Nyquist
+===================
+
+-----------
+Exercício 1
+-----------
+
+O diagrama de Nyquist é uma ferramenta usada para avaliar a estabilidade de sistemas em malha fechada a partir das funções de transferência em malha aberta do controlador e processo. Considerando um sistema cuja função de transferência é :math:`G(s)=\frac{1}{s(s+2)(s+5)}` e o controlador é representado por :math:`C(s)=\frac{K}{(s+0,1)(s+10)}`. Para esse sistema, o diagrama do lugar das raízes indica que existe uma faixa de valores do ganho K que faz com que o sistema de controle seja instável. Avalie, por meio do diagrama de Nyquist quais das opções de valores de K retorna um sistema de controle estável.
+
+.. exec_code:: realCTsignals signalplots
+	:linenos:
+	:hide_output:
+	
+	import numpy as np
+	import matplotlib.pyplot as plt
+	import control
+
+	G = control.zpk([],[-0,-2,-5],gain=1)
+	C = control.zpk([],[-0.1,-10],gain=1)
+	K = 1
+	plt.clf()
+	control.nyquist_plot(K*C*G)
+	plt.ylabel("Eixo imaginário")
+	plt.xlabel("Eixo real")
+	plt.savefig('source/figures/exNyquist1a.png')
+
+	K = 10
+	plt.clf()
+	control.nyquist_plot(K*C*G)
+	plt.ylabel("Eixo imaginário")
+	plt.xlabel("Eixo real")
+	plt.savefig('source/figures/exNyquist1b.png')
+
+	K = 50
+	plt.clf()
+	control.nyquist_plot(K*C*G)
+	plt.ylabel("Eixo imaginário")
+	plt.xlabel("Eixo real")
+	plt.savefig('source/figures/exNyquist1c.png')
+
+
+Ganho K=1
+---------
+
+.. figure:: /figures/exNyquist1a.png
+	:figwidth: 80%
+	:align: center	
+
+Ganho K=10
+----------
+
+.. figure:: /figures/exNyquist1b.png
+	:figwidth: 80%
+	:align: center	
+	
+Ganho K=50
+----------
+
+.. figure:: /figures/exNyquist1c.png
+	:figwidth: 80%
+	:align: center	
+	
+	
+-----------
+Exercício 2
+-----------
+
+Uma das virtudes do diagrama de Nyquist é permitir a análise da estabilidade em malha fechada de sistemas instáveis em malha aberta. Por exemplo, para o sistema representado por :math:`G(s)=\frac{(s+1)}{(s-2)(s+5)}`, discuta sobre a estabilidade de um sistema de controle em malha fechada para as seguintes opções de ganho:
+
+.. exec_code:: realCTsignals signalplots
+	:linenos:
+	:hide_output:
+	
+	import numpy as np
+	import matplotlib.pyplot as plt
+	import control
+
+	G = control.zpk([-1],[2,-5],gain=1)
+	K = 1
+	plt.clf()
+	control.nyquist_plot(K*G)
+	plt.ylabel("Eixo imaginário")
+	plt.xlabel("Eixo real")
+	plt.savefig('source/figures/exNyquist2a.png')
+
+	K = 10
+	plt.clf()
+	control.nyquist_plot(K*G)
+	plt.ylabel("Eixo imaginário")
+	plt.xlabel("Eixo real")
+	plt.savefig('source/figures/exNyquist2b.png')
+
+	K = 20
+	plt.clf()
+	control.nyquist_plot(K*G)
+	plt.ylabel("Eixo imaginário")
+	plt.xlabel("Eixo real")
+	plt.savefig('source/figures/exNyquist2c.png')
+
+Controlador 1
+-------------
+
+.. math::
+	C_1=1
+
+.. figure:: /figures/exNyquist2a.png
+	:figwidth: 80%
+	:align: center	
+
+Controlador 2
+-------------
+
+.. math::
+	C_2=10
+	
+.. figure:: /figures/exNyquist2b.png
+	:figwidth: 80%
+	:align: center	
+	
+Controlador 3
+-------------
+
+.. math::
+	C_3=20
+
+.. figure:: /figures/exNyquist2c.png
+	:figwidth: 80%
+	:align: center	
+	
+
+Projeto na Frequência
+=====================
+
+-----------
+Exercício 1
+-----------
+
+Para um sistema definido pela função de transferência :math:`G(s)=\frac{10}{(s+10)}`, projete um controlador que faça com que exista erro nulo para referências do tipo degrau sem que o desempenho do sistema seja afetado.
+
+
+-----------
+Exercício 2
+-----------
+
+Usando as técnicas de projeto no domínio da frequência, projete um controlador para o processo :math:`G(s)=\frac{1}{s(s+2)}`, fazendo com que exista erro nulo para referências do tipo degrau, sobressinal máximo de 10%, e o tempo de acomodação (2\% próximo do valor final) seja 1,3 segundos. 
+
+	
+Exercícios do Livro
+===================
+
+Lista de exercícios selecionados do livro "Nise, N. S., Engenharia de Sistemas de Controle - 7ª Edição".
+
+Capítulo 8
+
+8.1
+
+8.2
+
+8.4
+
+8.6
+
+8.12
+
+8.19
+
+Capítulo 9 
+
+9.1
+
+9.8
+
+9.13
+
+Capítulo 10
+
+10.4
+
+10.6
+
+Capítulo 11
+
+11.1 a)
+
+11.3 a)
+
+11.9
