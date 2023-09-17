@@ -352,6 +352,7 @@ Exercício 1
 
 Esboce o diagrama de Bode para os sistemas representados pelas seguintes funções de transferência:
 
+
 .. math::
 	G_1=\frac{5}{s+5}
 
@@ -367,7 +368,7 @@ Esboce o diagrama de Bode para os sistemas representados pelas seguintes funçõ
 
 		G = control.tf([5],[1,5])
 		plt.clf()
-		ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k')
+		ag,phase,omega = control.bode_plot(G,dB=True,color='k')
 		plt.ylabel("Fase (graus)")
 		plt.xlabel("Frequência (rad/s)")
 		plt.savefig('source/figures/exBode1a.png')
@@ -392,7 +393,7 @@ Esboce o diagrama de Bode para os sistemas representados pelas seguintes funçõ
 
 		G = control.tf([10,1],[1,2,0])
 		plt.clf()
-		ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k')
+		ag,phase,omega = control.bode_plot(G,dB=True,color='k')
 		plt.ylabel("Fase (graus)")
 		plt.xlabel("Frequência (rad/s)")
 		plt.savefig('source/figures/exBode1b.png')
@@ -416,7 +417,7 @@ Esboce o diagrama de Bode para os sistemas representados pelas seguintes funçõ
 
 		G = control.tf([1,0.5],[1,0.25])
 		plt.clf()
-		ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k',omega_limits=[0.001,100]) 
+		ag,phase,omega = control.bode_plot(G,color='k',omega_limits=[0.001,100]) 
 		plt.ylabel("Fase (graus)")
 		plt.xlabel("Frequência (rad/s)")
 		plt.savefig('source/figures/exBode1c.png')
@@ -441,7 +442,7 @@ A estabilidade de um sistema de controle em malha fechada pode ser analisada a p
 
 	G = control.zpk([],[-0,-0.1,-5],gain=1)
 	plt.clf()
-	ag,phase,omega = control.bode_plot(G,Hz=True,dB=True,color='k',omega_limits=[0.001,100]) 
+	ag,phase,omega = control.bode_plot(G,dB=True,color='k',omega_limits=[0.001,100]) 
 	plt.ylabel("Fase (graus)")
 	plt.xlabel("Frequência (rad/s)")
 	plt.savefig('source/figures/exBode2.png')
