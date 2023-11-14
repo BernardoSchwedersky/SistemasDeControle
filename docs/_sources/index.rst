@@ -1,13 +1,12 @@
-.. Sistemas e Sinai master file, created by
+.. Sistemas de Controle master file, created by
    sphinx-quickstart on Sat Apr 29 17:36:52 2023.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Sistemas e Sinais
-=================
+Sistemas de Controle
+====================
 
-Bem vindo ao conteúdo da disciplina de Sistemas de Controle. 
-Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenharia de Computação da Universidade Federal de Pelotas (UFPel).
+Bem vindo à página de conteúdo da disciplina de Sistemas de Controle. Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenharia de Computação da Universidade Federal de Pelotas (UFPel).
 
 
 .. toctree::
@@ -19,4 +18,6 @@ Conteúdo
 --------
 
 .. toctree::
-	ListaControle
+	Modelagem
+	ListaControle1
+	ListaControle2

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Sistemas e Sinais &#8212; Sistemas de Controle</title>
+    <title>Sistemas de Controle &#8212; Sistemas de Controle</title>
   
   
   
@@ -40,17 +40,19 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <script>let toggleHintShow = 'Clique para expandir.';</script>
     <script>let toggleHintHide = 'Clique para esconder.';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Buscar" href="search.html" />
-    <link rel="next" title="Lista de Exercícios" href="ListaControle.html" />
+    <link rel="next" title="Respostas de Sistemas Lineares" href="Modelagem.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt-BR"/>
   </head>
@@ -128,7 +130,9 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="ListaControle.html">Lista de Exercícios</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Respostas de Sistemas Lineares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ListaControle1.html">Lista de Exercícios 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ListaControle2.html">Lista de Exercícios 2</a></li>
 </ul>
 
     </div>
@@ -265,7 +269,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Sistemas e Sinais</h1>
+    <h1>Sistemas de Controle</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -287,69 +291,165 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="sistemas-e-sinais">
-<h1>Sistemas e Sinais<a class="headerlink" href="#sistemas-e-sinais" title="Link permanente para este cabeçalho">#</a></h1>
-<p>Bem vindo ao conteúdo da disciplina de Sistemas de Controle.
-Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenharia de Computação da Universidade Federal de Pelotas (UFPel).</p>
+  <section id="sistemas-de-controle">
+<h1>Sistemas de Controle<a class="headerlink" href="#sistemas-de-controle" title="Link permanente para este cabeçalho">#</a></h1>
+<p>Bem vindo à página de conteúdo da disciplina de Sistemas de Controle. Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenharia de Computação da Universidade Federal de Pelotas (UFPel).</p>
 <div class="toctree-wrapper compound">
 </div>
 <section id="conteudo">
 <h2>Conteúdo<a class="headerlink" href="#conteudo" title="Link permanente para este cabeçalho">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="ListaControle.html">Lista de Exercícios</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#lugar-geometrico-das-raizes">Lugar Geométrico das Raízes</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-1">Exercício 1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#solucao">Solução:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id1">Solução:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id2">Solução:</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id3">Solução:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Respostas de Sistemas Lineares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-primeira-ordem">Sistemas de Primeira Ordem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-segunda-ordem">Sistemas de Segunda Ordem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Modelagem.html#variando-a-constante-de-amortecimento">Variando a Constante de Amortecimento</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Modelagem.html#variando-a-frequencia-natural">Variando a Frequência Natural</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-2">Exercício 2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id4">Solução:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-alta-ordem">Sistemas de Alta Ordem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-fase-nao-minima">Sistemas de Fase Não Mínima</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#referencias">Referências</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-3">Exercício 3</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id5">Solução:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ListaControle1.html">Lista de Exercícios 1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle1.html#modelagem-de-sistemas-e-funcao-de-transferencia">Modelagem de Sistemas e Função de Transferência</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#exercicio-1">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#solucao">Solução:</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-4">Exercício 4</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id6">Solução:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#exercicio-2">Exercício 2</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#exercicio-5">Exercício 5</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#id7">Solução:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle1.html#sistemas-de-1a-e-2a-ordem">Sistemas de 1ª e 2ª Ordem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id1">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id2">Solução:</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id3">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id4">Solução:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#diagrama-de-bode">Diagrama de Bode</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id8">Exercício 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id9">Exercício 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#exercicio-3">Exercício 3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id5">Solução:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#diagrama-de-nyquist">Diagrama de Nyquist</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id10">Exercício 1</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#ganho-k-1">Ganho K=1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#ganho-k-10">Ganho K=10</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#ganho-k-50">Ganho K=50</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id11">Exercício 2</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#controlador-1">Controlador 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#controlador-2">Controlador 2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ListaControle.html#controlador-3">Controlador 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#exercicio-4">Exercício 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#exercicio-5">Exercício 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#exercicio-6">Exercício 6</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id6">Solução:</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#projeto-na-frequencia">Projeto na Frequência</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id12">Exercício 1</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ListaControle.html#id13">Exercício 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle1.html#realimentacao-e-diagrama-de-blocos">Realimentação e Diagrama de Blocos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id7">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id8">Solução:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="ListaControle.html#exercicios-do-livro">Exercícios do Livro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id9">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id10">Solução:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle1.html#estabilidade-em-malha-aberta-e-em-malha-fechada">Estabilidade em Malha Aberta e em Malha Fechada</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id11">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id12">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id13">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id14">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id15">Exercício 3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id16">Solução:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle1.html#erro-nulo-em-regime-permanente">Erro Nulo em Regime Permanente</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id17">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id18">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id19">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id20">Solução:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle1.html#controle-pid">Controle PID</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id21">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id22">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id23">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id24">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle1.html#id25">Exercício 3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle1.html#id26">Solução:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle1.html#exercicios-do-livro">Exercícios do Livro</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="ListaControle2.html">Lista de Exercícios 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle2.html#lugar-geometrico-das-raizes">Lugar Geométrico das Raízes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#exercicio-1">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#solucao">Solução:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#id1">Solução:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#id2">Solução:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#id3">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#exercicio-2">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#id4">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#exercicio-3">Exercício 3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#id5">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#exercicio-4">Exercício 4</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#id6">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#exercicio-5">Exercício 5</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#id7">Solução:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle2.html#diagrama-de-bode">Diagrama de Bode</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#id8">Exercício 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#id9">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle2.html#diagrama-de-nyquist">Diagrama de Nyquist</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#id10">Exercício 1</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#ganho-k-1">Ganho K=1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#ganho-k-10">Ganho K=10</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#ganho-k-50">Ganho K=50</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#id11">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#controlador-1">Controlador 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#controlador-2">Controlador 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ListaControle2.html#controlador-3">Controlador 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle2.html#projeto-na-frequencia">Projeto na Frequência</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#id12">Exercício 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ListaControle2.html#id13">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ListaControle2.html#exercicios-do-livro">Exercícios do Livro</a></li>
 </ul>
 </li>
 </ul>
@@ -370,11 +470,11 @@ Esse conteúdo foi desenvolvido para a disciplina ministrada no curso de Engenha
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="right-next"
-       href="ListaControle.html"
+       href="Modelagem.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">próximo</p>
-        <p class="prev-next-title">Lista de Exercícios</p>
+        <p class="prev-next-title">Respostas de Sistemas Lineares</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

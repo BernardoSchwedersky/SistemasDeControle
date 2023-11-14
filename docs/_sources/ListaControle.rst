@@ -2,7 +2,6 @@
 Lista de Exercícios
 ===================		
 
-
 Lugar Geométrico das Raízes
 ===========================
 

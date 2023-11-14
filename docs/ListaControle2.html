@@ -1,0 +1,993 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="pt-BR" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Lista de Exercícios 2 &#8212; Sistemas de Controle</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <script>let toggleHintShow = 'Clique para expandir.';</script>
+    <script>let toggleHintHide = 'Clique para esconder.';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/translations.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}})</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "chtml": {"mtextInheritFont": "true"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
+    <link rel="index" title="Índice" href="genindex.html" />
+    <link rel="search" title="Buscar" href="search.html" />
+    <link rel="prev" title="Lista de Exercícios 1" href="ListaControle1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="pt-BR"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">Sistemas de Controle</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Respostas de Sistemas Lineares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ListaControle1.html">Lista de Exercícios 1</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Lista de Exercícios 2</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Baixe esta página">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/ListaControle2.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Baixar arquivo fonte"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Imprimir em PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Modo tela cheia"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Buscar" aria-label="Buscar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Lista de Exercícios 2</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lugar-geometrico-das-raizes">Lugar Geométrico das Raízes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-1">Exercício 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao">Solução:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solução:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solução:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-2">Exercício 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-3">Exercício 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-4">Exercício 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-5">Exercício 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solução:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-nyquist">Diagrama de Nyquist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercício 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-1">Ganho K=1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-10">Ganho K=10</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-50">Ganho K=50</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercício 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-1">Controlador 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-2">Controlador 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-3">Controlador 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-na-frequencia">Projeto na Frequência</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-do-livro">Exercícios do Livro</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="lista-de-exercicios-2">
+<h1>Lista de Exercícios 2<a class="headerlink" href="#lista-de-exercicios-2" title="Link permanente para este cabeçalho">#</a></h1>
+<section id="lugar-geometrico-das-raizes">
+<h2>Lugar Geométrico das Raízes<a class="headerlink" href="#lugar-geometrico-das-raizes" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="exercicio-1">
+<h3>Exercício 1<a class="headerlink" href="#exercicio-1" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Desenhe o diagrama do lugar das raízes, considerando um sistema de controle realimentado com controlador <span class="math notranslate nohighlight">\(C(s)=k\)</span>, para os seguintes processos:</p>
+<ul class="simple">
+<li><p><strong>a)</strong> <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+1)}\)</span></p></li>
+</ul>
+<section id="solucao">
+<h4>Solução:<a class="headerlink" href="#solucao" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rlA.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rlA.png" src="_images/rlA.png" />
+</figure>
+</div>
+<ul class="simple">
+<li><p><strong>b)</strong> <span class="math notranslate nohighlight">\(G(s)=\frac{(s+1)}{(s+2)(s+5)}\)</span></p></li>
+</ul>
+</section>
+<section id="id1">
+<h4>Solução:<a class="headerlink" href="#id1" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rlB.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rlB.png" src="_images/rlB.png" />
+</figure>
+</div>
+<ul class="simple">
+<li><p><strong>c)</strong> <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+2)(s+5)}\)</span></p></li>
+</ul>
+</section>
+<section id="id2">
+<h4>Solução:<a class="headerlink" href="#id2" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">7</span><span class="p">,</span><span class="mi">10</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rlC.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rlC.png" src="_images/rlC.png" />
+</figure>
+</div>
+<ul class="simple">
+<li><p><strong>d)</strong> <span class="math notranslate nohighlight">\(G(s)=\frac{(s+1)(s+5)}{s(s+2)(s+3)}\)</span></p></li>
+</ul>
+</section>
+<section id="id3">
+<h4>Solução:<a class="headerlink" href="#id3" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rlD.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rlD.png" src="_images/rlD.png" />
+</figure>
+</div>
+</section>
+</section>
+<section id="exercicio-2">
+<h3>Exercício 2<a class="headerlink" href="#exercicio-2" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Encontre o ponto de partida e chegada no eixo real para o diagrama do lugar das raízes do processo <span class="math notranslate nohighlight">\(G(s)=\frac{(s+4)}{s(s+1)}\)</span>.</p>
+<section id="id4">
+<h4>Solução:<a class="headerlink" href="#id4" title="Link permanente para este cabeçalho">#</a></h4>
+<p>Podemos obter analiticamente os pontos de partida e chegada do eixo real considerando</p>
+<div class="math notranslate nohighlight">
+\[A(s)+KB(s)=0,\]</div>
+<p>e usando a equação</p>
+<div class="math notranslate nohighlight">
+\[\frac{dK}{ds}=-\frac{B(s)'A(s)-A(s)'B(s)}{A(s)^2}=0\]</div>
+<p>obtemos</p>
+<div class="math notranslate nohighlight">
+\[s^2+2s-(s+4)(2s+1)=0
+-s^2-7s-4=0\]</div>
+<p>resultando em <span class="math notranslate nohighlight">\(s=-0,62\)</span> e <span class="math notranslate nohighlight">\(s=-6,37\)</span>. Graficamente podemos verificar esse resultado, por meio do diagrama a seguir.</p>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rl2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rl2.png" src="_images/rl2.png" />
+</figure>
+</div>
+</section>
+</section>
+<section id="exercicio-3">
+<h3>Exercício 3<a class="headerlink" href="#exercicio-3" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Usando a condição de módulo, encontre o valor de K que faz com que o polo <span class="math notranslate nohighlight">\(s=-5\)</span> seja um dos polos em malha fechada de um sistema de controle realimentado, considerando <span class="math notranslate nohighlight">\(C(s)=K\)</span> e <span class="math notranslate nohighlight">\(G(s)=\frac{(s+4)}{(s+1)(s+3)}\)</span>.</p>
+<section id="id5">
+<h4>Solução:<a class="headerlink" href="#id5" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="toggle toggle-hidden docutils container">
+<p>Se desenharmos o lugar das raízes para o sistema <span class="math notranslate nohighlight">\(G(s)\)</span>, observamos que <span class="math notranslate nohighlight">\(s=-5\)</span> faz parte do lugar das raízes de <span class="math notranslate nohighlight">\(G(s)\)</span>. Dessa forma, podemos aplicar diretamente a condição de módulo, para encontrar o valor de <span class="math notranslate nohighlight">\(C(s)=K\)</span> que faz com que um dos polos em malha fechada seja <span class="math notranslate nohighlight">\(s=-5\)</span>.</p>
+<p>A condição de módulo é <span class="math notranslate nohighlight">\(|C(s)G(s)|=1\)</span>. Para encontrarmos o valor de K, devemos substituir <span class="math notranslate nohighlight">\(s=-5\)</span> em <span class="math notranslate nohighlight">\(|C(s)G(s)|=1\)</span>, e resolver a equação para K.</p>
+<div class="math notranslate nohighlight">
+\[|C(s)G(s)|=|k\frac{(s+4)}{(s+1)(s+3)}|=1
+|k\frac{(-5+4)}{(-5+1)(-5+3)}|=1
+|k\frac{-1}{(-4)(-2)}|=1
+|k\frac{-1}{8}|=1
+k=8\]</div>
+</div>
+</section>
+</section>
+<section id="exercicio-4">
+<h3>Exercício 4<a class="headerlink" href="#exercicio-4" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Projete um controlador PI para o processo <span class="math notranslate nohighlight">\(G(s)=\frac{3}{(s+3)}\)</span>, de forma a garantir erro nulo em regime permanente.</p>
+<section id="id6">
+<h4>Solução:<a class="headerlink" href="#id6" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="toggle toggle-hidden docutils container">
+<p>O projeto de um controlador que garanta regime permanente é simples. A condição para o sistema apresentar erro nulo em regime permanente para uma referência do tipo degrau é o processo ser do tipo-1, ou seja, possuir um integrador em sua função de transferência, ou o controlador possuir um integrador. Como o sistema é uma função de transferência de 1ª ordem, sem integrador, é necessário projetar um controlador cuja estrutura contenha um integrador. O diagrama do lugar das raízes para o processo, considerando <span class="math notranslate nohighlight">\(C(s)=K\)</span> é:</p>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">3</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rl4a.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rl4a.png" src="_images/rl4a.png" />
+</figure>
+</div>
+<p>A escolha ideal é o controlador PI, o qual é definido como</p>
+<div class="math notranslate nohighlight">
+\[C_{PI}=\frac{K(s+z)}{s}\]</div>
+<p>no qual <span class="math notranslate nohighlight">\(K\)</span> representa o ganho do controlador, <span class="math notranslate nohighlight">\(\frac{1}{s}\)</span> representa o integrador e <span class="math notranslate nohighlight">\((s+z)\)</span> é o zero do controlador. Para ser um PI, a posição do zero deve ser à esquerda do integrador, ou seja, <span class="math notranslate nohighlight">\(z&lt;0\)</span>, resultando em um atraso de fase. Uma sintonia simples consiste em escolher a posição do zero como o valor intermediário entre o integrador e o polo do processo, fazendo <span class="math notranslate nohighlight">\(z=-1,5\)</span>. O diagrama do Lugar das Raizes com o controlador é:</p>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rl4b.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rl4b.png" src="_images/rl4b.png" />
+</figure>
+</div>
+<p>A escolha de K é livre para esse caso. Podemos escolher um valor elevado de K, para fazer os polos em malha fechada serem mais distantes do eixo imaginário, acelerando a resposta em malha fechada. Porém, como a única especificação era garantir erro nulo em regime permanente, qualquer valor de K não nulo é suficiente.</p>
+</div>
+</section>
+</section>
+<section id="exercicio-5">
+<h3>Exercício 5<a class="headerlink" href="#exercicio-5" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Projete um controlador para o processo <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+2)}\)</span>, fazendo com que exista erro nulo para referências do tipo degrau, sobressinal máximo de 10%, e o tempo de acomodação (2% próximo do valor final) seja 1,3 segundos. Desenhe o diagrama de blocos do sistema de controle resultante, e verifique se o sistema projetado tem seus polos em malha fechada próximo dos polos desejados.</p>
+<section id="id7">
+<h4>Solução:<a class="headerlink" href="#id7" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="toggle toggle-hidden docutils container">
+<p>Lugar das raízes para o sistema em malha aberta</p>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rl5a.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rl5a.png" src="_images/rl5a.png" />
+</figure>
+</div>
+<p>Lugar das raízes para o sistema com o controlador <span class="math notranslate nohighlight">\(C(s)=\frac{s+3,05}{s+20}\)</span></p>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">3.05</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">22</span><span class="p">,</span><span class="mi">40</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">control</span><span class="o">.</span><span class="n">root_locus</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">plot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">ylim</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">],</span> <span class="n">plotstr</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Imaginário - j$\omega$&#39;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Real - $\sigma$&#39;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Lugar das Raízes&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/rl5b.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/rl5b.png" src="_images/rl5b.png" />
+</figure>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="diagrama-de-bode">
+<h2>Diagrama de Bode<a class="headerlink" href="#diagrama-de-bode" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="id8">
+<h3>Exercício 1<a class="headerlink" href="#id8" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Esboce o diagrama de Bode para os sistemas representados pelas seguintes funções de transferência:</p>
+<div class="math notranslate nohighlight">
+\[G_1=\frac{5}{s+5}\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode1a.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode1a.png" src="_images/exBode1a.png" />
+</figure>
+</div>
+<div class="math notranslate nohighlight">
+\[G_2=\frac{10(s+0,1)}{s(s+2)}\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode1b.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode1b.png" src="_images/exBode1b.png" />
+</figure>
+</div>
+<div class="math notranslate nohighlight">
+\[G_3=\frac{(s+0,5)}{(s+0,25)}\]</div>
+<div class="toggle toggle-hidden docutils container">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">tf</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.25</span><span class="p">])</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode1c.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode1c.png" src="_images/exBode1c.png" />
+</figure>
+</div>
+</section>
+<section id="id9">
+<h3>Exercício 2<a class="headerlink" href="#id9" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A estabilidade de um sistema de controle em malha fechada pode ser analisada a partir do diagrama de Bode do sistema em malha aberta. Para um sistema representado pela função de transferência <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+0,1)(s+5)}\)</span>, que pode ser representado pelo diagrama de Bode</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([],[</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 7</span><span class="n">ag</span><span class="p">,</span><span class="n">phase</span><span class="p">,</span><span class="n">omega</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">bode_plot</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">dB</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">omega_limits</span><span class="o">=</span><span class="p">[</span><span class="mf">0.001</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Fase (graus)&quot;</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequência (rad/s)&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exBode2.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exBode2.png" src="_images/exBode2.png" />
+</figure>
+<p>determine as margens de ganho e fase, bem como as frequências associadas à essas métricas.</p>
+</section>
+</section>
+<section id="diagrama-de-nyquist">
+<h2>Diagrama de Nyquist<a class="headerlink" href="#diagrama-de-nyquist" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="id10">
+<h3>Exercício 1<a class="headerlink" href="#id10" title="Link permanente para este cabeçalho">#</a></h3>
+<p>O diagrama de Nyquist é uma ferramenta usada para avaliar a estabilidade de sistemas em malha fechada a partir das funções de transferência em malha aberta do controlador e processo. Considerando um sistema cuja função de transferência é <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+2)(s+5)}\)</span> e o controlador é representado por <span class="math notranslate nohighlight">\(C(s)=\frac{K}{(s+0,1)(s+10)}\)</span>. Para esse sistema, o diagrama do lugar das raízes indica que existe uma faixa de valores do ganho K que faz com que o sistema de controle seja instável. Avalie, por meio do diagrama de Nyquist quais das opções de valores de K retorna um sistema de controle estável.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([],[</span><span class="o">-</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">C</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([],[</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 7</span><span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 8</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 9</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">12</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist1a.png&#39;</span><span class="p">)</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span><span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">15</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">16</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">17</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">18</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">19</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist1b.png&#39;</span><span class="p">)</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="n">K</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="linenos">22</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">23</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">C</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">24</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">25</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">26</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist1c.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="ganho-k-1">
+<h4>Ganho K=1<a class="headerlink" href="#ganho-k-1" title="Link permanente para este cabeçalho">#</a></h4>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist1a.png" src="_images/exNyquist1a.png" />
+</figure>
+</section>
+<section id="ganho-k-10">
+<h4>Ganho K=10<a class="headerlink" href="#ganho-k-10" title="Link permanente para este cabeçalho">#</a></h4>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist1b.png" src="_images/exNyquist1b.png" />
+</figure>
+</section>
+<section id="ganho-k-50">
+<h4>Ganho K=50<a class="headerlink" href="#ganho-k-50" title="Link permanente para este cabeçalho">#</a></h4>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist1c.png" src="_images/exNyquist1c.png" />
+</figure>
+</section>
+</section>
+<section id="id11">
+<h3>Exercício 2<a class="headerlink" href="#id11" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Uma das virtudes do diagrama de Nyquist é permitir a análise da estabilidade em malha fechada de sistemas instáveis em malha aberta. Por exemplo, para o sistema representado por <span class="math notranslate nohighlight">\(G(s)=\frac{(s+1)}{(s-2)(s+5)}\)</span>, discuta sobre a estabilidade de um sistema de controle em malha fechada para as seguintes opções de ganho:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="linenos"> 2</span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="linenos"> 3</span><span class="kn">import</span> <span class="nn">control</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span><span class="n">G</span> <span class="o">=</span> <span class="n">control</span><span class="o">.</span><span class="n">zpk</span><span class="p">([</span><span class="o">-</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span><span class="n">gain</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos"> 6</span><span class="n">K</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="linenos"> 7</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos"> 8</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos"> 9</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">10</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">11</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist2a.png&#39;</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span><span class="n">K</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="linenos">14</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">15</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">16</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">17</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">18</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist2b.png&#39;</span><span class="p">)</span>
+<span class="linenos">19</span>
+<span class="linenos">20</span><span class="n">K</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="linenos">21</span><span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+<span class="linenos">22</span><span class="n">control</span><span class="o">.</span><span class="n">nyquist_plot</span><span class="p">(</span><span class="n">K</span><span class="o">*</span><span class="n">G</span><span class="p">)</span>
+<span class="linenos">23</span><span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Eixo imaginário&quot;</span><span class="p">)</span>
+<span class="linenos">24</span><span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Eixo real&quot;</span><span class="p">)</span>
+<span class="linenos">25</span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;source/figures/exNyquist2c.png&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="controlador-1">
+<h4>Controlador 1<a class="headerlink" href="#controlador-1" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="math notranslate nohighlight">
+\[C_1=1\]</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist2a.png" src="_images/exNyquist2a.png" />
+</figure>
+</section>
+<section id="controlador-2">
+<h4>Controlador 2<a class="headerlink" href="#controlador-2" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="math notranslate nohighlight">
+\[C_2=10\]</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist2b.png" src="_images/exNyquist2b.png" />
+</figure>
+</section>
+<section id="controlador-3">
+<h4>Controlador 3<a class="headerlink" href="#controlador-3" title="Link permanente para este cabeçalho">#</a></h4>
+<div class="math notranslate nohighlight">
+\[C_3=20\]</div>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exNyquist2c.png" src="_images/exNyquist2c.png" />
+</figure>
+</section>
+</section>
+</section>
+<section id="projeto-na-frequencia">
+<h2>Projeto na Frequência<a class="headerlink" href="#projeto-na-frequencia" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="id12">
+<h3>Exercício 1<a class="headerlink" href="#id12" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Para um sistema definido pela função de transferência <span class="math notranslate nohighlight">\(G(s)=\frac{10}{(s+10)}\)</span>, projete um controlador que faça com que exista erro nulo para referências do tipo degrau sem que o desempenho do sistema seja afetado.</p>
+</section>
+<section id="id13">
+<h3>Exercício 2<a class="headerlink" href="#id13" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Usando as técnicas de projeto no domínio da frequência, projete um controlador para o processo <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s(s+2)}\)</span>, fazendo com que exista erro nulo para referências do tipo degrau, sobressinal máximo de 10%, e o tempo de acomodação (2% próximo do valor final) seja 1,3 segundos.</p>
+</section>
+</section>
+<section id="exercicios-do-livro">
+<h2>Exercícios do Livro<a class="headerlink" href="#exercicios-do-livro" title="Link permanente para este cabeçalho">#</a></h2>
+<p>Lista de exercícios selecionados do livro “NISE, Norman S. Engenharia de sistemas de controle. 7. ed. Rio de Janeiro: LTC, 2017. 772 p. ISBN 978-8521634355”.</p>
+<p>Capítulo 8</p>
+<p>8.1</p>
+<p>8.2</p>
+<p>8.4</p>
+<p>8.6</p>
+<p>8.12</p>
+<p>8.19</p>
+<p>Capítulo 9</p>
+<p>9.1</p>
+<p>9.8</p>
+<p>9.13</p>
+<p>Capítulo 10</p>
+<p>10.4</p>
+<p>10.6</p>
+<p>Capítulo 11</p>
+<p>11.1 a)</p>
+<p>11.3 a)</p>
+<p>11.9</p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="ListaControle1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Lista de Exercícios 1</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lugar-geometrico-das-raizes">Lugar Geométrico das Raízes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-1">Exercício 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao">Solução:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solução:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solução:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-2">Exercício 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-3">Exercício 3</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-4">Exercício 4</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Solução:</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-5">Exercício 5</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">Solução:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-bode">Diagrama de Bode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#diagrama-de-nyquist">Diagrama de Nyquist</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">Exercício 1</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-1">Ganho K=1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-10">Ganho K=10</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#ganho-k-50">Ganho K=50</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">Exercício 2</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-1">Controlador 1</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-2">Controlador 2</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-3">Controlador 3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#projeto-na-frequencia">Projeto na Frequência</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id12">Exercício 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-do-livro">Exercícios do Livro</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+De Bernardo Barancelli Schwedersky
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023, Bernardo Barancelli Schwedersky.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
