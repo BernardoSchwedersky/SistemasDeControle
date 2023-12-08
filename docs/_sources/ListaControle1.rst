@@ -427,6 +427,14 @@ Solução:
 .. container:: toggle, toggle-hidden
 
 	:math:`K=1`, :math:`L\approx 0,2` e :math:`T \approx 2,1`. Com isso, obtemos um PID na forma ideal com :math:`K_p-12,6`, :math:`T_i=0,4` e :math:`T_d=0,1` pela inspeção da tabela.
+
+Discretização de Controladores
+==============================
+
+Exercício 1
+-----------
+
+Obtenha a função de transferência em tempo discreto e a equação diferenças para o controlador projetado no Exercício 1 da seção Controle PID. Escolha um período de amostragem adequado e utilize o método explícito de Euler e o método Trapezoidal.
 	
 Exercícios do Livro
 ===================
