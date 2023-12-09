@@ -238,7 +238,7 @@ b) :math:`G(s)=\frac{7}{(s^2+9)}`
 
 c) :math:`G(s)=\frac{s^2+4}{(s^2+4s-12)}`
 
-d) :math:`G(s)=\frac{1}{(s^3+8s+12s)}`
+d) :math:`G(s)=\frac{1}{(s^3+8s^2+12s)}`
 
 Solução:
 --------
