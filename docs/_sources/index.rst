@@ -19,5 +19,7 @@ Conteúdo
 
 .. toctree::
 	Modelagem
+	LugarDasRaizes
+	ProjetoLugarDasRaizes
 	ListaControle1
 	ListaControle2

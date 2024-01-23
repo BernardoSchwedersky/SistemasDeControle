@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Introducao &#8212; Sistemas de Controle</title>
+    <title>Projeto pelo Lugar das Raízes &#8212; Sistemas de Controle</title>
   
   
   
@@ -50,8 +50,13 @@
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "chtml": {"mtextInheritFont": "true", "displayAlign": "left"}})</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "chtml": {"mtextInheritFont": "true", "displayAlign": "left"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Buscar" href="search.html" />
+    <link rel="next" title="Lista de Exercícios 1" href="ListaControle1.html" />
+    <link rel="prev" title="Lugar Geométrico das Raízes" href="LugarDasRaizes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt-BR"/>
   </head>
@@ -128,8 +133,10 @@
 </a></div>
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Respostas de Sistemas Lineares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="LugarDasRaizes.html">Lugar Geométrico das Raízes</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Projeto pelo Lugar das Raízes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ListaControle1.html">Lista de Exercícios 1</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ListaControle2.html">Lista de Exercícios 2</a></li>
 </ul>
@@ -255,7 +262,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -266,11 +275,29 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Introducao</h1>
+    <h1>Projeto pelo Lugar das Raízes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#especificacao-em-malha-fechada">Especificação em Malha Fechada</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erro-em-regime-permanente">Erro em Regime Permanente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tempo-de-acomodacao">Tempo de Acomodação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ultrapassagem-percentual">Ultrapassagem Percentual</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-proporcional">Controlador Proporcional</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-proporcional-integral-pi">Controlador Proporcional Integral (PI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-avanco-lead">Controlador Avanço (Lead)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-proporcional-derivativo-pd">Controlador Proporcional Derivativo (PD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-atraso-lag">Controlador Atraso (Lag)</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -280,8 +307,41 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="introducao">
-<h1>Introducao<a class="headerlink" href="#introducao" title="Link permanente para este cabeçalho">#</a></h1>
+  <section id="projeto-pelo-lugar-das-raizes">
+<h1>Projeto pelo Lugar das Raízes<a class="headerlink" href="#projeto-pelo-lugar-das-raizes" title="Link permanente para este cabeçalho">#</a></h1>
+<p>O diagrama do lugar das raízes é uma ferramenta útil, não só para analisar a estabilidade e o desempenho de um sistema de controle, mas também para auxiliar no projeto do controlador. O diagrama apresenta, graficamente, todas as possíveis posições dos polos em malha fechada, alcançáveis ao ajustarmos um parâmetro do sistema de controle, o qual é, geralmente, o ganho do controlador. Utilizando o conhecimento acerca da estrutura do diagrama, e como ele é modificado ao adicionarmos polos e zeros na estrutura do controlador, podemos projetar o sistema de controle de forma a garantir que o desempenho do sistema em malha fechada seja próximo do desempenho desejado.</p>
+<p>Neste capítulo, iremos explorar a interrelação entre algumas estruturas de controladores e o impacto de sua utilização na estrutura do diagrama do lugar das raízes. Se baseando no conhecimento da influência de cada estrutura, iremos aprender como projetar um sistema de controle capaz de atender alguns requisitos de desempenho em malha fechada.</p>
+<section id="especificacao-em-malha-fechada">
+<h2>Especificação em Malha Fechada<a class="headerlink" href="#especificacao-em-malha-fechada" title="Link permanente para este cabeçalho">#</a></h2>
+<p>Para compreendermos melhor como as características de desempenho de um sistema de controle se relacionam com o diagrama do lugar das raízes, primeiramente, iremos analisar a influência dessas especificações na posição das raízes no diagrama. As principais especificações são relacionadas à existência de erro nulo em regime permanente, ao tempo de acomodação do sistema, e ao tamanho da ultrapassagem percentual (sobressinal).</p>
+<section id="erro-em-regime-permanente">
+<h3>Erro em Regime Permanente<a class="headerlink" href="#erro-em-regime-permanente" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Talvez a principal especificação em um sistema de controle é a necessidade de erro nulo em regime permanente para algum tipo de sinal de referência. O sinal de referência mais típico é o degrau unitário, já que uma parcela significativa dos sistema de controle são regulatórios, com o valor de referência sendo constante, o que pode ser modelado por um degrau unitário. Outro tipo comum de referência é a rampa unitária, a qual pode ser utilizada para modelar transições suaves entre valores distintos de referência.</p>
+<p>As condições para existência de erro nulo foram apresentadas anteriormente, sendo que, para referências do tipo degrau, a condição é a existência de um integrador no processo ou no controlador. Como um integrador é equivalente à um polo na origem (<span class="math notranslate nohighlight">\((s)\)</span>), para termos erro nulo para referências do tipo degrau, é necessário termos um polo na origem do diagrama do lugar das raízes. Caso não exista um polo na origem e é desejado a garantia de erro nulo em regime permanente, devemos inserir o polo na origem. Para referência do tipo rampa é nécessário um integrador duplo, ou seja, dois polos na origem. Caso o sistema não apresente um integrador duplo, será necessário introduzir no controlador a quantidade de zeros na origem necessária para que o lugar das raízes tenha um par de polos na origem.</p>
+</section>
+<section id="tempo-de-acomodacao">
+<h3>Tempo de Acomodação<a class="headerlink" href="#tempo-de-acomodacao" title="Link permanente para este cabeçalho">#</a></h3>
+<p>O tempo de acomodação é diretamente relacionado à parte real dos polos dominantes do sistema.</p>
+</section>
+<section id="ultrapassagem-percentual">
+<h3>Ultrapassagem Percentual<a class="headerlink" href="#ultrapassagem-percentual" title="Link permanente para este cabeçalho">#</a></h3>
+</section>
+</section>
+<section id="controlador-proporcional">
+<h2>Controlador Proporcional<a class="headerlink" href="#controlador-proporcional" title="Link permanente para este cabeçalho">#</a></h2>
+</section>
+<section id="controlador-proporcional-integral-pi">
+<h2>Controlador Proporcional Integral (PI)<a class="headerlink" href="#controlador-proporcional-integral-pi" title="Link permanente para este cabeçalho">#</a></h2>
+</section>
+<section id="controlador-avanco-lead">
+<h2>Controlador Avanço (Lead)<a class="headerlink" href="#controlador-avanco-lead" title="Link permanente para este cabeçalho">#</a></h2>
+</section>
+<section id="controlador-proporcional-derivativo-pd">
+<h2>Controlador Proporcional Derivativo (PD)<a class="headerlink" href="#controlador-proporcional-derivativo-pd" title="Link permanente para este cabeçalho">#</a></h2>
+</section>
+<section id="controlador-atraso-lag">
+<h2>Controlador Atraso (Lag)<a class="headerlink" href="#controlador-atraso-lag" title="Link permanente para este cabeçalho">#</a></h2>
+</section>
 </section>
 
 
@@ -296,6 +356,24 @@ document.write(`
   
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="LugarDasRaizes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">anterior</p>
+        <p class="prev-next-title">Lugar Geométrico das Raízes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="ListaControle1.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">próximo</p>
+        <p class="prev-next-title">Lista de Exercícios 1</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div></div>
   
 </div>
@@ -305,6 +383,30 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#especificacao-em-malha-fechada">Especificação em Malha Fechada</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#erro-em-regime-permanente">Erro em Regime Permanente</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tempo-de-acomodacao">Tempo de Acomodação</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ultrapassagem-percentual">Ultrapassagem Percentual</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-proporcional">Controlador Proporcional</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-proporcional-integral-pi">Controlador Proporcional Integral (PI)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-avanco-lead">Controlador Avanço (Lead)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-proporcional-derivativo-pd">Controlador Proporcional Derivativo (PD)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#controlador-atraso-lag">Controlador Atraso (Lag)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
