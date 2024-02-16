@@ -156,7 +156,7 @@ Considerando que o comportamento em malha fechada é determinado pela função d
 .. math::
 	G_{mf}=\frac{C(s)G(s)}{1+C(s)G(s)}
 	
-onde o controlador é composto por um ganho variável e um conjunto de polos e zeros, na forma :math:`C(s)=K\frac{N(s)}{D(s)}=KC_{gu}(s)`, onde :math:C_{gu}(s): representa o conjunto de polos e zeros do controlador, considerando ganho unitário. Por simplicidade, iremos representar o controlador como tendo ganho unitário, e sendo multiplicado externamento pelo ganhho variável, na forma :math:`KC(s)`, onde :math:`C(s)=\frac{N(s)}{D(s)}`. Dessa forma, o sistema em malha fechada é representado como
+onde o controlador é composto por um ganho variável e um conjunto de polos e zeros, na forma :math:`C(s)=K\frac{N(s)}{D(s)}=KC_{gu}(s)`, onde :math:`C_{gu}(s)` representa o conjunto de polos e zeros do controlador, considerando ganho unitário. Por simplicidade, iremos representar o controlador como tendo ganho unitário, e sendo multiplicado externamento pelo ganhho variável, na forma :math:`KC(s)`, onde :math:`C(s)=\frac{N(s)}{D(s)}`. Dessa forma, o sistema em malha fechada é representado como
 
 .. math::
 	G_{mf}=\frac{KC_{gu}(s)G(s)}{1+KC_{gu}(s)G(s)}.
@@ -208,7 +208,7 @@ Para determinarmos qual o valor do ganho :math:`K` faz com que um polo em malha 
 		\angle KG(s_1)=-\angle(-3)-\angle(+7),
 	
 	.. math::	
-		\angle KG(s_1)=-180^o - 0^o=-180^o-104.
+		\angle KG(s_1)=-180^o - 0^o=-180^o.
 		
 	Como a fase se repete a cada :math:`360^o`, o ângulo :math:`-180^o` é equivalente à :math:`180^o`, fazendo com que a condição de ângulo seja verificada para o ponto de teste :math:`s_1`. Dessa forma, :math:`s_1` faz parte do lugar das raízes do sistema. 
 
@@ -278,9 +278,7 @@ Para os esboço do lugar das raízes iremos utilizar 7 regras. Com essas regras 
 		
 	Como o número de assintotas é definido por :math:`\# a = \# polos - \# zeros`, devemos obter um ângulo para cada assíntota. Dessa forma, devemos substituir :math:`k` ao menos :math:`a` vezes, obtendo os :math:`a` ângulos paras as respectivas :math:`a` assíntotas.
 
-		**Exemplo 8:**
-		
-		Considerando o sistema de controle apresentado na figura a seguir, determine o número de assíntotas e o ângulo das mesmas.
+		**Exemplo 8:** considerando o sistema de controle apresentado na figura a seguir, determine o número de assíntotas e o ângulo das mesmas.
 		
 		.. figure:: /figures/LugarDasRaizes/DiagramaExemplo7.png
 			:figwidth: 60%
@@ -331,7 +329,7 @@ Para os esboço do lugar das raízes iremos utilizar 7 regras. Com essas regras 
 .. admonition:: Regra 6: Pontos de saída e chegada no o eixo real
 
 	Um par de ramos deixa o eixo real, ou retorna ao eixo real quando um par de polos apresenta parte real igual, e parte complexa igual à zero. Dessa forma, o par de polos está sobre a mesma posição, prestes a se tornar um par complexo conjugado. Se, ao aumentarmos o ganho, o par de polos se encontra e torna-se complexo conjugado, teremos um ponto de saída do eixo real. Por sua vez, se o par de polos é complexo conjugado, e ao aumentarmos o ganho eles se encontrarm, tornando-se puramente real, temos um ponto de chegada no eixo real. 
-	Para encontrarmos qual são os pontos de chegada e saída podemos utilizar o método de tranição. Partinodo da equação
+	Para encontrarmos qual são os pontos de chegada e saída podemos utilizar o método de tranição. Partindo da equação
 	
 	.. math::
 		KC_{gu}(s)G(s)=-1,
@@ -413,15 +411,15 @@ Para os esboço do lugar das raízes iremos utilizar 7 regras. Com essas regras 
 			
 		A tabela de Routh-Hurwitz pode ser construída conforme
 		
-			+-------+-----------+-----------+
-			|       | Coluna 1  | Coluna 2  |
-			+=======+===========+===========+
-			| s^2   |    1+K    |   2+2K    |
-			+-------+-----------+-----------+
-			| s^1   |    3K-3   |     0     |
-			+-------+-----------+-----------+
-			| s^0   |    2+2K   |     0     |
-			+-------+-----------+-----------+
+			+-------------+-----------+-----------+
+			|             | Coluna 1  | Coluna 2  |
+			+=============+===========+===========+
+			| :math:`s^2` |    1+K    |   2+2K    |
+			+-------------+-----------+-----------+
+			| :math:`s^1` |    3K-3   |     0     |
+			+-------------+-----------+-----------+
+			| :math:`s^0` |    2+2K   |     0     |
+			+-------------+-----------+-----------+
 			
 		A condição para que o sistema seja marginalmente estável, ou seja, existam polos sobre o eixo imaginário, é termos algum termo igual à 0 na primeira coluna da tabela. Por isso, iremos igualar todos os termos da primeira coluna à 0, de forma a encontrar quais valores de :math:`K` fazem com que o sistema seja marginalmente estável.
 
@@ -468,4 +466,12 @@ Para os esboço do lugar das raízes iremos utilizar 7 regras. Com essas regras 
 			\omega=\pm\sqrt{2}
 
 		Ou seja, ao substituirmos :math:`s=j\omega`, obtivemos :math:`\omega=\pm\sqrt{2}` sendo os pontos de cruzamento com o eixo imaginário. Podemos verificar que esse é o ponto de cruzamento no diagrama apresentado no exemplo 9.
+		
+		
+Essas são as principais regras que, se aplicadas corretamente, permitem a realização de um esboço do lugar das raízes sem a necessidade de um computador. A seguir são apresentados dois exercícios que demonstram como podemos desenhar o lugar e analisar o mesmo, extraindo informações do sistema de controle.
+
+	**Exercício 11**: Esboço completo do lugar das raízes:
+	
+	Considerando um sistema de controle no qual
+	
 	
