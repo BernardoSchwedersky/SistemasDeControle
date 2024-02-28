@@ -87,31 +87,134 @@ O lugar geométrico das raízes é uma ferramenta valiosa para a análise do com
 	
 	.. raw:: html
 		:file: charts/ExemploIntegradorComResposta.html
-
+		
+	Para o valor de :math:`K=0,21` temos os polos se desprendendo do eixo real, instante em que a resposta é criticamente amortecida. Valores maiores fazem a resposta ser subamortecida, enquanto valores menores fazem a resposta ser superamortecida. Valores de ganho acima de :math:`K=4` fazem a resposta do sistema instabilizar, já que os polos em malha fechada cruzam o eixo imaginário, adentrando o semi plano direito. 
+	
 Projeto pelo Lugar das Raízes
 =============================
 
+Sabendo como as especificações do sistema de controle se refletem no diagrama do lugar das raízes e como a posição dos polos em malha fechada se relaciona com a resposta dinâmica do sistema, podemos projetar o controlador de forma a atingir as especificações. O projeto acontecerá em várias etapas, podendo ser repetido caso o controlador projetado não alcance o desempenho desejado.
 
-------------------------
-Controlador Proporcional
-------------------------
+As etapas consistem em:
+
+- Análise das especificações: Conversão das especificações na posição desejada dos polos em malha fechada;
+
+- Esboço do lugar das raízes: Esboço considerando os elementos conhecidos do sistema de controle, como o processo :math:`G(s)` e polos conhecidos de :math:`C(s)`; 
+
+- Projeto do compensador: O compensador consiste em um conjunto de polos e zeros que será adicionada no controlador de forma a fazer com que ramos do diagrama do lugar das raízes passem pela região desejada para os polos em malha fechada do sistema. Dessa forma, é possível ajustar o ganho do controlador de forma a fazer com que os polos do sistema de controle estejam sintonizados em uma posição cujo desempenho seja semelhante ao desejado.
+
+- Ajuste do ganho: Se os ramos do lugar das raízes passar pela região em que o desempenho é o desejado, podemos escolher o valor do ganho que faça com que os polos em malha fechada estejam nesta posição desejada. 
+
+- Verificação do projeto: Como o projeto considera que os polos em malha fechada serão um par complexo conjugado dominante e, geralmente, o projeto resulta em um sistema com mais de dois polos, devemos verificar se o sistema em malha fechada apresenta o par de polos projetado como os polos dominantes. Caso nao haja a dominância, o comportamento do sistema será pior que o especificado. 
+
+----------------
+Projeto do Ganho
+----------------
+
+O projeto de um sistema de controle utilizando o diagrama do lugar das raízes se baseia na análise do sistema de controle utilizando o diagrama e na escolha de compensadores e do ganho do controlador, para fazer com que os polos em malha fechada se encontrem na posição desejada - posição que faz com que o sistema alcance o desempenho especificado. O primeiro caso que será visto é o caso em que não é necessário utilizar um compensador, ou seja, basta ajustarmos o ganho para alcançarmos o desempenho desejado. O exemplo é apresentado a seguir.
+
+	**Exemplo 2: Controle do ângulo de uma antena:**
+	Antenas são utilizadas em diversas aplicações, devendo ser posicionadas em uma posição que facilite a recepção da mensagem transmitida. Para garantir que a antena esteja posicionada corretamente, podemos utilizar um sistema de controle realimentado. Na figura a seguir é apresentado um esboço de um sistema onde desejamos controlar o ângulo que define a altura do receptor e é apresentado o diagrama de blocos do sistema que será controlado.
+
+	.. figure:: /figures/LugarDasRaizes/antena.png
+		:figwidth: 80%
+		:align: center	
+		
+	O objetivo do sistema de controle é garantir que a antena seja posicionada sem erro para referências estáticas e que a resposta do sistema de controle seja a mais rápida possível sem que exista sobressinal, de forma a evitar a oscilação da antena.
+	
+	**Solução:** a análise das especificações traz as informações acerca do que desejamos para o desempenho do sistema de controle. Como desejamos que o posicionamento tenha erro nulo para referências estáticas (referência do tipo degrau), é necessário termos ao menos um integrador na malha direta do sistema de controle (ou em :math:`G(s)`, ou em :math:`C(s)`). Isso já é alcançado, pois o processo apresenta um integrador na função de transferência que modela a dinâmica do motor e carga. Dessa forma, não é necessário adicionar nada ao controlador para atingir este requisito.
+
+	Já o requisito acerca da velocidade do sistema, a qual deve ser a maior possível sem a existência de sobressinal, nos traz informação sobre a posição desejada das raízes em malha fechada. Para o sistema ser rápido, os polos devem estar o mais distante possível do eixo imaginário. Para não haver sobressinal, os polos não podem ter parte imaginária (:math:`\xi \ge 1`). Dessa forma, é desejado posicionarmos as raízes na posição mais à esquerda possível, contanto que as raízes sejam puramente reais. 
+
+	Podemos utilizar o diagrama do lugar das raízes para investigarmos qual a posição das raízes garante as condições desejadas. Se esboçarmos o lugar, obteremos um diagrama semelhante ao apresentado a seguir.
+	
+	.. raw:: html
+		:file: charts/ExemploProjetoAntena.html
+
+	A análise gráfica do diagrama traz a informação que desejamos. Os polos do sistema se movimenta sobre o eixo real, até se encontrarem e se desprenderem do mesmo. Exatamente no ponto em que os polos deixam o eixo real, é o ponto em que temos os polos sendo reais e na posição mais distante do eixo imaginário. Dessa forma, devemos seleciona a posição em que os polos deixam o eixo real como a posição desejada para os polos em malha fechada.
+	
+	Para encontrarmos a posição em que os polos deixa o eixo imaginário, devemos usar a regra 6 do esboço do diagrama, que define os pontos de saída e chegada, :math:`\sigma`, no eixo real como
+	
+	.. math::
+		\sum_{i=1}^{m}\frac{1}{\sigma-z_i}=\sum_{j=1}^{n}\frac{1}{\sigma-p_j}.
+
+	Para o problema em questão, temos
+	
+	.. math::
+		\frac{1}{(\sigma+0)}+\frac{1}{(\sigma+2)}+\frac{1}{(\sigma+10)}=0.
+		
+	Resolvendo para :math:`\sigma`, obtemos :math:`\sigma_1=-0,95` e :math:`\sigma_2=-7,05`. Inspecionando o diagrama, é evidente que o ponto :math:`\sigma_1=-0,95` representa o ponto em que os polos se desprendem do eixo real. Dessa forma, iremos definir a posição :math:`s=-0,95` como a posição desejada para os polos em malha fechada. 
+	
+	Após definirmos qual a posição desejada para os polos em malha fechada, e verificarmos que a posição desejada faz parte do lugar das raízes, podemos encontrar o valor do ganho :math:`K` que faz com que os polos em malha fechada estejam exatamente na posição desejada. Para isso, usaremos a condição de módulo, definida como
+
+	.. math::
+		|C(s)G(s)|=1.
+		
+	Para o problema em questão, teremos
+	
+	.. math::
+		|\frac{3K}{s(s+2)(s+10)}|=1.
+		
+	Substituindo o valor da posição desejada, :math:`s=-0,95`, na condição de módulo, obtemos
+	
+	.. math::
+		\frac{|3K|}{|0,95||-0,95+2||-0,95+10|}=1
+	
+	.. math::
+		\frac{|3K|}{|0,95||1,05||9,05|}=1
+		
+	.. math::
+		K=\frac{0,95\cdot 1,05 \cdot 9,05}{3}=3,01.
+		
+	Ou seja, se escolhermos o ganho como :math:`K=3,01`, iremos posicionar os polos em malha fechada em :math:`s=-0,95`, o que resultará no sistema com resposta mais rápida sem a presença de sobressinal. A resposta ao degrau do sistema é apresentada na figura a seguir. Repare que ganhos menores que o projetado fazem o sistema ser mais lento, e ganhos maiores introduzem sobressinal.
+	
+	.. raw:: html
+		:file: charts/ExemploAntenaResposta.html	
+		
+-------------
+Compensadores
+-------------
+
+Geralmente, o simples ajuste do ganho do controlador não é suficiente para atingirmos o desempenho desejado. Em muitos casos, não temos um integrador no processo, sendo necessária a adição do integrador no controlador, de forma a garantir erro nulo para referências do tipo degrau. Além disso, quando desejamos acelerar a resposta do sistema, geralmente teremos que adicionar algum comportamento dinâmico ao controlador. Em ambos os casos, podemos alcançar o objetivo adicionando um compensado ao controlador.
+
+O compensador nada mais é do que um conjunto de polos e zeros que serão adicionados ao controlador. Na forma mais genérica, um controlador com compensador pode ser definido por
+
+.. math:: C(s)=\frac{K(s+Z)}{(s+P)}.
+
+O termo Z define a posição do zero do compensador, enquanto o termo P define a posição do polo do compensador. A adição do compensador influenciará a estrutura do lugar das raízes do sistema de controle, fazendo com que o lugar mude sua trajetória. Dessa forma, iremos analisar qual o impacto da posição do polo e do zero no desenho do lugar das raízes.
+
+Como temos apenas um polo e um zero no compensador, existem duas configurações possíveis. Podemos ter o polo à direito da zero (:math:`-P>-Z`), configuração denominada compensador atraso (lag), ou temos o polo à esquerda do zero (:math:`-P<-Z`), configuração denominada compensador avanço (lead). O nome se dá pela contribuição de ângulo que cada um desses compensadores fornece. Quando calculamos o ângulo de um ponto de teste qualquer no plano complexo em relação à função de transferência do controlador, vemos que o zero fornece uma contribuição positiva de ângulo, enquanto o polo fornece uma contribuição negativa. Quando o polo está à direita do zero, o ângulo formado entre qualquer ponto de teste e o polo é maior que o ângulo formado por esse ponto e o zero, fazendo com que a contribuição resultante seja negativa. Por isso, dizemos que o compensador fornece um atraso de fase, já que ele adiciona uma fase negativa à todo lugar das raízes. A análise para o avanço é semelhante, devido ao zero estar à direito do polo, ele fornece uma contribuição de ângulo maior que o polo, fazendo com que a contribuição resultante seja positiva. Por isso esse compensador é denominado avanço, já que todo o lugar terá um aumento em sua fase. Essas duas configurações são apresentadas na figura a seguir.
+  
+.. figure:: /figures/nomeFig.png
+	:figwidth: 80%
+	:align: center
 
 
---------------------------------------
 Compensador Atraso de Fase (Lag)
---------------------------------------
+--------------------------------
+
+O compensador atraso de fase consiste na configuração em que o polo está à direita do zero. Isso faz com que a contribuição de fase seja negativa, sendo que, quanto mais distantes estiverem o polo e o zero, maior será a contribuição negativa de fase. Uma contribuição negativa de fase faz com que o lugar das raízes tenda a estar mais à direita em relação a posição inicial, o que faz com que o sistema tenda a ser mais lento, na média. Esse efeito pode ser visto na figura a seguir, na qual temos um compensador atraso no qual o polo é :math:`P=0` e o zero pode ser escolhido.
+
+.. raw:: html
+	:file: charts/ExemploAtraso.html
+	
+O compensador atraso de fase deteriora o desempenho transitório do sistema, fazendo com que os tempos de acomodação alcançáveis sejam menores. Porém, essa estrutura é fundamental para alcançarmos erro nulo em casos onde o sistema não é integrador. Nesse tipo de caso, é necessário adicionar o integrador na estrutura do controlador. Se adicionarmos apenas o integrador, teremos uma grande contribuição de fase negativa, o que tornará o sistema muito lento. Ao adicionarmos um zero à esquerda do polo, podemos amenizar o atraso adicionado pelo polo, sendo que, quanto mais próximo estiver o zero do polo, menor será o atraso adicionado pelo compensador. 
 
 
 
----------------------------------------
+	**Exemplo 3: Filtro passa-baixas ativo:** bi-quad
+
 Compensador Avanço de Fase (Lead)
----------------------------------------
+---------------------------------
 
 
+.. raw:: html
+	:file: charts/ExemploAvanço.html
+	
+	**Exemplo 4: Controle da posição angular de um motor DC:**
 
-
---------------------------------------------
-Compesador Avanço-Atraso (Lead-Lag)
---------------------------------------------
+----------------
+Projeto Completo
+----------------
 
 	

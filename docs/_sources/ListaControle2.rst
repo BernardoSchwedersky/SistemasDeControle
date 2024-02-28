@@ -137,25 +137,10 @@ Encontre o ponto de partida e chegada no eixo real para o diagrama do lugar das 
 Solução:
 --------
 
-Podemos obter analiticamente os pontos de partida e chegada do eixo real considerando
-
-.. math::
-	A(s)+KB(s)=0,
-
-e usando a equação
-
-.. math::
-	\frac{dK}{ds}=-\frac{B(s)'A(s)-A(s)'B(s)}{A(s)^2}=0
-
-obtemos
-
-.. math::	
-	s^2+2s-(s+4)(2s+1)=0
-	-s^2-7s-4=0
-
-resultando em :math:`s=-0,62` e :math:`s=-6,37`. Graficamente podemos verificar esse resultado, por meio do diagrama a seguir.
 
 .. container:: toggle, toggle-hidden
+
+	:math:`s=-0,62` e :math:`s=-6,37`. Graficamente podemos verificar esse resultado, por meio do diagrama a seguir.
 
 	.. exec_code:: realCTsignals signalplots
 		:linenos:
@@ -340,7 +325,36 @@ Solução:
 			:figwidth: 80%
 			:align: center	
 			
-			
+
+-----------
+Exercício 6
+-----------			
+
+Projete o sistema de controle de um manipulador robótico do tipo SCARA, o qual consiste em um braço que se move sobre o eixo cartesiano. Neste tipo de manipulador, a posição do atuador final do manipulador é definida pelo ângulo :math:`\theta(t)`, em radianos, sendo manipulada por meio do torque :math:`\tau(t)`, em :math:`Nm`, fornecido por um motor. Esse sistema é ilustrado na figura a seguir.
+
+.. figure:: /figures/Lista2/scara.png
+	:figwidth: 60%
+	:align: center	
+    
+A dinâmica desse sistema é descrita por meio da função de transferência
+
+.. math::
+    G(s)=\frac{\theta(s)}{\tau(s)}=\frac{1/J}{s(s+b/J)},        
+
+na qual, :math:`J=0,2`, em :math:`Kgm^2`, representa o momento de inércia do manipulador e :math:`b=1`, em :math:`\frac{Nms}{rad}`, representa um coeficiente de atrito viscoso.
+
+O objetivo do sistema de controle desse manipulador é garantir que não exista erro de posicionamento quando o manipulador receber uma referência constante (degrau), e que o tempo de resposta do sistema (tempo até atingir um valor :math:`2\%` próximo do final) seja de :math:`T_s=1` segundos. O máximo sobressinal aceitável para esse projeto é de :math:`M_p=5\%`. 
+
+Baseado nessas especificações:
+
+a) Obtenha, a partir das especificações, qual serão os polos dominantes em malha fechada desejados para esse sistema e esboce o diagrama do Lugar das Raízes para o sistema, posicionando os polos desejadas em malha fechada no diagrama; 
+
+b) Discuta a solução de controle escolhida e projete a a mesma, determinando a posição de seus polos e zeros. (Dica: se for necessário escolher a posição de um polo rápido, escolha :math`p=25`, ou seja :math:`\frac{1}{(s+25)}`);
+
+c) Calcule o ganho :math:`K` do seu controlador, para que os polos em malha fechada do seu sistema de controle estejam na posição desejada, finalizando o projeto.
+
+Solução:
+--------
 
 Diagrama de Bode
 ================
