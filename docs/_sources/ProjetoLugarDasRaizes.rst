@@ -4,7 +4,7 @@ Projeto pelo Lugar das Raízes
 
 O diagrama do lugar das raízes é uma ferramenta útil, seja para analisar a estabilidade e o desempenho de um sistema de controle, mas também para auxiliar no projeto do controlador. O diagrama apresenta, graficamente, todas as possíveis posições dos polos em malha fechada, alcançáveis ao ajustarmos um parâmetro do sistema de controle, o qual é, geralmente, o ganho do controlador. Utilizando o conhecimento acerca da estrutura do diagrama, e como ele é modificado ao adicionarmos polos e zeros na estrutura do controlador, podemos projetar o sistema de controle de forma a garantir que o desempenho do sistema em malha fechada seja próximo do desempenho desejado.
 
-Neste capítulo, iremos explorar a interrelação entre algumas estruturas de controladores e o impacto de sua utilização na estrutura do diagrama do lugar das raízes. Inicialmente iremos explorar como podemos análisar o sistema de controle a partir do diagrama e como o diagrama se se modifica ao alterarmos a estrutura do controlador. Se baseando no conhecimento da influência de cada estrutura, iremos explorar técnicas para projetar um sistema de controle capaz de atender alguns requisitos de desempenho em malha fechada.
+Neste capítulo, iremos explorar a interrelação entre algumas estruturas de controladores e o impacto de sua utilização na estrutura do diagrama do lugar das raízes. Inicialmente iremos explorar como podemos análisar o sistema de controle a partir do diagrama e como o diagrama se modifica ao alterarmos a estrutura do controlador. Se baseando no conhecimento da influência de cada estrutura, iremos explorar técnicas para projetar um sistema de controle capaz de atender alguns requisitos de desempenho em malha fechada.
 
 Especificação em Malha Fechada
 ==============================
@@ -185,9 +185,8 @@ O termo Z define a posição do zero do compensador, enquanto o termo P define a
 
 Como temos apenas um polo e um zero no compensador, existem duas configurações possíveis. Podemos ter o polo à direito da zero (:math:`-P>-Z`), configuração denominada compensador atraso (lag), ou temos o polo à esquerda do zero (:math:`-P<-Z`), configuração denominada compensador avanço (lead). O nome se dá pela contribuição de ângulo que cada um desses compensadores fornece. Quando calculamos o ângulo de um ponto de teste qualquer no plano complexo em relação à função de transferência do controlador, vemos que o zero fornece uma contribuição positiva de ângulo, enquanto o polo fornece uma contribuição negativa. Quando o polo está à direita do zero, o ângulo formado entre qualquer ponto de teste e o polo é maior que o ângulo formado por esse ponto e o zero, fazendo com que a contribuição resultante seja negativa. Por isso, dizemos que o compensador fornece um atraso de fase, já que ele adiciona uma fase negativa à todo lugar das raízes. A análise para o avanço é semelhante, devido ao zero estar à direito do polo, ele fornece uma contribuição de ângulo maior que o polo, fazendo com que a contribuição resultante seja positiva. Por isso esse compensador é denominado avanço, já que todo o lugar terá um aumento em sua fase. Essas duas configurações são apresentadas na figura a seguir.
   
-.. figure:: /figures/nomeFig.png
-	:figwidth: 80%
-	:align: center
+.. raw:: html
+	:file: charts/ExemploAvancoAtraso.html
 
 
 Compensador Atraso de Fase (Lag)
@@ -198,21 +197,173 @@ O compensador atraso de fase consiste na configuração em que o polo está à d
 .. raw:: html
 	:file: charts/ExemploAtraso.html
 	
-O compensador atraso de fase deteriora o desempenho transitório do sistema, fazendo com que os tempos de acomodação alcançáveis sejam menores. Porém, essa estrutura é fundamental para alcançarmos erro nulo em casos onde o sistema não é integrador. Nesse tipo de caso, é necessário adicionar o integrador na estrutura do controlador. Se adicionarmos apenas o integrador, teremos uma grande contribuição de fase negativa, o que tornará o sistema muito lento. Ao adicionarmos um zero à esquerda do polo, podemos amenizar o atraso adicionado pelo polo, sendo que, quanto mais próximo estiver o zero do polo, menor será o atraso adicionado pelo compensador. 
+O compensador atraso de fase deteriora o desempenho transitório do sistema, fazendo com que os tempos de acomodação alcançáveis sejam menores. Porém, essa estrutura é fundamental para alcançarmos erro nulo em casos onde o sistema não é integrador. Nesse tipo de caso, é necessário adicionar o integrador na estrutura do controlador. Se adicionarmos apenas o integrador, teremos uma grande contribuição de fase negativa, o que tornará o sistema muito lento. Ao adicionarmos um zero à esquerda do polo, podemos amenizar o atraso adicionado pelo polo, sendo que, quanto mais próximo estiver o zero do polo, menor será o atraso adicionado pelo compensador. Porém, se adicionarmos o zero muito próximo do integrador, podemos confinar o integrador em uma posição em que existirá um polo em malha fechada muito lento, limitando a possibilidade de acelerar o processo aumentando o ganho do controlador.
 
+	**Exemplo 3: Filtro passa-baixas ativo:** 
+	
+	Um filtro passa baixas passivo de segunda ordem pode ser definido pela função de transferência :math:`G(s)=\frac{1}{(R_1 C_1 s+1)(R_2 C_2 s+1)}`. Esse filtro é implementado pelo circuito apresentado a seguir.
 
+	.. figure:: /figures/LugarDasRaizes/FiltroBiQuad.png
+		:figwidth: 60%
+		:align: center
 
-	**Exemplo 3: Filtro passa-baixas ativo:** bi-quad
+	A escolha das resistências e capacitâncias determina a frequência de corte e o ganho do filtro. Idealmente, o ganho deve ser unitário, para que o sinal filtrado, :math:`v_o(t)`, seja uma versão sem ruído de :math:`v_i(t)`. Uma forma de aprimorar este filtro e garantir que o ganho do filtro seja unitário é contruir uma malha de controle, fazendo com que :math:`v_i(t)` seja o sinal de referência, e :math:`v_o(t)` a variável controlada. Se projetarmos este sistema de controle para alcançarmos erro nulo em regime permanente para referências do tipo degrau, o resultado será um filtro ativo. Realizaremos o projeto considerando :math:`R_1 C_1=0,2` e :math:`R_2 C_2=0,25`.
+	
+	**Projeto:**
+	
+	Para alcançarmos a especificação de erro nulo para referências do tipo degrau, devemos adicionar um integrador ao controlador, :math:`C(s)=\frac{K}{s}`. A adição do integrador modifica o lugar das raízes do sistema de controle, fazendo com que os ramos sejam atraidos para a direita, o que faz com que o sistema se torne mais lento. Independentemente da escolha do ganho, o sistema será mais lento em malha fechada do que em malha aberta. A diferença entre os lugares das raízes com e sem o integrador é apresentado a seguir.
+	
+	.. raw:: html
+		:file: charts/ExemploFiltroAtivo.html
+
+	Podemos amenizar o efeito do atraso de fase resultante da inserção do integrador ao utilizarmos um zero à esquerda do integrador, o que resultará na estrutura atraso de fase. Quanto mais próximo estiver o zero do integrador, menor será o atraso resultante. Quanto mais longe estiver o zero, menor será a sua influência, e maior será o atraso. Devido ao zero estar à esquerda do polos, essa configuração é o compensador atraso de fase.
+	
+	A escolha da posição do zero irá afetar a posição alcançável para as raízes em malha fechada. Se inserirmos o zero próximo ao integrador, o formato do lugar volta a ser similar ao caso em malha aberta, o que parece tentador. Porém, esta configuração faz com que o polo na origem fique preso ao zero, fazendo com que, independemente do ganho, o sistema fique lento. Uma segunda abordagem consiste em posicionar o zero próximo aos polos do sistema em malha aberta, o que faz com que o lugar seja atraído para a esquerda, porém, ainda esteja à direita do lugar para o sistema em malha aberta. Essas duas configurações são apresentadas na figura a seguir.
+
+	.. raw:: html
+		:file: charts/ExemploFiltroAtivo2.html
+		
+	A segunda alternativa é mais interessante, pois permitirá ajustar o ganho do controlador para que tenhamos um filtro ativo com frequência de corte similar ao do filtro	passivo. O ajuste de ganho pode ser feito para posicionarmos um dos polos em malha fechada em :math:`s=-2,5`. Podemos encontrar o valor do ganho :math:`k` para posicionar um dos polos em :math:`s=-2,5` utilizando a condição de ganho, fazendo :math:`|C(s)G(s)|=1`. Para tal, temos:
+	
+	.. math::
+		|C(s)G(s)|=1
+		
+	.. math::
+		|\frac{k(s+3,5)}{s}\frac{20}{(s+4)(s+5)}|=1
+		
+	substituindo :math:`s=-2,5` teremos:
+	
+	.. math::
+		\frac{|k||(1)|}{|-2,5|}\frac{|20|}{(|1,5|)(|2,5|)}=1
+		
+	.. math::
+		k=\frac{2,5 \cdot 1,5 \cdot 2,5}{1 \cdot 20}=	0,47
+
+	Então, se sintonizarmos o ganho como :math:`k=0,47` faremos com que um dos polos em malha fechada esteja em :math:`s=-2,5`, com os outros dois polos sendo um par conjugado próximo do polo que foi escolhido. A posição dos polos em função do ganho escolhido, bem como a resposta do sistema em malha fechada para uma referência do tipo degrau unitário são apresentadas a seguir.
+	
+	.. raw:: html
+		:file: charts/ExemploFiltroAtivo3.html
+		
+Como visto no exemplo, o controlador atraso é útil quando pretendemos melhorar o desempenho em regime permanente do sistema, ou seja, garantir erro nulo para algum tipo de referência, ou fazer com que o erro seja menor que certo valor. O controlador PI é um caso especial do controlador atraso, no qual a posição do polo é a origem, e a posição do zero é à esquerda do polo. O zero é usado para reduzir a perda de desempenho introduzida pelo polo lento que foi adicionado, porém, o sistema sempre apresentará desempenho inferior ao alcançável se não introduzissemos o polo lento.		
 
 Compensador Avanço de Fase (Lead)
 ---------------------------------
 
+Se desejarmos acelerar a resposta do sistema de controle, podemos adicionar um zero no semiplano esquerdo. O zero irá deslocar todo o lugar das raízes para a esquerda, fazendo com que o sistema de controle possa ser sintonizado de forma a apresentar tempos de acomodação menores que os alcançáveis sem o compensador. A função de transferência desse controlador é :math:`C(s)=ks`, a qual implementa um derivador puro, o que não é realizável. Devido à isso, a solução prática para acelerar o comportamento do sistema de controle consiste no uso da estrutura de compensador avanço, definica como :math:`C(s)=k\frac{(s+Z)}{s+P}`, na qual o polo está sempre à esquerda do zero. Se posicionarmos o polo bastante à esquerda dos demais elementos do lugar das raízes, o seu efeito influenciará pouco, restando o efeito do zero. A influência da estrutura avanço, com :math:`P=10`, no lugar de um sistema definido por :math:`G(s)=\frac{1}{(s+1)(s+2)}`, é apresentada na figura a seguir.
 
 .. raw:: html
-	:file: charts/ExemploAvanço.html
+	:file: charts/ExemploAvanco.html
+
+Quanto mais próximo está o zero da origem, mais à esquerda é deslocado o lugar. Quanto mais à esquerda está o lugar, mais rápidos poderão ser os polos em malha fechada. Dessa forma, podemos usar a estrutura avanço para deslocar o lugar para a esquerda, e fazer com que o sistema de controle alcance o desempenho especificado. O projeto de um compensador avanço é apresentado no exemplo a seguir.
+
 	
 	**Exemplo 4: Controle da posição angular de um motor DC:**
 
+	Neste exemplo iremos controlar a posição angular, :math:`\theta(t)`, de um motor DC. Neste tipo de motor, podemos manipular a velocidade angular, :math:`\omega(t)`,  por meio da mudança da sua tensão de alimentação, :math:`v(t)`. Já a posição angular pode ser obtida pela integral da velocidade angular. Um diagrama de blocos deste processo é apresentado a seguir.
+
+	.. figure:: /figures/LugarDasRaizes/MotorDC.png
+		:figwidth: 60%
+		:align: center	
+	
+	Considerando um motor parametrizado pela função de transferência :math:`G(s)=\frac{4}{s^2+6s+8}`, iremos projetar um controlador que seja capaz de apresentar erro nulo para referências do tipo degrau, máxima ultrapassagem percentual de :math:`5\%` e tempo de acomodação menor do que :math:`3` segundos.
+	
+	**Solução:**
+	
+	O projeto do controlador se inicia pela análise do sistema em malha aberta e das especificações. A análise do sistema em malha aberta revela que o sistema é composto por uma função de transferência de segunda ordem associada à um integrador. Já a análise das especificações nos revela que:
+	
+	- A especificação de erro nulo para referências do tipo degrau implica na necessidade de termos um integrador na malha direta do sistema de controle. Como o sistema já é integrador, essa especificação é naturalmente atendida.
+	
+	- A especificação sobre o tempo de acomodação impacta do valor de :math:`\sigma` conforme:
+	
+	.. math::
+		\sigma=\frac{-ln(0,02)}{3}=1,3.
+	
+	- A especificação da máxima ultrapassagem percentual de :math:`5\%` implicará em um valor mínimo para o :math:`\xi`. Se utilizarmos a aproximação analítica teremos:
+	
+	.. math::
+		\xi^2=\frac{ln(0,05)^2}{\pi^2+ln(0,05)^2},
+		
+	.. math::
+		\xi=0,69.
+	
+	Com essa especificação, podemos definir qual a posição desejada para as raízes em malha fechada. Podemos obter o valor de :math:`\omega_n` por meio de :math:`\sigma=\xi\omega_n`. Dessa forma, :math:`omega_n=1,89`. A partir de :math:`omega_n` e :math:`\sigma` podemos obter :math:`\omega`, por meio de :math:`\omega_n^2=\sigma^2+\omega^2`. Então, :math:`\omega=1,37`, o que faz com que a posição desejada para as raízes em malha fechada seja :math:`s=-\sigma\pm j\omega=-1,3\pm j1,37`. Podemos então esboçar o lugar das raízes do sistema com :math:`C(s)=k`, para verificar se o lugar passa pela posição desejada para as raízes. Se o lugar passar pela posição desejada, um simples ajuste de ganho é suficiente, porém, caso não passe, será necessário adicionar um compensador. O lugar para este sistema é apresentado em seguida.
+	
+	.. raw:: html
+		:file: charts/ExemploMotorDC.html
+	
+	Avaliando o lugar, vemos que ele não passa sobre a posição desejada para os polos em malha fechada (em verde). Como esta posição esta à esquerda do lugar, teremos que adicionar um compensador para fazer com que o lugar passe pela posição desejada. A adição do compensador fará com que exista uma nova contribuição de fase, que irá compensar a diferença de fase entre o ponto desejado e o lugar. Dessa forma, a primeira etapa para projeto do compensador avanço consiste em determinar qual o avanço de fase que o compensador deverá introduzir. Relembrando, para um ponto qualquer, :math:`s`, fazer parte do lugar das raízes, ele precisa satisfazer a condição de ângulo, definida como :math:`\angle C(s) G(s)=-180^o(2k+1)`. Então, a contribuição de fase do controlador, :math:`\angle C(s)=\phi_c` deve ser igual à :math:`\phi_c=-180^o(2k+1)-\angle G(s)`. Podemos obter a contribuição necessária na forma:
+	
+	.. math::
+		\phi_c=-180^o(2k+1)-\angle \frac{4}{(s+2)(s+4)s}
+		
+		\phi_c=-180-(-\angle(s+2)-\angle(s+4)-\angle(s))
+		
+		\phi_c=-180-(-\angle(-1,3+j1,37+2)-\angle(-1,3+j1,37+4)-\angle(-1,3+j1,37))
+
+		\phi_c=-180-(-\angle(0,7+j1,37)-\angle(2,7+j1,37)-\angle(-1,3+j1,37))		
+	
+		\phi_c=-180+62,9^o+26,9^o+133,5^o
+		
+		\phi_c=43,2^o
+		
+		
+	Ou seja, a contribuição de fase do compensador avanço deve ser de :math:`\phi_c=43,2^o`. Teoricamente, é possível avançar até :math:`90^o` com a estrutura :math:`C(s)=k\frac{(s+Z)}{s+P}`, porém, na prática, é possível avançar ângulos até :math:`70^o`. Como desejamos avançar apenas :math:`43,2^o`, podemos alcançar facilmente utilizando a estrutura avanço. 
+	
+	Partindo da estrutura :math:`C(s)=k\frac{(s+Z)}{s+P}`, precisamos fazer com que:
+	
+	.. math:: 
+		\angle k\frac{(s+Z)}{s+P}=43,2^o
+		
+		\angle (s+Z)-\angle(s+P)=43,2^o
+	
+	Como existem duas variáveis, devemos escolher uma delas para calcular o valor da segunda que satisfaça a equação. Geralmente escolhemos a posição do polo, fazendo ele ser entre 2 e 10 vezes mais rápido que o polo mais rápido do processo. Como o polo mais rápido do processo está em :math:`-4`, se escolhermos adicionar um polo 5 vezes mais rápido, teremos :math:`P=20`, o que fará com que a posição do polo seja :math:`-20`. Após escolhermos a posição do polo, nos resta calcular qual a posição do zero que satisfaça a equação, resultando no avanço de fase desejado.
+
+	.. math:: 
+		\angle (s+Z)-\angle(s+20)=43,2^o	
+	
+		\angle (-1,3+j1,37+Z)-\angle(-1,3+j1,37+20)=43,2^o	
+	
+		\angle (-1,3+j1,37+Z)-\angle(18,7+j1,37)=43,2^o	
+		
+		\angle (-1,3+j1,37+Z)-4,2^o=43,2^o	
+		
+		\angle (-1,3+j1,37+Z)=47,4^o	
+		
+		tg^{-1}(\frac{1,37}{-1,7+Z})=47,^o
+		
+		\frac{1,37}{-1,7+Z}=1,08
+		
+		Z=2,58
+		
+		
+	Dessa forma, se utilizarmos o compensador avanço parametrizado como :math:`C(s)=k\frac{(s+2,58)}{s+20}`, alcançaremos o avanço desejado de :math:`\phi_c=43,2^o`. Teoricamente, se escoçarmos o lugar das raízes considerando o compensador, veremos que o lugar passará sobre a posição desejada para os polos em malha fechada. Esse lugar das raízes é apresentado a seguir.
+	
+	.. raw:: html
+		:file: charts/ExemploMotorDC2.html
+
+	A inspeção do diagrama mostra que o objetivo foi alcançado. Ao adicionarmos o compensador avanço, todo o lugar se moveu para a esquerda, fazendo com que a posição desejada para os polos em malha fechada faça parte do lugar. Dessa forma, podemos sintonizar o ganho do controlador, fazendo com que os polos estejam exatamente na posição desejada. O ajuste de ganho pode ser realizado por meio da condição de módulo, da seguinte forma:
+	
+	.. math::
+		|C(s)G(s)|=1
+		
+		
+		|\frac{k(s+2,58)}{(s+20)}\frac{4}{s(s+2)(s+4)}|=1
+		
+		|\frac{k(-1,3+j1,37+2,58)}{(-1,3+j1,37+20)}\frac{4}{(-1,3+j1,37)(-1,3+j1,37+2)(-1,3+j1,37+4)}|=1
+		
+		\frac{|k||(1,28+j1,37)|}{|(18,7+j1,37)|}\frac{|4|}{|(-1,3+j1,37)||(0,7+j1,37)||(2,7+j1,37)|}=1
+		
+		\frac{4k \cdot 1,87}{18,75 \cdot 1,89 \cdot 1,54 \cdot 3,03}=1
+		
+		k=22,1
+	
+	Dessa forma, o projeto do controlador foi finalizado, com :math:`C(s)=22,1\frac{(s+2,58)}{s+20}`. Resta simular o resultado, e refazer alguma parte do projeto caso o resultado não seja o esperado. A simulação do sistema em malha fechada é apresentada a seguir:
+	
+	.. raw:: html
+		:file: charts/ExemploMotorDC3.html	
+	
+	A análise da resposta ao degrau mostra que as especificações foram quase atendidas. A ultrapassagem percentual foi de :math:`6\%`, e o tempo de acomodação foi levemente maior que :math:`3` segundos. O motivo para as especificações não serem completamente atendidas está na condição que assumimos no projeto de que o desempenho será semelhante ao de um par de polos complexos dominantes. Dessa forma, o projeto inteiro foi realizado considerando que se posicionarmos as raízes na posição desejada, o comportamento do sistema será o de um sistema de segunda ordem dominante. Porém, raramente isso irá acontecer, já que temos outros polos em malha fechada, que, apesar de estarem à esquerda do par de polos cuja posição foi alocada, ainda influenciam no comportamento do sistema. Por isso, o desempenho do sistem sempre será um pouco inferior à planejada. Uma forma de compensar isto seria adicionar uma margem no projeto, como por exemplo, compensar :math:`5^o` a mais do que o calculado, fazendo com que exista uma margem no projeto.
+	
 ----------------
 Projeto Completo
 ----------------
