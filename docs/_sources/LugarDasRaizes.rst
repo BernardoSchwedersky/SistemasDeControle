@@ -472,6 +472,6 @@ Essas são as principais regras que, se aplicadas corretamente, permitem a reali
 
 	**Exercício 11**: Esboço completo do lugar das raízes:
 	
-	Considerando um sistema de controle no qual
+	(em breve)
 	
 	
