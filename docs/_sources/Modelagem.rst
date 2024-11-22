@@ -1,197 +1,199 @@
-==============================
-Respostas de Sistemas Lineares
-==============================
+===============================
+Modelagem de Sistemas Dinâmicos
+===============================
 
-Os sistemas dinâmicos lineares invariantes no tempo (LTI) desempenham um papel fundamental na compreensão e no controle de uma ampla gama de fenômenos dinâmicos. A capacidade de descrever o comportamento de sistemas complexos por meio de modelos matemáticos lineares tem implicações significativas na análise e no projeto de sistemas de controle. 
+Diversos fenômenos da natureza (sejam eles físicos, químicos, elétricos, ...) podem ser modelados utilizando informações das grandezas associadas ao fenômeno e suas derivadas. Quando determinamos um modelo de um fenômeno por meio de uma equação que relaciona o valor de uma variável e de suas derivadas, temos uma equação diferencial. Esse tipo de representação é útil pois permite a análise do comportamento do fenômeno e é útil para o controle de processos pois servirá de base para a obtenção de modelos que representem o comportamento geral do sistema, permitindo simular o fenômeno e também desenvolver estratégias de controle computacionalmente.
 
-A resposta de um sistema LTI para uma entrada qualquer pode ser obtida utilizando a função de transferência que rege o comportamento do processo. Assumindo que a função de transferência seja conhecida e representada por:
+A obtenção de um modelo que represente o processo se baseia na utilização das leis que regem os fenômenos que estão sendo modelados, e nas leis que regem a interconexão dos elementos do sistema. Existem metodologias consolidadas para sistemas de diversas naturezas, sendo que, ao final do processo de modelagem é obtida uma equação diferencial relacionando as grandezas de interesse do processo. A seguir é apresentado um exemplo do processo de modelagem de um sistema elétrico com componentes passivos.
 
-.. math::
-	G(s)=\frac{Y(s)}{X(s)},
+	**Exemplo 1: Modelagem de um sistema elétrico com componentes passivos**
+
+	Neste exemplo será apresentado o processo para obtenção de uma equação diferencial que represente o comportamento dinâmico de um sistema elétrico composto apenas por componentes passivos - resistores, indutores e capacitores. O sistema que será modelado é apresentado na figura a seguir.
 	
-a resposta para uma entrada qualquer, :math:`x(t)`, pode ser obtida usando
-
-.. math::
-	Y(s)=G(s)X(s),
+	.. figure:: /figures/Modelagem/CircuitoRLC.png
+		:figwidth: 60%
+		:align: center	
 	
-na qual :math:`X(s)` representa a transformada de Laplace da entrada. 
-
-Para obtermos a resposta no domínio do tempo, :math:`y(t)`, podemos subdividir :math:`G(s)X(s)` em frações parciais e obter a transformada inversa da equação. Os modelos de entrada que são tipicamente usados consistem no impulso unitário, degrau unitário, e na rampa unitária. Essas entradas, bem como as suas transformadas, são apresentadas a seguir.
-
-.. admonition:: Modelagem de entradas
-
-	+---------+----------+---------------+
-	|         | $x(t)$   | $X(s)$        |
-	+=========+==========+===============+
-	| Impulso | $\delta$ | 1             |
-	+---------+----------+---------------+
-	| Degrau  | $u(t)$   |$\frac{1}{s}$  |
-	+---------+----------+---------------+
-	| Rampa   | $tu(t)$  |$\frac{1}{s^2}$|
-	+---------+----------+---------------+
-
-
-Detalhes sobre como obter essas respostas podem ser encontradas na seção 2.4 do livro de Lathi, B. P. (2006). 
-
-Para sistemas LTIs, existem poucas combinações de possíveis respostas, fazendo com que seja possível analisar o comportamento dinâmico para os casos típicos. Analisaremos, a seguir, os comportamentos gerais dos sistemas de primeira e segunda ordem, sistemas de ordem elevada e sistemas de fase não-mínima, quando sujeitos à entradas do tipo degrau. 
-
-
-Sistemas de Primeira Ordem
-==========================
-
-Considerando um sistema dinâmico regido pela equação diferencial
-
-.. math::
-	\tau \frac{dy}{dt}+y(t)=kx(t),
+	Para este sistema, consideraremos que o tensão na fonte de alimentação é a variável de entrada do sistema e iremos determinar qual a variável de saída desejada. Qualquer grandeza pode ser escolhida como variável de saída, sendo possível obter equações diferenciais que relacionam a entrada com qualquer um dos sinais de saída. A variável que foi escolhida neste exemplo, para ser a saída, é a tensão sobre o capacitor, :math:`v_c(t)`. Por convenção, iremos adotar :math:`x(t)` para representar a entrada do sistema, e :math:`y(t)` para representar a saída.
 	
-se aplicarmos a transformada de Laplace e reorganizarmos no formato de uma função de transferência, obteremos a forma geral de uma função de transferência de primeira ordem
-
-.. admonition:: Função de transferência de primeira ordem
+	Para obtermos a equação que relaciona a saída :math:`y(t)=v_c(t)` com a entrada :math:`x(t)` utilizaremos a lei das malhas de Kirchoff, que define a soma das quedas de tensão em um circuito fechado sendo :math:`0`. Dessa forma, podemos escrever a equação
+	
+	.. math::
+		x(t)-v_i(t)-v_r(t)-v_c(t)=0,
+		
+	na qual :math:`v_i(t)` representa a queda de tensão no indutor e :math:`v_r(t)` a queda de tensão no resistor. Cada elemento pode ser modelado individualmente, resultando em uma equação que relaciona a tensão e a corrente aplicadas à cada elemento individual. Por exemplo, para o resistor, temos a relação :math:`v_r(t)=Ri(i)` e para o indutor temos :math:`v_i(t)=L\frac{di(t)}{dt}`. Ao substituirmos as expressões individuais, e identificarmos a saída como :math:`y(t)=v_c(t)`, obtemos a expressão
+	
+	.. math::
+		x(t)-L\frac{di(t)}{dt}-Ri(t)-y(t)=0.
+		
+	Repare que a equação obtida já contém os sinais de entrada e saída, porém também o sinal :math:`i(t)`. Devemos representar esse sinal em função dos sinais de entrada e saída, o que pode ser alcançado utilizando a equação que relaciona a tensão e a corrente sobre o capacitor, :math:`i(t)=C\frac{dv_c(t)}{dt}`. Ao substituirmos :math:`i(t)`, obtemos a equação diferencial 
 
 	.. math::
-		G(s)=\frac{k}{\tau s+1}=\frac{k/\tau}{s+1/\tau}.
+		x(t)-LC\frac{d^2 v_c(t)}{dt^2}-RC\frac{dv_c(t)}{dt}-y(t)=0.	
 	
-O parâmetro $k$ pode ser entendido como o ganho estático do processo, pois, se aplicarmos um degrau unitário como entrada, e usarmos o teorema do valor final, veremos que o valor da saída quando o tempo tende à infinito será $k$.
+	Essa equação resultante é uma equação diferencial ordinária de um sistema linear invariante no tempo. Observe que a equação é formada apenas por constantes (R, L e C) e pelos sinais de entrada e saída, em conjunto com suas derivadas. Sabemos que o sistema é invariante no tempo pois nenhum dos parâmetros (valores que multiplicam a entrada, a saída, e as respectivas derivadas) é função do tempo, ou seja, todos os parâmetros são constantes.
+	
+Para fins de controle, a equação diferencial obtida no exemplo apresentado é o tipo mais comum e desejado, pois permite que se use a teoria dos sistema lineares invariantes no tempo (LIT), em conjunto com a Transformada de Laplace, para análise e projeto de controladores. Caso o sistema apresente parâmetros variantes no tempo, ou não seja linear, não teriamos um sistema LIT, o que faria com que fosse necessário o uso de técnicas mais avançadas para a análise e projeto de controladores, conceitos que não serão abordados neste curso.
 
-Por sua vez, o parâmetro $\tau$ representa a constante de tempo do sistema. Esse parâmetro está diretamente ligado ao tempo no qual o sistema demora para atingir o valor final, com valores maiores de $\tau$ representando sistemas com dinâmicas mais lentas.
+Transformada de Laplace
+=======================
 
-A resposta ao degrau unitário no domínio do tempo é obtida usando a equação a seguir:
+A transformada de Laplace é uma ferramenta matemática útil para a obtenção da resposta de sistemas dinâmicos LITs, permitindo que a equação diferencial que representa o sistema seja transformada para o domínio da variável complexa :math:`s`, no qual é possível obter a solução do comportamento futuro do sistema de forma simplificada. A grande vantagem da utilização dessa transformada é ela transformar uma equação diferencial em uma equação algébrica, a qual pode ser facilmente manipulada, o que facilita a análise e o projeto de sistemas de controle.
+
+A transformada direta de Laplace (unilateral) é definida pela equação
 
 .. math::
-	:name: eq:1
+	X(s)=\mathcal{L}[x(t)] \\
+	X(s)=\int_0^\infty x(t)e^{-st}dt,
+
+transformando um sinal no domínio do tempo, :math:`x(t)`, em um sinal no domínio da váriavel complexa :math:`s=\sigma +j\omega`. No contexto da análise e projeto de sistemas de controle, podemos utilizar a versão unilateral da transformada, pois os fenômenos que estamos modelando são, geralmente, causais.
+
+Um exemplo da obtenção da transformação direta, para o um sinal exponencial, é apresentado a seguir.
+
+	**Exemplo 2: Transformada direta de Laplace para um sinal exponencial**
+
+	Considerando o sinal :math:`x(t)=e^{at}`, podemos obter a sua transformada de Laplace resolvendo a integral que define a transformação direta.
 	
-	y(t)=k(1-e^{-\frac{1}{\tau}t})
+	.. math::
+		X(s)=\mathcal{L}[x(t)=e^{at}]=\int_0^\infty e^{at}e^{-st}dt \\
+		X(s)=\int_0^\infty e^{(a-s)t}dt \\
+		X(s)=\frac{1}{a-s}\begin{bmatrix} e^{a-s}\end{bmatrix}_0^\infty \\
+		X(s)=\frac{1}{a-s}\begin{bmatrix} 0-1\end{bmatrix}=\frac{1}{s-a}
 
-Nos diagramas a seguir são apresentados de forma interativa o formato geral da resposta de sistemas de primeira ordem, e o efeito da mudança de $k$ e $\tau$ na mesma (Arraste a barra para selecionar o valor de $k$ e $\tau$).
+	Note que a integral converge apenas para :math:`s>a`.
 
-.. admonition:: Efeito da mudança no parâmetro $\tau$
+Podemos obter a transformada de Laplace para uma série de sinais típicos, os quais são úteis para a análise de sistemas de controle. Uma tabela de transformadas é apresentada a seguir.
 
-	.. raw:: html
-		:file: charts/sis1ordemtau.html
+.. admonition:: Tabela de Transformadas Unilaterais de Laplace 
 
+	+---------------+-------------------+
+	| $x(t)$        | $X(s)$            |
+	+===============+===================+
+	| $\delta$      | 1                 |
+	+---------------+-------------------+
+	| $u(t)$        |$\frac{1}{s}$      |
+	+---------------+-------------------+
+	| $tu(t)$       |$\frac{1}{s^2}$    |
+	+---------------+-------------------+
+	| $e^{at}u(t)$  |$\frac{1}{s-a}$    |
+	+---------------+-------------------+
+	| $cos(bt)u(t)$ |$\frac{s}{s^2-b^2}$|
+	+---------------+-------------------+
 
-.. admonition:: Efeito da mudança no parâmetro $k$
+Resposta de Sistemas Dinâmicos pela Transformada de Laplace
+===========================================================
 
-	.. raw:: html
-		:file: charts/sis1ordemk.html
+Podemos utilizar a Transformada de Laplace para obter a resposta de um sistema dinâmico LIT por meio da aplicação da transformação direta, seguida de manipulações algébricas e aplicação da transformação inversa. Esse processo de resolução se baseia na utilização de uma propriedade da Transformada de Laplace, a qual define a Transformada da derivada de um sinal. A propriedade é definida como:
+
+.. admonition:: Propriedade da Transformada de Laplace: Diferenciação no Tempo 
+
+	Para um sinal no domínio do tempo, :math:`x(t)`, o qual apresenta a transformada, :math:`\mathcal{L}[x(t)]=X(s)`, podemos obter a transformada da derivada de :math:`x(t)` utilizando a expressão
+	
+	.. math::
+		\mathcal{L}\begin{bmatrix} \frac{dx(t)}{dt}\end{bmatrix}=sX(s)-x(0^{-}),
+
+	onde o termo :math:`x(0^{-})` representa a condição inicial do sinal, para o instante de tempo :math:`t=0^{-}`.
+	
+	Essa propriedade pode ser aplicada recursivamente, sendo obtidas as expressões para derivadas de mais alta ordem, conforme apresentado a seguir:
+
+	.. math::
+		\mathcal{L}\begin{bmatrix} \frac{d^2 x(t)}{d^2 t}\end{bmatrix}=s^2X(s)-sx(0^{-})-\frac{dx(0^{-})}{dt}.	
+
+	Se considerarmos as condições iniciais como nulas (o que é geralmente feito na análise de sistemas de controle), podemos escrever a expressão genérica para a propriedade da diferenciação no tempo na seguinte forma:
+	
+	.. math:: 
+		\mathcal{L}\begin{bmatrix} \frac{d^n x(t)}{d^n t}\end{bmatrix}=s^n X(s).
 		
-   
-O parâmetro $\tau$ apresenta uma relação direta com o tempo em que o sistema demora para atingir o valor final (em regime permanente). Analisando a equação que define a resposta ao degrau no domínio do tempo, vemos que o sistema demora $\tau$ segundos para atingir $63,21 \%$ do valor final de sua resposta. Essa relação entre $\tau$ e instantes de tempo da resposta de sistemas de primeira ordem é destacada na tabela a seguir. 
+Essa propriedade é interessante pois permite a obtenção da transformada de uma equação diferencial, a qual, no domínio da variável complexa :math:`s`, se torna uma equação algébrica. Com essa equação algébrica, podemos realizar várias manipulações e obter a solução da equação diferencial, por meio da transformação inversa. Esse processo é demonstrado no exemplo a seguir.
 
-.. admonition:: Relação entre $\tau$ e instantes de tempo da resposta de sistemas de primeira ordem
-
-	+----------+------------+
-	| Tempo    | $y(t)/k$   |
-	+==========+============+
-	| $\tau$   | 0,6321     |
-	+----------+------------+
-	| $2\tau$  | 0,8647     |
-	+----------+------------+
-	| $3\tau$  | 0,9502     |
-	+----------+------------+
-	| $4\tau$  | 0,9817     |
-	+----------+------------+
-	| $5\tau$  | 0,9933     |
-	+----------+------------+
-   
-Sistemas de Segunda Ordem
-=========================
-
-Sistemas de segunda ordem são caracterizados pela equação diferencial genérica 
-
-.. math::
-	\frac{d^2 y}{dt^2}+2\xi \omega_n \frac{dy}{dt} + \omega_n^2 y(t)=kx(t).
-
-Se aplicarmos a transformada de Laplace e reorganizarmos no formato de uma função de transferência, obteremos a função de transferência de segunda ordem genérica, definida como
-
-.. math::
-	G(s)=\frac{k\omega_n^2}{s^2+\xi \omega_n s+\omega_n^2}.
-
-De forma semelhante ao caso de primeira ordem, essa função de transferência é estruturada de forma que o parâmetro $k$ represente o ganho estático do sistema, o que pode ser verificado ao aplicarmos o teorema do valor final. O parâmetro $\xi$ é denominado fator de amortecimento e o parâmetro $\omega_n$ é denomindado como frequência natural. O impacto desses parâmetros na resposta, e a intuição por trás dos mesmos, será discutido a seguir.
-
-A principal característica de um sistema de segunda ordem consiste na existência de 2 polos. A posição dos polos pode ser determinada facilmente, sendo
-
-.. math::
-	p_1=\xi\omega_n + \omega_n \sqrt{\xi^2-1},
+	**Exemplo 3: Obtenção da resposta de um sistema dinâmico pela Transformada de Laplace**
 	
-	p_2=\xi\omega_n - \omega_n \sqrt{\xi^2-1}.
+ 	Vamos considerar o problema modelado pela Lei de Resfriamento de Newton. Essa lei modela o equilíbrio térmico entre um corpo e o ambiente, sendo proporcional à diferença entre a temperatura e o ambiente. Uma versão simplificada da lei pode ser descrita pela equação diferencial
+		
+	.. math::
+		\frac{dT(t)}{dt}=-k\big(T(t)-T_a\big),
+			
+	onde :math:`T(t)` representa a temperatura do objeto, :math:`T_a` representa temperatura do ambiente e :math:`k` é uma constante positiva que representa a taxa de resfriamento ou aquecimento do sistema, associada à àrea da superfície do objeto.
+		
+	Se desejarmos obter a função que modela a evolução da temperatura, :math:`T(t)`, em função da temperatura ambiente da constante :math:`k`, podemos utilizar a Transformada de Laplace para encontrar a função que soluciona essa equação diferencial. Aplicando a transformação obtemos:
+		
+	.. math::
+		sT(s)-T(0^{-})=-k\big(T(s)-\frac{T_a}{s}\big) \\
+		(s+k)T(s)=T(0^{-})+\frac{kT_a}{s} \\
+		T(s)=\frac{T(0^{-})}{s+k}+\frac{kT_a}{s(s+k)} \\
+		T(s)=\frac{T(0^{-})}{s+k}+\frac{T_a}{s}+\frac{-T_a}{(s+k)}
+		
+	Aplicando a transformação inversa, obtemos a equação que modela a evolução da temperatura, no domínio do tempo, como segue:
 
-Fica evidente que a natureza da posição dos polos depende do argumento dentro da raiz quadrada, $\xi^2-1$. Esse argumento é positivo quando $\xi>1$, o que faz com que os polos sejam reais e distintos. Caso o argumento seja igual a 0 (\xi=1), os polos serão reais e iguais. Por fim, se o argumento for negativo ($\xi<1$), os polos terão uma parte imaginária, sendo então um par complexo conjugado. Para cada um desses 3 casos, a resposta ao degrau assumirá uma forma diferente. Iremos então, analisar cada um desses casos individualmente.
+	.. math::
+		T(t)=T_a u(t)+(T(0^{-})-T_a)e^{-kt}u(t).
 
-Caso Superamortecido ($\xi>1$) e Criticamente Amortecido ($\xi=1$)
-------------------------------------------------------------------
+Função de Transferência
+=======================
 
-Quando temos $\xi>1$, a resposta do sistema é superamortecida. O termo superamortecido vêm do fato de que a resposta ao degrau para esse sistema não apresenta componentes oscilatórias. De fato, a resposta ao degrau é representada, no domínio do tempo, pela expressão
+Como foi apresentado na seção anterior, a transformada de Laplace pode ser usada para obtenção da resposta de um sistema dinâmico LIT para uma determinada entrada e condições iniciais. De forma geral, durante a análise e projeto de sistemas de controle, iremos desconsiderar as condições iniciais, fazendo com que um sistema dinâmico LIT possa ser representado pela divisão de dois polinômios no domínio da variável complexa :math:`s`. Essa representação é denominada Função de Transferência, sendo definida como a razão entre a transformada de Laplace da saída do sistema, :math:`\mathcal{L}[y(t)]`, pela transformada de Laplace da entrada do sistema, :math:`\mathcal{L}[x(t)]`. A obtenção da função de transferência, a partir da equação diferencial, envolve a aplicação da transformada e a manipulação da equação resultante, de forma a obter a razão :math:`\frac{\mathcal{L}[y(t)]}{\mathcal{L}[x(t)]}=\frac{Y(s)}{X(s)}=H(s)`. Um exemplo da obtenção da Função de Transferência é apresentado a seguir.
 
-.. math::
-	y(t)=c_1+c_2e^{-p_1 t}+c_3e^{-p_2 t}.
+	**Exemplo 4: Obtenção da Função de Transferência de um sistema elétrico com componentes passivos**
 
-Devido à resposta ser formada pela soma de duas componentes exponenciais, o formato geral da resposta é semelhante ao verificado para sistemas de primeira ordem. 
+	Considerando o sistema dinâmico apresentado no Exemplo 1, podemos obter a função de transferência do sistema, partindo da equação diferencial que foi obtida a partir da modelagem, como segue:
+	
+	.. math::
+		x(t)-LC\frac{d^2 v_c(t)}{dt^2}-RC\frac{dv_c(t)}{dt}-y(t)=0 \\
+		LC\frac{d^2 v_c(t)}{dt^2}+RC\frac{dv_c(t)}{dt}+y(t)=x(t) \\
+		LC\frac{d^2 v_c(t)}{dt^2}+RC\frac{dv_c(t)}{dt}+y(t)=x(t)
+		
+	Como a saída do sistema é :math:`y(t)=v_c(t)`, podemos aplicar a transformada, obtendo
+	
+	.. math::
+		LCs^2 Y(s)+RCsY(s)+Y(s)=X(s),
 
-Para o caso especial em que $\xi=1$, o comportamento do sistema é denominado criticamente amortecido. Neste caso, ambos os polos estarão na mesma posição ($	p=\xi\omega_n$). Dessa forma, a resposta do sistema não apresentará componentes oscilatórias, sendo que a resposta ao degrau será representada por
+	o que resulta, após a reorganização, na função de transferência
+	
+	.. math::
+		\frac{Y(s)}{X(s)}=\frac{1}{LCs^2+RCs+1}.
+		
 
-.. math::
-	y(t)=c_1+(c_2+c_3 t)e^{-p t}.
+Exercícios Sugeridos
+====================
 
-O comportamento geral dos sistemas superamortecidos e criticamente amortecidos, considerando $k=1$ e $\omega_n=1$, é apresentada na figura a seguir.
+-----------
+Exercício 1
+-----------
 
-.. figure:: /figures/modelagem/Figxi1.png
-	:figwidth: 70%
-	:align: center	 
+Para o circuito apresentado na figura a seguir, encontre a função de transferência considerando como entrada a tensão na fonte (:math:`x(t)`) e como saída:
 
-Caso Subamortecido ($\xi<1$)
-----------------------------
+a) :math:`V_c`
 
-O terceiro tipo de resposta possível é denominada resposta subamortecida, a qual acontece quando $\xi<1$. Neste caso, o argumento $\xi^2-1$ é negativo, fazendo com que a posição dos polos seja uma grandeza complexa, com parte imaginária não nula, sendo representada por $p=\sigma\pm j\omega=\xi\omega_n \pm j\omega_n\sqrt{1-\xi^2}$. Devido à isso, o formato da resposta ao degrau, no domínio do tempo, apresenta uma componente oscilatória ($cos(\cdot)$) multiplicando a compontente exponencial, na forma
+b) :math:`i_r`
 
-.. math::
-	y(t)=c_1+c_2e^{-\xi\omega_n t}cos(\omega_n\sqrt{1-\xi^2} t)
-
-Devido à existência do $cos(\cdot)$, a resposta apresentará um comportamento oscilatório, sendo acentuado à medida que o valor de $\xi$ é reduzido. Um exemplo do comportamento geral deste caso, para $k=1$ e $\omega_n=1$, é apresentado na figura a seguir. 
-
-.. figure:: /figures/modelagem/Figxi2.png
-	:figwidth: 70%
+.. figure:: /figures/Lista1/exCir.png
+	:figwidth: 40%
 	:align: center
+			
+-----------
+Exercício 2
+-----------
 
-Repare que quanto menor o valor de $\xi$, mais significativa é a contribuição do termo oscilatório, fazendo com que o sistema demore mais para atingir o regime permanente, e apresente uma ultrapassagem (ou sobresinal) maior.
+Considerando os sistemas regidos por equações diferenciais a seguir, encontre a função de transferência que rege seu comportamento dinâmico, especifique a ordem do sistema, seus polos, seus zeros, e esboce a posição dos mesmo no plano complexo.
 
-No diagrama a seguir, é possível avaliar o efeito da mudança no valor do $\xi$ na resposta ao degrau de um sistema com $k=1$ e $\omega_n=1$ (Arraste a barra para selecionar o valor de $\xi$).
+a) :math:`\frac{d^2}{dt}y(t)+7\frac{d}{dt}y(t)+10y(t)=x(t)`.
 
-.. admonition:: Efeito do $\xi$ na resposta ao degrau
+b) :math:`\frac{d}{dt}y(t)+10y(t)=\frac{d^2}{dt}x(t)+3x(t)`.
 
-	.. raw:: html
-	   :file: charts/sis2ordemcsi.html
+c) :math:`\frac{d^3}{dt}y(t) + 3\frac{d^2}{dt}y(t)+30\frac{d}{dt}y(t)+10y(t)=\frac{d^2}{dt}x(t)+10x(t)`.
 
-Frequência Natural - $\omega_n$
--------------------------------
+Solução:
+--------
 
-Enquanto o coeficiente de amortecimento $\xi$ influencia diretamente no tipo de resposta que o sistema de segunda ordem irá apresentar, o parâmetro $\omega_n$ afeta apenas a velocidade da resposta. Se analisarmos a expressão, no domínio do tempo, para os três tipos de respostas de um sistema de segunda ordem, vemos que $\omega_n$ está associado ao expoente do termo exponencial, e à frequência instantânea do termo oscilatóro. No fim das contas, se mantermos $\xi$ constante, a variação de $\omega_n$ resultará na mudança da velocidade da resposta do sistema, porém, sem mudanças no tipo da resposta, e nem no tamanho da ultrapassagem (sobresinal). O comportamento de um sistema, considerando $\xi=0,5$ e $k=1$ é apresentado na figura a seguir. 
+.. container:: toggle, toggle-hidden
 
-.. figure:: /figures/modelagem/Figwn.png
-	:figwidth: 70%
-	:align: center
+	a) :math:`G(s)=\frac{1}{s^2+7s+10}`, polos em :math:`s=-2` e :math:`s=-5` e nenhum zero.
+	
+	b) :math:`G(s)=\frac{s^2+3}{s+10}`, polos em :math:`s=-10` e zeros em :math:`s=\sqrt{3}s` e :math:`s=-\sqrt{3}s`.
+	
+	c) :math:`G(s)=\frac{s^2+10}{s^3+3s^2+30s+10}`, polos em :math:`s=-0,34`, :math:`s=-1,3+j5,2` e :math:`s=-1,3-j5,2`, e zero em :math:`s=-10`.	
+	
 
-A medida que o valor de $\omega_n$ aumenta, a velocidade da resposta aumenta. Porém, a ultrapassagem (sobresinal) se mantém sempre a mesma, já que o valor de $\xi$ foi mantido constante. O efeito da variação de $\omega_n$ pode ser verificada, iterativamente, no diagrama a seguir.
-
-.. admonition:: Efeito do $\omega_n$ na resposta ao degrau
-
-	.. raw:: html
-	   :file: charts/sis2ordemwn.html
-
-Sistemas de Alta Ordem
-======================
-
-.. raw:: html
-   :file: charts/sisaltaordem.html
-   
-Sistemas de Fase Não Mínima
-===========================
-
-.. raw:: html
-   :file: charts/sisfasenminima.html
-   
-   
-   
 Referências
 ===========
 

@@ -52,7 +52,7 @@
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Buscar" href="search.html" />
-    <link rel="next" title="Respostas de Sistemas Lineares" href="Modelagem.html" />
+    <link rel="next" title="Modelagem de Sistemas Dinâmicos" href="Modelagem.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="pt-BR"/>
   </head>
@@ -130,7 +130,13 @@
         <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Respostas de Sistemas Lineares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Modelagem de Sistemas Dinâmicos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="RespostaSistemas.html">Respostas de Sistemas Lineares</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DiagramaDeBlocos.html">Diagrama de Blocos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Realimentacao.html">Realimentação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Estabilidade.html">Estabilidade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ErroEmRegimePermanente.html">Erro em Regime Permanente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlePID.html">Controle PID</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LugarDasRaizes.html">Lugar Geométrico das Raízes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ProjetoLugarDasRaizes.html">Projeto pelo Lugar das Raízes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ListaControle1.html">Lista de Exercícios 1</a></li>
@@ -302,19 +308,57 @@ document.write(`
 <h2>Conteúdo<a class="headerlink" href="#conteudo" title="Link permanente para este cabeçalho">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Respostas de Sistemas Lineares</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-primeira-ordem">Sistemas de Primeira Ordem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-segunda-ordem">Sistemas de Segunda Ordem</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="Modelagem.html#caso-superamortecido-xi-1-e-criticamente-amortecido-xi-1">Caso Superamortecido (<span class="math notranslate nohighlight">\(\xi&gt;1\)</span>) e Criticamente Amortecido (<span class="math notranslate nohighlight">\(\xi=1\)</span>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Modelagem.html#caso-subamortecido-xi-1">Caso Subamortecido (<span class="math notranslate nohighlight">\(\xi&lt;1\)</span>)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Modelagem.html#frequencia-natural-omega-n">Frequência Natural - <span class="math notranslate nohighlight">\(\omega_n\)</span></a></li>
+<li class="toctree-l1"><a class="reference internal" href="Modelagem.html">Modelagem de Sistemas Dinâmicos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#transformada-de-laplace">Transformada de Laplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#resposta-de-sistemas-dinamicos-pela-transformada-de-laplace">Resposta de Sistemas Dinâmicos pela Transformada de Laplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#funcao-de-transferencia">Função de Transferência</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#exercicios-sugeridos">Exercícios Sugeridos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Modelagem.html#exercicio-1">Exercício 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Modelagem.html#exercicio-2">Exercício 2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Modelagem.html#solucao">Solução:</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-alta-ordem">Sistemas de Alta Ordem</a></li>
-<li class="toctree-l2"><a class="reference internal" href="Modelagem.html#sistemas-de-fase-nao-minima">Sistemas de Fase Não Mínima</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="Modelagem.html#referencias">Referências</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="RespostaSistemas.html">Respostas de Sistemas Lineares</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="RespostaSistemas.html#sistemas-de-primeira-ordem">Sistemas de Primeira Ordem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RespostaSistemas.html#sistemas-de-segunda-ordem">Sistemas de Segunda Ordem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RespostaSistemas.html#caso-superamortecido-xi-1-e-criticamente-amortecido-xi-1">Caso Superamortecido (<span class="math notranslate nohighlight">\(\xi&gt;1\)</span>) e Criticamente Amortecido (<span class="math notranslate nohighlight">\(\xi=1\)</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RespostaSistemas.html#caso-subamortecido-xi-1">Caso Subamortecido (<span class="math notranslate nohighlight">\(\xi&lt;1\)</span>)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="RespostaSistemas.html#frequencia-natural-omega-n">Frequência Natural - <span class="math notranslate nohighlight">\(\omega_n\)</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RespostaSistemas.html#sistemas-de-alta-ordem">Sistemas de Alta Ordem</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RespostaSistemas.html#sistemas-de-fase-nao-minima">Sistemas de Fase Não Mínima</a></li>
+<li class="toctree-l2"><a class="reference internal" href="RespostaSistemas.html#exercicios-sugeridos">Exercícios Sugeridos</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="RespostaSistemas.html#solucao">Solução:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RespostaSistemas.html#exercicio-2">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RespostaSistemas.html#id1">Solução:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RespostaSistemas.html#exercicio-3">Exercício 3</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RespostaSistemas.html#id2">Solução:</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="RespostaSistemas.html#exercicio-4">Exercício 4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RespostaSistemas.html#exercicio-5">Exercício 5</a></li>
+<li class="toctree-l4"><a class="reference internal" href="RespostaSistemas.html#exercicio-6">Exercício 6</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="RespostaSistemas.html#id3">Solução:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="RespostaSistemas.html#referencias">Referências</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="DiagramaDeBlocos.html">Diagrama de Blocos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Realimentacao.html">Realimentação</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Estabilidade.html">Estabilidade</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ErroEmRegimePermanente.html">Erro em Regime Permanente</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ControlePID.html">Controle PID</a></li>
 <li class="toctree-l1"><a class="reference internal" href="LugarDasRaizes.html">Lugar Geométrico das Raízes</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="LugarDasRaizes.html#conceito">Conceito</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LugarDasRaizes.html#vetores-de-numeros-complexos">Vetores de Números Complexos</a></li>
@@ -512,7 +556,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">próximo</p>
-        <p class="prev-next-title">Respostas de Sistemas Lineares</p>
+        <p class="prev-next-title">Modelagem de Sistemas Dinâmicos</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

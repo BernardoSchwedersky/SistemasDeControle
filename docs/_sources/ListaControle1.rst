@@ -146,7 +146,6 @@ Exercício 5
 
 Você foi contratado por uma empresa de produção de aves e recebeu a tarefa de desenvolver o sistema para chocar ovos automaticamente. O processo para chocar um ovo requer o controle preciso da temperatura do ovo em um valor de :math:`37,7\text{ }^oC`. Para desenvolver o controle de temperatura dessa chocadeira, seu líder técnico lhe especifica que o equipamento deve alcançar a temperatura de operação em menos de 1 minuto e não deve passar de :math:`38,0\text{ }^oC`, para evitar que o ovo atinja uma temperatura que represente um risco e resulte na perda do ovo. Com base nessa especificação, qual será a função de transferência de segunda ordem desejada para o sistema em malha fechada?
 
-
 -----------	
 Exercício 6
 -----------

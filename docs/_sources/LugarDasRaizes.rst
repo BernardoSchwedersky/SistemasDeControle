@@ -13,7 +13,6 @@ Considerando um sistema de controle realimentado em que o controlador é :math:`
 os polos do sistema em malha fechada podem ser obtidos ao encontrar as raízes de :math:`1+KG(s)=0`. Como o ganho :math:`K` é uma variável, os polos assumirão valores distintos para cada valor de :math:`K`.
 
 
-
 	**Exemplo 1:** Considerando um processo integrador, descrito pela função de transferência :math:`G(s)=\frac{1}{s(s+10)}`, controlado por um controlador proporcional, :math:`C(s)=K`, podemos obter a função de transferência do sistema em malha fechada conforme:
 
 	.. math::
