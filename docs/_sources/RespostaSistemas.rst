@@ -105,16 +105,16 @@ Sistemas de segunda ordem são caracterizados pela equação diferencial genéri
 Se aplicarmos a transformada de Laplace e reorganizarmos no formato de uma função de transferência, obteremos a função de transferência de segunda ordem genérica, definida como
 
 .. math::
-	G(s)=\frac{k\omega_n^2}{s^2+\xi \omega_n s+\omega_n^2}.
+	G(s)=\frac{k\omega_n^2}{s^2+\xi \omega_n s+\omega_n^2}=\frac{k\omega_n^2}{(s-p_1)(s-p_2)}.
 
 De forma semelhante ao caso de primeira ordem, essa função de transferência é estruturada de forma que o parâmetro $k$ represente o ganho estático do sistema, o que pode ser verificado ao aplicarmos o teorema do valor final. O parâmetro $\xi$ é denominado fator de amortecimento e o parâmetro $\omega_n$ é denomindado como frequência natural. O impacto desses parâmetros na resposta, e a intuição por trás dos mesmos, será discutido a seguir.
 
 A principal característica de um sistema de segunda ordem consiste na existência de 2 polos. A posição dos polos pode ser determinada facilmente, sendo
 
 .. math::
-	p_1=\xi\omega_n + \omega_n \sqrt{\xi^2-1},
+	p_1=-\xi\omega_n + \omega_n \sqrt{\xi^2-1},
 	
-	p_2=\xi\omega_n - \omega_n \sqrt{\xi^2-1}.
+	p_2=-\xi\omega_n - \omega_n \sqrt{\xi^2-1}.
 
 Fica evidente que a natureza da posição dos polos depende do argumento dentro da raiz quadrada, $\xi^2-1$. Esse argumento é positivo quando $\xi>1$, o que faz com que os polos sejam reais e distintos. Caso o argumento seja igual a 0 (\xi=1), os polos serão reais e iguais. Por fim, se o argumento for negativo ($\xi<1$), os polos terão uma parte imaginária, sendo então um par complexo conjugado. Para cada um desses 3 casos, a resposta ao degrau assumirá uma forma diferente. Iremos então, analisar cada um desses casos individualmente.
 
@@ -124,14 +124,14 @@ Caso Superamortecido ($\xi>1$) e Criticamente Amortecido ($\xi=1$)
 Quando temos $\xi>1$, a resposta do sistema é superamortecida. O termo superamortecido vêm do fato de que a resposta ao degrau para esse sistema não apresenta componentes oscilatórias. De fato, a resposta ao degrau é representada, no domínio do tempo, pela expressão
 
 .. math::
-	y(t)=c_1+c_2e^{-p_1 t}+c_3e^{-p_2 t}.
+	y(t)=[c_1+c_2e^{p_1 t}+c_3e^{p_2 t}]u(t).
 
 Devido à resposta ser formada pela soma de duas componentes exponenciais, o formato geral da resposta é semelhante ao verificado para sistemas de primeira ordem. 
 
-Para o caso especial em que $\xi=1$, o comportamento do sistema é denominado criticamente amortecido. Neste caso, ambos os polos estarão na mesma posição ($	p=\xi\omega_n$). Dessa forma, a resposta do sistema não apresentará componentes oscilatórias, sendo que a resposta ao degrau será representada por
+Para o caso especial em que $\xi=1$, o comportamento do sistema é denominado criticamente amortecido. Neste caso, ambos os polos estarão na mesma posição ($p=\xi\omega_n$). Dessa forma, a resposta do sistema não apresentará componentes oscilatórias, sendo que a resposta ao degrau será representada por
 
 .. math::
-	y(t)=c_1+(c_2+c_3 t)e^{-p t}.
+	y(t)=[c_1+(c_2+c_3 t)e^{p t}]u(t).
 
 O comportamento geral dos sistemas superamortecidos e criticamente amortecidos, considerando $k=1$ e $\omega_n=1$, é apresentada na figura a seguir.
 
@@ -145,7 +145,8 @@ Caso Subamortecido ($\xi<1$)
 O terceiro tipo de resposta possível é denominada resposta subamortecida, a qual acontece quando $\xi<1$. Neste caso, o argumento $\xi^2-1$ é negativo, fazendo com que a posição dos polos seja uma grandeza complexa, com parte imaginária não nula, sendo representada por $p=\sigma\pm j\omega=\xi\omega_n \pm j\omega_n\sqrt{1-\xi^2}$. Devido à isso, o formato da resposta ao degrau, no domínio do tempo, apresenta uma componente oscilatória ($cos(\cdot)$) multiplicando a compontente exponencial, na forma
 
 .. math::
-	y(t)=c_1+c_2e^{-\xi\omega_n t}cos(\omega_n\sqrt{1-\xi^2} t)
+	y(t)=[c_1+c_2e^{-\xi\omega_n t}cos(\omega_n\sqrt{1-\xi^2} t)]u(t)
+	y(t)=[c_1+c_2e^{-\sigma t}cos(\omega t)]u(t)
 
 Devido à existência do $cos(\cdot)$, a resposta apresentará um comportamento oscilatório, sendo acentuado à medida que o valor de $\xi$ é reduzido. Um exemplo do comportamento geral deste caso, para $k=1$ e $\omega_n=1$, é apresentado na figura a seguir. 
 
@@ -197,15 +198,16 @@ Um sistema de alta ordem poderá ser aproximado por um sistema de primeira ou se
 	.. raw:: html
 	   :file: charts/sisaltaordem.html
    
-Sistemas de Fase Não Mínima
-===========================
+Efeito dos Zeros e Sistemas de Fase Não Mínima
+==============================================
 
+Até o momento, a existência de zeros e seu efeito na resposta dinâmica do sistema foram ignorados. De forma geral, a presença de zeros pode alterar o comportamento do sistema, porém, seu efeito só é considerável quando a posição do zero é próxima da posição dos polos mais lentos do sistema. Se o zero estiver uma distância muito maior, em relação ao eixo imaginário, que algum polo do sistema, seu efeito será negligenciável. Por sua vez, zeros cuja posição é próxima do polo mais lento (polo cuja posição é a mais próxima ao eixo imaginário), ou mais próximo ao eixo imaginário, afetarão a resposta dinâmica, aumentando o sobressinal (ultrapassagem percentual).
 
+Um caso de interesse é a existência de zeros no semi-plano direito, os quais introduzem um comportamento denominado fase não mínima. Um sistema com fase não mínima apresenta um comportamento peculiar, com resposta no sentido inverso ao esperado, durante os instantes iniciais da excitação do sistema. Quanto mais próximo for a posição do zero, em relação ao eixo imaginário, mais proeminente será o comportamento de fase não mínima. Um exemplo do comportamento de um sistema com zero é apresentado na Figura a seguir. Repare que, a medida que aproximamos o zero do eixo imaginário, observamos um sobressinal maior (quando o zero está no semi-plano esquerdo) ou um comportamento de fase não mínima mais acentuado (quando o zero está no semi-plano direito).
 
 .. raw:: html
    :file: charts/sisfasenminima.html
    
-
 Exercícios Sugeridos
 ====================
 
