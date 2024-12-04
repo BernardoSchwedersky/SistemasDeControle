@@ -60,7 +60,7 @@ A resposta ao degrau unitário no domínio do tempo é obtida usando a equação
 .. math::
 	:name: eq:1
 	
-	y(t)=k(1-e^{-\frac{1}{\tau}t})
+	y(t)=k(1-e^{-\frac{1}{\tau}t})u(t)
 
 Nos diagramas a seguir são apresentados de forma interativa o formato geral da resposta de sistemas de primeira ordem, e o efeito da mudança de $k$ e $\tau$ na mesma (Arraste a barra para selecionar o valor de $k$ e $\tau$).
 
@@ -124,14 +124,14 @@ Caso Superamortecido ($\xi>1$) e Criticamente Amortecido ($\xi=1$)
 Quando temos $\xi>1$, a resposta do sistema é superamortecida. O termo superamortecido vêm do fato de que a resposta ao degrau para esse sistema não apresenta componentes oscilatórias. De fato, a resposta ao degrau é representada, no domínio do tempo, pela expressão
 
 .. math::
-	y(t)=[c_1+c_2e^{p_1 t}+c_3e^{p_2 t}]u(t).
+	y(t)=k[c_1+c_2e^{p_1 t}+c_3e^{p_2 t}]u(t).
 
 Devido à resposta ser formada pela soma de duas componentes exponenciais, o formato geral da resposta é semelhante ao verificado para sistemas de primeira ordem. 
 
 Para o caso especial em que $\xi=1$, o comportamento do sistema é denominado criticamente amortecido. Neste caso, ambos os polos estarão na mesma posição ($p=\xi\omega_n$). Dessa forma, a resposta do sistema não apresentará componentes oscilatórias, sendo que a resposta ao degrau será representada por
 
 .. math::
-	y(t)=[c_1+(c_2+c_3 t)e^{p t}]u(t).
+	y(t)=k[c_1+(c_2+c_3 t)e^{p t}]u(t).
 
 O comportamento geral dos sistemas superamortecidos e criticamente amortecidos, considerando $k=1$ e $\omega_n=1$, é apresentada na figura a seguir.
 
@@ -145,8 +145,8 @@ Caso Subamortecido ($\xi<1$)
 O terceiro tipo de resposta possível é denominada resposta subamortecida, a qual acontece quando $\xi<1$. Neste caso, o argumento $\xi^2-1$ é negativo, fazendo com que a posição dos polos seja uma grandeza complexa, com parte imaginária não nula, sendo representada por $p=\sigma\pm j\omega=\xi\omega_n \pm j\omega_n\sqrt{1-\xi^2}$. Devido à isso, o formato da resposta ao degrau, no domínio do tempo, apresenta uma componente oscilatória ($cos(\cdot)$) multiplicando a compontente exponencial, na forma
 
 .. math::
-	y(t)=[c_1+c_2e^{-\xi\omega_n t}cos(\omega_n\sqrt{1-\xi^2} t)]u(t)
-	y(t)=[c_1+c_2e^{-\sigma t}cos(\omega t)]u(t)
+	y(t)=k[c_1+c_2e^{-\xi\omega_n t}cos(\omega_n\sqrt{1-\xi^2} t)]u(t)
+	y(t)=k[c_1+c_2e^{-\sigma t}cos(\omega t)]u(t)
 
 Devido à existência do $cos(\cdot)$, a resposta apresentará um comportamento oscilatório, sendo acentuado à medida que o valor de $\xi$ é reduzido. Um exemplo do comportamento geral deste caso, para $k=1$ e $\omega_n=1$, é apresentado na figura a seguir. 
 
