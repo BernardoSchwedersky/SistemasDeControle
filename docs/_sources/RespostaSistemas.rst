@@ -145,7 +145,7 @@ Caso Subamortecido ($\xi<1$)
 O terceiro tipo de resposta possível é denominada resposta subamortecida, a qual acontece quando $\xi<1$. Neste caso, o argumento $\xi^2-1$ é negativo, fazendo com que a posição dos polos seja uma grandeza complexa, com parte imaginária não nula, sendo representada por $p=\sigma\pm j\omega=\xi\omega_n \pm j\omega_n\sqrt{1-\xi^2}$. Devido à isso, o formato da resposta ao degrau, no domínio do tempo, apresenta uma componente oscilatória ($cos(\cdot)$) multiplicando a compontente exponencial, na forma
 
 .. math::
-	y(t)=k[c_1+c_2e^{-\xi\omega_n t}cos(\omega_n\sqrt{1-\xi^2} t)]u(t)
+	y(t)=k[c_1+c_2e^{-\xi\omega_n t}cos(\omega_n\sqrt{1-\xi^2} t)]u(t) \\
 	y(t)=k[c_1+c_2e^{-\sigma t}cos(\omega t)]u(t)
 
 Devido à existência do $cos(\cdot)$, a resposta apresentará um comportamento oscilatório, sendo acentuado à medida que o valor de $\xi$ é reduzido. Um exemplo do comportamento geral deste caso, para $k=1$ e $\omega_n=1$, é apresentado na figura a seguir. 
