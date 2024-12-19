@@ -298,6 +298,8 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Realimentação</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidade">Estabilidade</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-estabilidade-assintotica">Critério de Estabilidade Assintótica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidade-de-sistemas-realimentados">Estabilidade de Sistemas Realimentados</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-routh-hurwitz">Método de Routh-Hurwitz</a></li>
 </ul>
 </li>
@@ -327,6 +329,9 @@ document.write(`
 <p>O controle regulatório consiste em <strong>manter uma variável de processo em um valor constante, mesmo na presença de perturbações externas</strong>. O objetivo do controlador neste cenário é manter a estabilidade do sistema e rejeitar as perturbações, sendo utilizado em sistemas onde o principal objetivo é manter a operação do mesmo em volta de condições fixas.</p>
 <blockquote>
 <div><p><strong>Exemplo 1: Controle regulatório de nível</strong></p>
+<blockquote>
+<div><p>(Em breve)</p>
+</div></blockquote>
 </div></blockquote>
 </section>
 <section id="controle-servo">
@@ -334,13 +339,16 @@ document.write(`
 <p>O controle servo, por sua vez, consiste em <strong>seguir um valor de referência variável no tempo (trajetória ou referências dinâmicas)</strong>. Este problema de controle é focado no rastreamento de referências, sendo o objetivo garantir que o sistema responda de maneira rápida às mudanças na referência e atinja os valores de referência sem erro em regime permanente.</p>
 <blockquote>
 <div><p><strong>Exemplo 2: Controle servo de um manipulador robótico</strong></p>
+<blockquote>
+<div><p>(Em breve)</p>
+</div></blockquote>
 </div></blockquote>
 </section>
 </section>
 <section id="id1">
 <h2>Realimentação<a class="headerlink" href="#id1" title="Link permanente para este cabeçalho">#</a></h2>
 <p>A realimentação (proveniente do termo em inglês “feedback”) é um dos princípio fundamentais em sistemas de controle, sendo amplamente utilizado para alcançar os principais objetivos do sistema de controle, garantir que uma variável controlada atinja e mantenha um valor desejado (referência). Em sistemas de controle realimentado, onde desejamos controlar o sistema representado pela função de transferência <span class="math notranslate nohighlight">\(G(s)\)</span>, a saída do sistema, <span class="math notranslate nohighlight">\(Y(s)\)</span>, é medida e comparada com a referência, <span class="math notranslate nohighlight">\(R(s)\)</span>, produzindo um sinal de erro, <span class="math notranslate nohighlight">\(E(s)\)</span>. Esse sinal de erro é alimentado como entrada no controlador, representado por <span class="math notranslate nohighlight">\(C(s)\)</span>, o qual será responsável por produzir o sinal de controle, <span class="math notranslate nohighlight">\(U(s)\)</span>, capaz de corrigir desvios na saída medida, compensando perturbações, representadas por <span class="math notranslate nohighlight">\(P(s)\)</span>.</p>
-<p>Um sistema realimentado apresenta a estrutura básica apresentada no diagrma a seguir.</p>
+<p>Um sistema realimentado apresenta a estrutura básica apresentada no diagrama a seguir.</p>
 <figure class="align-center" style="width: 70%">
 <img alt="_images/Real.png" src="_images/Real.png" />
 </figure>
@@ -354,8 +362,255 @@ document.write(`
 </section>
 <section id="estabilidade">
 <h2>Estabilidade<a class="headerlink" href="#estabilidade" title="Link permanente para este cabeçalho">#</a></h2>
+<p>A estabilidade é uma característica de sistemas dinâmicos que é, geralmente, desejada em sistemas de controle realimentado. Existem alguns conceitos distintos de estabilidade que podem ser considerados, sendo o conceito da estabilidade assintótica (interna) o conceito usado quando nos referimos ao termo estabilidade no contexto desta disciplina. Nas seções a seguir, serão apresentados os critérios para verificação da estabilidade assintótica, e a avaliação da estabilidade de sistema realimentados.</p>
+<section id="criterio-de-estabilidade-assintotica">
+<h3>Critério de Estabilidade Assintótica<a class="headerlink" href="#criterio-de-estabilidade-assintotica" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A estabilidade assintótica - ou interna - é analisada em termos do comportamento dos modos característicos do sistema, sendo que, um sistema assintóticamente estável, terá todos os modos característicos convergindo para <span class="math notranslate nohighlight">\(0\)</span> à medida que o tempo tende ao infinito. A resposta de um sistema dinâmico LIT, seja para um estado inicial não nulo, ou para uma entrada não nula, será dependente dos modos caracteríticos do sistema, sendo que, sistemas cujos modos característicos são estáveis, convergirão para valores finitos quando excitados por entradas finitas.</p>
+<p>Para avaliarmos a estabilidade assintótica de um sistema, devemos verificar a posição dos polos do sistema dinâmico, como segue:</p>
+<ul>
+<li><p>Para um sistema ser classificado como <strong>assintóticamente estável</strong>, todas os polos do sistema devem estar no semi-plano esquerdo do plano complexo - polos com real negativa.</p></li>
+<li><p>Caso exista algum polo localizado no semi-plano direito - polos com parte real positiva - o sistema é classificado como <strong>instável</strong>.</p></li>
+<li><p>Se o sistema não contiver nenhum polo no semi-plano direito, porém, existirem polos sobre o eixo imaginario - parte real nula - o sistema será classificado como <strong>marginalmente estável</strong> ou como <strong>instável</strong>. O sistema será marginalmente estável se não existirem raízes iguais sobre o eixo imaginário - podem existir mais de uma raiz sobre o eixo imaginário, mas cada raiz está em uma posição distinta. Caso existam raízes iguais sobre o eixo imaginário, o sistema será <strong>instável</strong>.</p>
+<blockquote>
+<div><p>Exemplo 3: Determinação da estabilidade de um sistema</p>
+<blockquote>
+<div><p>(Em breve)</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="estabilidade-de-sistemas-realimentados">
+<h3>Estabilidade de Sistemas Realimentados<a class="headerlink" href="#estabilidade-de-sistemas-realimentados" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Quando analisamos o comportamento de sistemas, a intuição geralmente induz a crença de que, se estivermos trabalhando com um sistema estável, ao criarmos um controlador estável, o resultado será um sistema de controle estável. Porém, essa concepção nem sempre é verdadeira, pois, ao criarmos uma malha de controle realimentada, o sistema resultante terá um comportamento dinâmico definido não apenas pelas funções de transferência do processo e do controlador, mas também pela estrutura do sistema realimentado, fazendo com que o sistema de controle seja capaz de apresentar comportamento instável.</p>
+<p>Se analisarmos o sistema de controle genérico apresentado nas seções anteriores, vemos que a função de transferência em malha fechada, relacionando a entrada do sistema de controle - <span class="math notranslate nohighlight">\(r(t)\)</span> - com o sinal de saída - <span class="math notranslate nohighlight">\(y(t)\)</span> - é definida como</p>
+<div class="math notranslate nohighlight">
+\[G_{\text{mf}}=\frac{C(s)G(s)}{1+C(s)G(s)}=\frac{\frac{num(C(s))num(G(s))}{den(C(s))den(G(s))}}{1+\frac{num(C(s))num(G(s))}{den(C(s))den(G(s))}}=\frac{num(C(s))num(G(s)}{den(C(s))den(G(s)+num(C(s))num(G(s)}.\]</div>
+<p>Os polos desse sistema realimentado são definidos pelo termo <span class="math notranslate nohighlight">\(den(C(s))den(G(s)+num(C(s))num(G(s)\)</span>, o qual constitui o denominador da função de transferência em malha fechada. Note que, a ordem de <span class="math notranslate nohighlight">\(den(C(s))den(G(s)+num(C(s))num(G(s)\)</span>, que define a quantidade de polos, será equivalente a soma da quantidade de polos de <span class="math notranslate nohighlight">\(C(s)\)</span> com a quantidade de polos de :math:G(s)``, se ambas funções de transferência <span class="math notranslate nohighlight">\(C(s)\)</span> e <span class="math notranslate nohighlight">\(G(s)\)</span> forem próprias (caracterizadas por um número maior ou igual de polos do que zeros). Caso o sistema for de segunda ordem, qualquer controlador com ordem a partir da primeira resultará em um sistema de controle em malha fechada com 3 ou mais polos, fazendo com que a obtenção da posição dos polos, de forma analítica, seja desafiadora. Uma forma de avaliar a estabilidade de sistemas com 3 ou mais polos, sem a necessidade da obtenção da posição dos polos é utilizando o método de Routh-Hurwitz, o qual é apresentado a seguir.</p>
+</section>
 <section id="metodo-de-routh-hurwitz">
 <h3>Método de Routh-Hurwitz<a class="headerlink" href="#metodo-de-routh-hurwitz" title="Link permanente para este cabeçalho">#</a></h3>
+<p>O método de Routh-Hurwitz pode ser usado para avaliar a estabilidade de sistemas lineares invariantes no tempo (LIT). Ele determina se um sistema é estável, analisando os coeficientes do polinômio característico que descreve o sistema (denominador da função de tansferência), sem a necessidade de calcular as raízes desse polinômio. O método de Routh-Hurwitz consiste em construir uma tabela, conhecida como tabela de Routh, a partir dos coeficientes do polinômio característico. A estabilidade do sistema é então determinada pela análise da primeira coluna desta tabela.</p>
+<p>Partindo de uma função de transferência genéria, definida por</p>
+<div class="math notranslate nohighlight">
+\[G(s)=\frac{num(G)}{den(G)}=\frac{num(G)}{\Delta=a_n s^n+\dots+a_2 s^2+a_1 s^1 + a_0}\]</div>
+<p>temos o polinômio característico definido por <span class="math notranslate nohighlight">\(\Delta=a_n s^n+\dots+a_2 s^2+a_1 s^1 + a_0\)</span>. A partir do polinômio característico, podemos construir a tabela de Routh conforme o procedimento apresentado a seguir.</p>
+<div class="admonition-tabela-de-routh admonition">
+<p class="admonition-title">Tabela de Routh:</p>
+<ul>
+<li><p>A tabela é composta por <span class="math notranslate nohighlight">\(n+1\)</span> linhas, o que é equivalente ao número de raizes mais 1.</p></li>
+<li><p>A primeira linha é formada pelos coeficientes de <span class="math notranslate nohighlight">\(s^n\)</span>, <span class="math notranslate nohighlight">\(s^{n-2}\)</span>, <span class="math notranslate nohighlight">\(s^{n-4}\)</span>, e assim por diante.</p></li>
+<li><p>A segunda linha é formada pelos coeficientes de <span class="math notranslate nohighlight">\(s^{n-1}\)</span>, <span class="math notranslate nohighlight">\(s^{n-3}\)</span>, <span class="math notranslate nohighlight">\(s^{n-5}\)</span>, e assim por diante.</p></li>
+<li><dl>
+<dt>As linhas subsequentes são calculadas usando a seguinte fórmula:</dt><dd><div class="math notranslate nohighlight">
+\[b_i = - (1/b_{i-1,1}) * \det([[a_{1,1}, a_{1,i+1}],[a_{2,1}, a_{2,i+1}]])\]</div>
+<p>O elemento <span class="math notranslate nohighlight">\(b_i\)</span> é o valor a ser calculado na linha atual. O termo <span class="math notranslate nohighlight">\(b_{i-1,1}\)</span> é o primeiro elemento da linha anterior. O determinante deve ser calculado com elementos das duas linhas anteriores, com esse processo sendo executado até a tabela estar completa.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<p>A tabela de Routh é usada para avaliar a estabilidade da função de transferência, que foi utilizada para obtenção da tabela, utilizando o critério de Hurwitz. Para que um sistema seja estável, é necessário que todas as raízes do polinômio característico tenham partes reais negativas. O critério de Hurwitz estabelece algumas condições algébricas para garantir essa propriedade sem precisar calcular explicitamente as raízes, apenas inspecionando a tabela de Routh.</p>
+<div class="admonition-criterio-de-hurwitz admonition">
+<p class="admonition-title">Critério de Hurwitz:</p>
+<ul class="simple">
+<li><p>O sistema será <strong>estável</strong> se, e somente se, <strong>não houver troca de sinal</strong> nos elementos da primeira coluna da tabela de Routh.</p></li>
+<li><p>Se houverem trocas de sinal na primeira coluna da tabela de Routh, teremos um polo instável para cada troca de sinal.</p></li>
+<li><p>Se houverem <strong>elementos nulos</strong> na primeira coluna, teremos um polinômio característico que possui raízes com parte real igual a zero, fazendo com que o sistema possa ser <strong>marginalmente estável</strong> ou <strong>instável</strong>.</p></li>
+</ul>
+</div>
+<p>A seguir são apresentados dois exemplos da utilização do método de Routh-Hurwitz.</p>
+<blockquote>
+<div><p><strong>Exemplo 4: Contrução da tabela de Routh e verificação do critério de Hurwitz</strong></p>
+<p>Neste exemplo, usaremos a tabela de Routh e o critério de Hurwitz para avaliar a estabilidade da função de transferência <span class="math notranslate nohighlight">\(G(s)=\frac{3}{s^3+6s^2+3s-10}\)</span>.</p>
+<p>O sistema é composto por 3 polos e nenhum zero. A tabela de Routh deverá ter <span class="math notranslate nohighlight">\(n+1\)</span> linhas, o que é equivalente a 4 linhas, cada uma nomeada com uma potência de <span class="math notranslate nohighlight">\(s\)</span>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potência de s</p></th>
+<th class="head"><p>Coluna 1</p></th>
+<th class="head"><p>Coluna 2</p></th>
+<th class="head"><p>Coluna …</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>s³</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>s²</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>s¹</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>s⁰</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>O número de colunas também será dependente do número de raízes. Teremos uma quantidade de colunas igual à <span class="math notranslate nohighlight">\(\frac{n+1}{2}\)</span>, com arredondamento para cima. No caso do exemplo, teremos apenas 2 colunas. O preenchimento inicia com as duas primeiras linhas. Como a primeira linha é associada à uma potência ìmpar, <span class="math notranslate nohighlight">\(s^3\)</span>, devemos preencher ela com os coeficientes associados às potências ímpares. A segunda linha, então, conterá os elementos associados às potências páres. Caso a primeira linha fosse associada à uma potência par, preencheriamos ela com os coeficientes associados às potências pares, e a segunda com os associados às ìmpares.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potência de s</p></th>
+<th class="head"><p>Coluna 1</p></th>
+<th class="head"><p>Coluna 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>s³</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>s²</p></td>
+<td><p>6</p></td>
+<td><p>-10</p></td>
+</tr>
+<tr class="row-even"><td><p>s¹</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>s⁰</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Caso faltem coeficientes para preencher o último elemento da segunda linha, devemos preencher com <span class="math notranslate nohighlight">\(0\)</span>. Cada elemento das próximas linhas deve ser obtido utilizando a equação <span class="math notranslate nohighlight">\(b_i = - (1/b_{i-1,1}) * \det([[a_{1,1}, a_{1,i+1}],[a_{2,1}, a_{2,i+1}]])\)</span>. Isso é equivalente à obtermos o determinante da matriz quadrada localizada diretamente acima e à direita do elemento calculado, e dividirmos o resultado pelo primerio elemento da linha acima multiplicado por <span class="math notranslate nohighlight">\(-1\)</span>. Para o elemento da primeira coluna e terceira linha, devemos obter o determinante <span class="math notranslate nohighlight">\(\begin{vmatrix}1 &amp; 3 \\ 2 &amp; 4\end{vmatrix}=24\)</span>, e dividirmos por <span class="math notranslate nohighlight">\(-2\)</span>, o que resulta em</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potência de s</p></th>
+<th class="head"><p>Coluna 1</p></th>
+<th class="head"><p>Coluna 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>s³</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>s²</p></td>
+<td><p>6</p></td>
+<td><p>-10</p></td>
+</tr>
+<tr class="row-even"><td><p>s¹</p></td>
+<td><p>14/3</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>s⁰</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Quando não existem colunas à direita para termos um determinante, o elemento será <span class="math notranslate nohighlight">\(0\)</span>. Podemos completar a matriz calculando os elementos da última linha</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potência de s</p></th>
+<th class="head"><p>Coluna 1</p></th>
+<th class="head"><p>Coluna 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>s³</p></td>
+<td><p>1</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-odd"><td><p>s²</p></td>
+<td><p>6</p></td>
+<td><p>-10</p></td>
+</tr>
+<tr class="row-even"><td><p>s¹</p></td>
+<td><p>14/3</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>s⁰</p></td>
+<td><p>-10</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Após completarmos a matriz, podemos utilizar o critério de Hurwitz para determinar a estabilidade do sistema. Como existe uma troca de sinal na primeira coluna da matriz, temos um polo instável no sistema, fazendo com que o sistema seja instável.</p>
+</div></blockquote>
+<p>A seguir, temos um exemplo da análise de um sistema de controle, com o método de Routh-Hurwitz.</p>
+<blockquote>
+<div><p>Exemplo 5: Análise da estabilidade de um sistema de controle com o método de Routh-Hurwitz</p>
+<p>O método de Routh-Hurwitz pode ser usado para avaliar a estabilidade de um sistema de controle, mesmo considerando um sistema de controle com parâmetros ajustáveis. Para o sistema de controle apresentado a seguir, podemos determinar as condições para esse sistema ser estável conforme apresentado a seguir.</p>
+<figure class="align-center" style="width: 70%">
+<img alt="_images/RH1.png" src="_images/RH1.png" />
+</figure>
+<p>Para determinarmos a estabilidade do sistema de controle, devemos obter a função de transferência do sistema em malha fechada, a qual é <span class="math notranslate nohighlight">\(G_{mf}(s)=\frac{k}{s^3+7s^2+10s+k}\)</span>. É evidente que o comportamento do sistema, bem como a estabilidade, serão dependentes do valor de <span class="math notranslate nohighlight">\(k\)</span>. Para avaliar a estabilidade, iniciamos construindo a tabela de Routh, como segue.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potência de s</p></th>
+<th class="head"><p>Coluna 1</p></th>
+<th class="head"><p>Coluna 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>s³</p></td>
+<td><p>1</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>s²</p></td>
+<td><p>7</p></td>
+<td><p>k</p></td>
+</tr>
+<tr class="row-even"><td><p>s¹</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>s⁰</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Após obtermos os termos restantes da primeira coluna, obtemos a tabela completa.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Potência de s</p></th>
+<th class="head"><p>Coluna 1</p></th>
+<th class="head"><p>Coluna 2</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>s³</p></td>
+<td><p>1</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>s²</p></td>
+<td><p>7</p></td>
+<td><p>k</p></td>
+</tr>
+<tr class="row-even"><td><p>s¹</p></td>
+<td><p>-(k-70)/7</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>s⁰</p></td>
+<td><p>k</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Para avaliarmos a estabilidade, usando o critério de Hurwitz, analisamos os valores da primeira coluna. Como os dois primeiros elementos são positivos, os demais devem ser estritamente positivos, para que tenhamos um sistema estável. Dessa forma, a condição para estabilidade é</p>
+<div class="math notranslate nohighlight">
+\[\frac{-(k-70)}{7}&gt;0\]</div>
+<p>e</p>
+<div class="math notranslate nohighlight">
+\[k&gt;0\]</div>
+<p>A primeira condição pode ser reescrita como</p>
+<div class="math notranslate nohighlight">
+\[\frac{-(k-70)}{7}&gt;0
+k&lt;70\]</div>
+<p>Ou seja, o sistema será estável quando <span class="math notranslate nohighlight">\(0&lt;k&lt;70\)</span>. Quando <span class="math notranslate nohighlight">\(k=0\)</span> ou <span class="math notranslate nohighlight">\(k=70\)</span>, o sistema será marginalmente estável, e para valores fora desse intervalo, o sistema é instável.</p>
+</div></blockquote>
 </section>
 </section>
 <section id="erro-nulo-em-regime-permanente">
@@ -366,7 +621,7 @@ document.write(`
 <figure class="align-center" style="width: 70%">
 <img alt="_images/ErroNuloExemplo.png" src="_images/ErroNuloExemplo.png" />
 </figure>
-<p>Nesta malha de controle, podemos projetar o controlador <span class="math notranslate nohighlight">\(C(s)\)</span> buscando atingir algum tipo de objetivo. Caso escolhamos o controlador <span class="math notranslate nohighlight">\(C(s)=5\)</span>, teremos a função de transferência em malha fechada <span class="math notranslate nohighlight">\(G_{mf}=\frac{10}{s^2+8s+12}\)</span>. Dessa forma, os polos do sistema em malha fechada são <span class="math notranslate nohighlight">\(s=-2\)</span> e <span class="math notranslate nohighlight">\(s=-6\)</span>, sendo a resposta do sistema, para um degrau unitário :math:<a href="#id2"><span class="problematic" id="id3">`</span></a>r(t)=u(t)`(o qual apresenta transformada :math:<a href="#id4"><span class="problematic" id="id5">`</span></a>r(s)=frac{1}{s}’), definida como segue.</p>
+<p>Nesta malha de controle, podemos projetar o controlador <span class="math notranslate nohighlight">\(C(s)\)</span> buscando atingir algum tipo de objetivo. Caso escolhamos o controlador <span class="math notranslate nohighlight">\(C(s)=5\)</span>, teremos a função de transferência em malha fechada <span class="math notranslate nohighlight">\(G_{mf}=\frac{10}{s^2+8s+12}\)</span>. Dessa forma, os polos do sistema em malha fechada são <span class="math notranslate nohighlight">\(s=-2\)</span> e <span class="math notranslate nohighlight">\(s=-6\)</span>, sendo a resposta do sistema, para um degrau unitário <span class="math notranslate nohighlight">\(r(t)=u(t)`(o qual apresenta transformada :math:`r(s)=\frac{1}{s}\)</span>), definida como segue.</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}G_{mf}=\frac{Y(s)}{R(s)}=\frac{10}{(s+2)(s+6)} \\
 Y(s)=\frac{10}{(s+2)(s+6)}R(s) \\
@@ -438,7 +693,7 @@ E(s)=R(s)-G(s)C(s)E(s) \\
 \[\begin{split}\lim_{t\to \infty}e(t)=\lim_{s\to 0}\frac{1}{[1+G(s)C(s)]}\frac{1}{s^2}s \\
 \lim_{t\to \infty}e(t)=\lim_{s\to 0}\frac{1}{[1+G(s)C(s)]}\frac{1}{s} \\
 \lim_{t\to \infty}e(t)=\lim_{s\to 0}\frac{Den(G)Den(C)}{[Den(G)Den(C)+Num(G)Num(C)]s}\end{split}\]</div>
-<p>Dessa forma, para termos erro nulo, é necessário <span class="math notranslate nohighlight">\(\lim_{s\to 0}\frac{Den(G)Den(C)}{[Den(G)Den(C)+Num(G)Num(C)]s}=0\)</span>, o que só é alcançado se houver ao menos o termo <span class="math notranslate nohighlight">\(\frac{1}{s^2}\)</span> em <span class="math notranslate nohighlight">\(\frac{Den(G)Den(C)}\)</span>. Isso é equivalente a termos um duplo integrador, ou considerando o processo, <span class="math notranslate nohighlight">\(G(s)\)</span>, e o controlador, <span class="math notranslate nohighlight">\(C(s)\)</span>. Essa condição é alcançada, ou tendo um duplo integrador em uma das funções de transferência, ou havendo um integrador simples em ambas funções de transferência.</p>
+<p>Dessa forma, para termos erro nulo, é necessário <span class="math notranslate nohighlight">\(\lim_{s\to 0}\frac{Den(G)Den(C)}{[Den(G)Den(C)+Num(G)Num(C)]s}=0\)</span>, o que só é alcançado se houver ao menos o termo <span class="math notranslate nohighlight">\(\frac{1}{s^2}\)</span> em <span class="math notranslate nohighlight">\(\frac{Den(G){Den(C)}\)</span>. Isso é equivalente a termos um duplo integrador, ou considerando o processo, <span class="math notranslate nohighlight">\(G(s)\)</span>, e o controlador, <span class="math notranslate nohighlight">\(C(s)\)</span>. Essa condição é alcançada, ou tendo um duplo integrador em uma das funções de transferência, ou havendo um integrador simples em ambas funções de transferência.</p>
 <div class="admonition-condicao-para-erro-nulo-em-regime-permanente-para-referencia-do-tipo-rampa admonition">
 <p class="admonition-title">Condição para erro nulo em regime permanente para referência do tipo rampa</p>
 <p>Para garantirmos erro nulo em regime permanente, para referência do tipo rampa, <span class="math notranslate nohighlight">\(r(t)=tu(t)\)</span>, é necessário existir um duplo integrador, <span class="math notranslate nohighlight">\(\frac{1}{s^2}\)</span>, considerando o processo, <span class="math notranslate nohighlight">\(G(s)\)</span>, e o controlador, <span class="math notranslate nohighlight">\(C(s)\)</span>.</p>
@@ -503,6 +758,8 @@ E(s)=R(s)-G(s)C(s)E(s) \\
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Realimentação</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidade">Estabilidade</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#criterio-de-estabilidade-assintotica">Critério de Estabilidade Assintótica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estabilidade-de-sistemas-realimentados">Estabilidade de Sistemas Realimentados</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#metodo-de-routh-hurwitz">Método de Routh-Hurwitz</a></li>
 </ul>
 </li>
