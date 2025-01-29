@@ -23,8 +23,6 @@ Conteúdo
 	RespostaSistemas
 	DiagramaDeBlocos
 	Realimentacao
-	Estabilidade
-	ErroEmRegimePermanente
 	ControlePID
 	LugarDasRaizes
 	ProjetoLugarDasRaizes

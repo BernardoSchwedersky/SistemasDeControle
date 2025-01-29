@@ -112,9 +112,9 @@ De forma semelhante ao caso de primeira ordem, essa função de transferência �
 A principal característica de um sistema de segunda ordem consiste na existência de 2 polos. A posição dos polos pode ser determinada facilmente, sendo
 
 .. math::
-	p_1=-\xi\omega_n + \omega_n \sqrt{\xi^2-1},
+	p_1=-\xi\omega_n + j\omega_n \sqrt{\xi^2-1},
 	
-	p_2=-\xi\omega_n - \omega_n \sqrt{\xi^2-1}.
+	p_2=-\xi\omega_n - j\omega_n \sqrt{\xi^2-1}.
 
 Fica evidente que a natureza da posição dos polos depende do argumento dentro da raiz quadrada, $\xi^2-1$. Esse argumento é positivo quando $\xi>1$, o que faz com que os polos sejam reais e distintos. Caso o argumento seja igual a 0 (\xi=1), os polos serão reais e iguais. Por fim, se o argumento for negativo ($\xi<1$), os polos terão uma parte imaginária, sendo então um par complexo conjugado. Para cada um desses 3 casos, a resposta ao degrau assumirá uma forma diferente. Iremos então, analisar cada um desses casos individualmente.
 
@@ -154,7 +154,7 @@ Devido à existência do $cos(\cdot)$, a resposta apresentará um comportamento 
 	:figwidth: 70%
 	:align: center
 
-Repare que quanto menor o valor de $\xi$, mais significativa é a contribuição do termo oscilatório, fazendo com que o sistema demore mais para atingir o regime permanente, e apresente uma ultrapassagem (ou sobresinal) maior.
+Repare que quanto menor o valor de $\xi$, mais significativa é a contribuição do termo oscilatório, fazendo com que o sistema demore mais para atingir o regime permanente, e apresente uma ultrapassagem percentual (ou sobresinal) maior.
 
 No diagrama a seguir, é possível avaliar o efeito da mudança no valor do $\xi$ na resposta ao degrau de um sistema com $k=1$ e $\omega_n=1$ (Arraste a barra para selecionar o valor de $\xi$).
 
@@ -172,13 +172,72 @@ Enquanto o coeficiente de amortecimento $\xi$ influencia diretamente no tipo de 
 	:figwidth: 70%
 	:align: center
 
-A medida que o valor de $\omega_n$ aumenta, a velocidade da resposta aumenta. Porém, a ultrapassagem (sobresinal) se mantém sempre a mesma, já que o valor de $\xi$ foi mantido constante. O efeito da variação de $\omega_n$ pode ser verificada, iterativamente, no diagrama a seguir.
+A medida que o valor de $\omega_n$ aumenta, a velocidade da resposta aumenta. Porém, a ultrapassagem (sobresinal) se mantém sempre a mesma, já que o valor de $\xi$ foi mantido constante. O efeito da variação de $\omega_n$ pode ser verificada, interativamente, no diagrama a seguir.
 
 .. admonition:: Efeito do $\omega_n$ na resposta ao degrau
 
 	.. raw:: html
 	   :file: charts/sis2ordemwn.html
 
+Aproximações Analíticas
+-----------------------
+
+Como apresentado nas seções prévias, o comportamento dinâmico geral de um sistema de segunda ordem depende de :math:`\xi` e :math:`\omega_n`, já que a posição dos polos desse tipo de sistema são
+
+.. math::
+	p_1=-\sigma \pm j\omega=-\xi\omega_n \pm \omega_n \sqrt{\xi^2-1}=-\xi\omega_n \pm j\omega_n \sqrt{1-\xi^2}, 
+	
+com a parte real do polo sendo :math:`\sigma=\xi\omega_n` e a parte imaginária sendo :math:`\omega=\omega_n \sqrt{1-\xi^2}`.
+
+As duas principais características da resposta dinâmica de um sistema de segunda ordem subamortecido são o tempo de acomodação (:math:`T_s`) e a ultrapassagem percentual (:math:`M_p`). O tempo de acomodação é definido como o tempo necessário para a resposta do sistema atingir um valor :math:`2\%` próximo do valor em regime permanente. Note que alguns livros definem valores percentuais diferentes, como por exemplo, :math:`1\%` ou :math:`5\%`. Por sua vez, a ultrapassagem percentual é definida como a diferença percentual entre o valor absoluto do maior pico da resposta, em relação ao valor atingido em regime permanente.
+
+Como mostrado previamente, o parâmetro :math:`\xi` está diretamente ligado à ultrapassagem percentual, sendo a relação inversamente proporcional, já que quanto menor for :math:`\xi`, maior será a ultrapassagem. Note que :math:`\xi` deve ser positivo, e para o sistema ser subamortecido, :math:`\xi<1`. Uma aproximação para a ultrapassagem percentual é 
+
+.. math::
+	\ln(M_p) \approx \frac{\sigma \pi}{\omega}.
+	
+Se substituirmos :math:`\sigma` e :math:`\omega`, podemos obter uma expressão que relaciona :math:`\xi` e :math:`M_p`, definida como
+
+.. math::
+	\xi^2 \approx \frac{\ln(M_p)^2}{\pi^2+\ln(M_p)^2}.
+
+O tempo de acomodação (:math:`T_s`) também pode ser obtido a partir de aproximações analíticas. Uma aproximação bastante útil, especialmente válida quando :math:`\xi<0,8` é
+
+.. math::
+	T_s\approx -\frac{\ln(2\%)}{\sigma}.
+	
+Ou seja, se soubermos o tempo de acomodação do sistema de segunda ordem subamortecido, podemos estimar o valor da parte real dos polos como
+
+.. math::
+	\sigma \approx -\frac{\ln(2\%)}{T_s}.
+
+	**Exemplo 1: Obtenção da função de transferência de um sistema a partir do gráfico da resposta no tempo.**
+	
+	Considerando um sistema dinâmico, cuja resposta ao degrau é apresentada a seguir, vamos obter uma função de transferência que represente de forma adequada esse sistema.
+	
+	.. raw:: html
+	   :file: charts/RespostaDeSistemas/ExemploResposta2Ordem.html
+
+	A resposta do sistema, no domínio do tempo, apresenta um comportamento típico de sistemas de segunda ordem subamortecidos, já que temos um sobressinal. A inspeção do gráfico indica que o máximo sobressinal é :math:`M_p=5\%`, já que o sistema apresenta um valor de pico de :math:`2,1`, o qual é :math:`5\%` maior que o valor que a resposta do sistema atinge em regime permanente, que é :math:`2`. Podemos utilizar o valor da ultrapassagem percentual para obter o coeficiente de amortecimento :math:`\xi`. Podemos encontrar o valor aproximado como
+	
+	.. math::
+		\xi \approx \sqrt{\frac{\ln(0,05)^2}{\pi^2+\ln(0,05)^2}}=0,69.
+
+	Outra informação que pode ser extraída da resposta temporal do sistema é o tempo de acomodação. Pela inspeção do gráfico, é possível estimar o tempo de acomodação verificando o instante em que a resposta está contida em uma vizinhança :math:`2\%` próxima do valor em regime permanente da resposta. O instante de tempo :math:`T_s=10,5` é o instante em que o sistema atingiu um valor :math:`2\%` próximo do valor final, sendo então o tempo de acomodação do sistema. A partir de :math:`T_s`, podemos encontrar o valor da parte real dos polos, que é
+	
+	.. math::
+		\sigma \approx -\frac{\ln(2\%)}{T_s} \approx \frac{3,91}{10,5} \approx 0,95.
+	
+	A partir de :math:`\sigma` e :math:`\xi`, podemos encontrar :math:`\omega_n` e :math:`\omega`. Partindo de :math:`\sigma=\xi\omega_n`, obtemos
+	
+	.. math::
+		\omega_n=\frac{\sigma}{\xi}=1,38.
+		
+	Usando a equação :math:`\omega=\omega_n \sqrt{\xi^2-1}` podemos obter
+	
+	.. math::
+		\omega=1,38 \sqrt{0.69^2-1}=
+	
 Sistemas de Alta Ordem
 ======================
 
@@ -186,7 +245,7 @@ Sistemas que apresentam mais de um par de polos podem ser caracterizados como si
 
 Um sistema de alta ordem poderá ser aproximado por um sistema de primeira ou segunda ordem se houver um polo, ou um par de polos, cuja constante de tempo é muito maior -- parte real muito menor -- do que todos os demais. Quanto maior for a diferença entre a posição do/dos polos dominantes em relação aos demais, melhor será a aproximação. A aproximação é satisfatória para diferenças a partir de 5 vezes. 
 
-	**Exemplo 3: Aproximação de um sistema de ordem elevada utilizando polos dominantes**
+	**Exemplo 2: Aproximação de um sistema de ordem elevada utilizando polos dominantes**
 	
 	Para um sistema representado pela função de transferência 
 	

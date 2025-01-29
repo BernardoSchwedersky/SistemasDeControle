@@ -1,6 +1,6 @@
-=============
+*************
 Realimentação
-=============	
+*************	
 
 Problemas de controle
 =====================
@@ -321,10 +321,188 @@ Caso desejamos que o sistema apresente erro nulo para uma referência do tipo ra
 	\lim_{t\to \infty}e(t)=\lim_{s\to 0}\frac{1}{[1+G(s)C(s)]}\frac{1}{s} \\
 	\lim_{t\to \infty}e(t)=\lim_{s\to 0}\frac{Den(G)Den(C)}{[Den(G)Den(C)+Num(G)Num(C)]s}
 	
-Dessa forma, para termos erro nulo, é necessário :math:`\lim_{s\to 0}\frac{Den(G)Den(C)}{[Den(G)Den(C)+Num(G)Num(C)]s}=0`, o que só é alcançado se houver ao menos o termo :math:`\frac{1}{s^2}` em :math:`\frac{Den(G){Den(C)}`. Isso é equivalente a termos um duplo integrador, ou considerando o processo, :math:`G(s)`, e o controlador, :math:`C(s)`. Essa condição é alcançada, ou tendo um duplo integrador em uma das funções de transferência, ou havendo um integrador simples em ambas funções de transferência.
+Dessa forma, para termos erro nulo, é necessário :math:`\lim_{s\to 0}\frac{Den(G)Den(C)}{[Den(G)Den(C)+Num(G)Num(C)]s}=0`, o que só é alcançado se houver ao menos o termo :math:`\frac{1}{s^2}` em :math:`\frac{Den(G)}{Den(C)}`. Isso é equivalente a termos um duplo integrador, ou considerando o processo, :math:`G(s)`, e o controlador, :math:`C(s)`. Essa condição é alcançada, ou tendo um duplo integrador em uma das funções de transferência, ou havendo um integrador simples em ambas funções de transferência.
 
 .. admonition:: Condição para erro nulo em regime permanente para referência do tipo rampa
 	
 	Para garantirmos erro nulo em regime permanente, para referência do tipo rampa, :math:`r(t)=tu(t)`, é necessário existir um duplo integrador, :math:`\frac{1}{s^2}`, considerando o processo, :math:`G(s)`, e o controlador, :math:`C(s)`. 
 	
 Note que, para uma referência do tipo degrau, é necessário que exista internamente, ao controlador ou processo, uma cópia do degrau. O mesmo ocorre para um sinal de referência do tipo rampa. Esse resultado é conhecido como **Princípio do Modelo Interno**, o qual define que, para que o erro do sistema de controle, :math:`E(s)`, decorrente da excitação de sinal de referência, :math:`R(s)`, possa ser eliminado, a função de transferência do sinal de referência, :math:`R(s)`, deve estar presente na função transferência em malha aberta :math:`G(s)C(s)`.
+
+
+Exercícios Sugeridos
+====================
+
+Realimentação e Diagrama de Blocos
+----------------------------------
+
+**Exercício 1:** Encontre a função de transferência em malha fechada para os seguintes sistemas:
+
+a) 
+
+.. figure:: /figures/Lista1/exMF1.png
+	:figwidth: 60%
+	:align: center
+
+b) 
+
+.. figure:: /figures/Lista1/exMF2.png
+	:figwidth: 60%
+	:align: center
+	
+Solução:
+--------
+
+.. container:: toggle, toggle-hidden
+	
+	a) :math:`G(s)=\frac{C(s)G(s)}{1+C(s)G(s)D(s)}`
+
+	b) :math:`G(s)=\frac{F(s)C(s)G(s)}{1+C(s)G(s)}`
+    
+
+**Exercício 2:** Simplifique os diagramas de blocos a seguir:
+
+a) 
+
+.. figure:: /figures/Lista1/exDB1.png
+	:figwidth: 60%
+	:align: center
+    
+b)
+
+.. figure:: /figures/Lista1/exDB2.png
+	:figwidth: 60%
+	:align: center
+	
+Solução:
+--------
+
+.. container:: toggle, toggle-hidden
+	
+	a) :math:`G(s)=\frac{C(s)G(s)+B(s)+\frac{1}{1+D(s)}}{1+C(s)G(s)+B(s)+\frac{1}{1+D(s)}}`
+	
+	
+Estabilidade em Malha Aberta e em Malha Fechada
+-----------------------------------------------
+
+**Exercício 1:** Avalie a estabilidade em malha aberta para os sistemas dinâmicos a seguir e esboce a posição dos polos do sistema no plano complexo.
+
+a) :math:`G(s)=\frac{s-1}{(s^2+12s+36)}`
+    
+b) :math:`G(s)=\frac{7}{(s^2+9)}`
+
+c) :math:`G(s)=\frac{s^2+4}{(s^2+4s-12)}`
+
+d) :math:`G(s)=\frac{1}{(s^3+8s^2+12s)}`
+
+Solução:
+--------
+
+.. container:: toggle, toggle-hidden
+
+	a) Polos em -6 e -6. Estável.
+
+	b) Polos em :math:`+j3` e :math:`-j3`. Marginalmente estável.
+
+	c) Polos em -6 e 2. Instável.
+		
+	d) Polos em 0 e -2 e -6. Marginalmente estável.
+
+    
+**Exercício 2:** Para o sistema de controle realimentado a seguir, determine se o processo é estável em malha aberta e se é garantida estabilidade em malha fechada considerando:
+    
+.. figure:: /figures/Lista1/exES.png
+	:figwidth: 60%
+	:align: center
+
+a) :math:`C(s)=10`
+
+b) :math:`C(s)=\frac{5}{(s+5)}`
+
+c) :math:`C(s)=\frac{2(s+2)}{(s+3)}`
+
+Solução:
+--------
+
+.. container:: toggle, toggle-hidden
+
+	Sistema é instável em malha aberta.
+
+	a) Polo em -9. Estável.
+    
+    b) Polos em 0 e -4. Marginalmente estável.
+
+    c) Polos em :math:`-2+\sqrt{2}/2$ e $-2-\sqrt{2}/2`. Estável.
+
+
+**Exercício 3:** Utilizando o critério de Routh-Hurwitz, avalie para quais valores de :math:`k` o sistema a seguir é estável.
+
+.. figure:: /figures/Lista1/exRH.png
+	:figwidth: 60%
+	:align: center   
+	
+Solução:
+--------
+
+.. container:: toggle, toggle-hidden
+
+	O sistema é estável para :math:`k<13`.
+
+Erro em Regime Permanente
+-------------------------
+
+**Exercício 1:** Verifique se os sistemas de controle apresentado a seguir apresentam erro nulo em regime permanente para uma referência do tipo degrau. Caso não apresentem erro nulo, encontre o valor do erro para um degrau :math:`u(t)=2`.
+
+a) 
+
+.. figure:: /figures/Lista1/exErro0.png
+	:figwidth: 60%
+	:align: center 
+	
+b) 
+
+.. figure:: /figures/Lista1/exErro3.png
+	:figwidth: 60%
+	:align: center 
+    
+c) 
+
+.. figure:: /figures/Lista1/exErro2.png
+	:figwidth: 60%
+	:align: center 
+	
+d) 
+  
+.. figure:: /figures/Lista1/exErro1.png
+	:figwidth: 60%
+	:align: center   
+
+Solução:
+--------
+
+.. container:: toggle, toggle-hidden
+
+	a) Erro em regime permanente é :math:`\frac{1}{3}`.
+	
+	b) Erro em regime permanente é 0.
+	
+	c) Erro em regime permanente tende ao infinito.
+	
+	d) Erro em regime permanente é 0.
+ 
+
+**Exercício 2:** Repita a questão anterior, porém considerando que a referência aplicada é uma rampa unitária, :math:`r(t)=tu(t)`, a qual é representada no domínio da transformada de Laplace por :math:`R(s)=\frac{1}{s^2}`.
+
+Solução:
+--------
+
+.. container:: toggle, toggle-hidden
+   
+    a) Erro em regime permanente tende ao infinito.
+
+    b) Erro em regime permanente igual a :math:`\frac{2}{15}`.
+
+    c) Erro em regime permanente tende ao infinito.
+
+    d) Erro em regime permanente igual a :math:`\frac{6}{5}`.
+	
