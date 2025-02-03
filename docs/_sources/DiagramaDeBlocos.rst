@@ -33,7 +33,7 @@ Composição em cascata
 Quando temos dois sistemas agrupados em série, com a saída de um dos sistemas sendo a entrada do outro, podemos realizar a composição em cascata. Um exemplo dessa estrutura é apresentado a seguir.
 
 .. figure:: /figures/Blocos/BlocoCascata.png
-	:figwidth: 60%
+	:figwidth: 50%
 	:align: center
 
 Podemos escrever a equação que descreve cada bloco como segue.
@@ -59,7 +59,7 @@ Composição em paralelo
 O segundo tipo de composição é em paralelo. Quando conectamos dois sistemas com seus sinais de entrada e saída sendo os mesmos, temos uma conexão em paralelo, conforme apresentado a seguir.
 
 .. figure:: /figures/Blocos/BlocoParalelo.png
-	:figwidth: 60%
+	:figwidth: 50%
 	:align: center	
 
 Podemos escrever a equação que define esse diagrama como segue.
@@ -82,7 +82,7 @@ Composição em realimentação
 A composição de blocos em realimentação é caracterizada pela conexão de um sinal de saída como uma das entradas do bloco, fazendo com que o sinal seja realimentado no próprio sistema. Essa estrutura é apresentada a seguir.
 
 .. figure:: /figures/Blocos/BlocoReal.png
-	:figwidth: 50%
+	:figwidth: 40%
 	:align: center	
 		
 Ao escrevermos a equação que representa o sistema, temos a seguinte equação.
@@ -114,22 +114,18 @@ Repare que o sinal realimentado apresenta sinal negativo, ou seja, temos uma rea
 
 	O primeiro passo consiste em simplificar os termos que se encontram em uma das configurações convencionais. Temos um par de termos em paralelo que pode ser simplificado, e em seguida, dois termos em cascata, simplificados como segue.
 
-	.. figure:: /figures/Blocos/BlocoEx2.png
+	.. figure:: /figures/Blocos/BlocosEx2.png
 		:figwidth: 60%
 		:align: center	
 		
-	.. figure:: /figures/Blocos/BlocoEx3.png
-		:figwidth: 70%
-		:align: center	
-
-	.. figure:: /figures/Blocos/BlocoEx4.png
-		:figwidth: 70%
+	.. figure:: /figures/Blocos/BlocosEx3.png
+		:figwidth: 50%
 		:align: center	
 	
 	Por fim, podemos simplificar o diagrama que apresenta uma realimentação negativa, resultado no diagrama a seguir.
 
-	.. figure:: /figures/Blocos/BlocoEx5.png
-		:figwidth: 30%
+	.. figure:: /figures/Blocos/BlocosEx4.png
+		:figwidth: 45%
 		:align: center
 	
 Exercícios Sugeridos
@@ -195,5 +191,5 @@ Solução:
 
 .. container:: toggle, toggle-hidden
 	
-	a) :math:`G(s)=\frac{C(s)G(s)+B(s)+\frac{1}{1+D(s)}}{1+C(s)G(s)+B(s)+\frac{1}{1+D(s)}}`
+	a) :math:`G(s)=\frac{[C(s)G(s)+B(s)]\frac{1}{1+D(s)}}{1+[C(s)G(s)+B(s)]\frac{1}{1+D(s)}}`
 	

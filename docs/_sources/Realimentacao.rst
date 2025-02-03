@@ -73,7 +73,7 @@ Quando analisamos o comportamento de sistemas, a intuição geralmente induz a c
 Se analisarmos o sistema de controle genérico apresentado nas seções anteriores, vemos que a função de transferência em malha fechada, relacionando a entrada do sistema de controle - :math:`r(t)` - com o sinal de saída - :math:`y(t)` - é definida como 
 
 .. math::
-	G_{\text{mf}}=\frac{C(s)G(s)}{1+C(s)G(s)}=\frac{\frac{num(C(s))num(G(s))}{den(C(s))den(G(s))}}{1+\frac{num(C(s))num(G(s))}{den(C(s))den(G(s))}}=\frac{num(C(s))num(G(s)}{den(C(s))den(G(s)+num(C(s))num(G(s)}.
+	G_{\text{mf}}=\frac{C(s)G(s)}{1+C(s)G(s)}=\frac{\frac{num(C(s))num(G(s))}{den(C(s))den(G(s))}}{1+\frac{num(C(s))num(G(s))}{den(C(s))den(G(s))}}=\frac{num(C(s))num(G(s))}{den(C(s))den(G(s)+num(C(s))num(G(s)}.
 	
 Os polos desse sistema realimentado são definidos pelo termo :math:`den(C(s))den(G(s)+num(C(s))num(G(s)`, o qual constitui o denominador da função de transferência em malha fechada. Note que, a ordem de :math:`den(C(s))den(G(s)+num(C(s))num(G(s)`, que define a quantidade de polos, será equivalente a soma da quantidade de polos de :math:`C(s)` com a quantidade de polos de :math:G(s)``, se ambas funções de transferência :math:`C(s)` e :math:`G(s)` forem próprias (caracterizadas por um número maior ou igual de polos do que zeros). Caso o sistema for de segunda ordem, qualquer controlador com ordem a partir da primeira resultará em um sistema de controle em malha fechada com 3 ou mais polos, fazendo com que a obtenção da posição dos polos, de forma analítica, seja desafiadora. Uma forma de avaliar a estabilidade de sistemas com 3 ou mais polos, sem a necessidade da obtenção da posição dos polos é utilizando o método de Routh-Hurwitz, o qual é apresentado a seguir.
 
@@ -208,7 +208,7 @@ A seguir, temos um exemplo da análise de um sistema de controle, com o método 
 	A primeira condição pode ser reescrita como
 	
 	.. math::
-		\frac{-(k-70)}{7}>0
+		\frac{-(k-70)}{7}>0 \\
 		k<70
 	
 	Ou seja, o sistema será estável quando :math:`0<k<70`. Quando :math:`k=0` ou :math:`k=70`, o sistema será marginalmente estável, e para valores fora desse intervalo, o sistema é instável.
@@ -218,13 +218,13 @@ Erro nulo em regime permanente
 
 Nesta seção vamos analisar o problema da garantia de erro nulo em regime permanente para diferentes entradas. Para introduzir esse problema, iniciaremos com um exemplo.
 
-	**Exemplo 1:** Para compreendermos o que é o erro em regime permanente, vamos analisar a resposta do sistema de controle apresentado a seguir. 
+	**Exemplo 6:** Para compreendermos o que é o erro em regime permanente, vamos analisar a resposta do sistema de controle apresentado a seguir. 
 
 	.. figure:: /figures/Realimentacao/ErroNuloExemplo.png
 		:figwidth: 70%
 		:align: center
 		
-	Nesta malha de controle, podemos projetar o controlador :math:`C(s)` buscando atingir algum tipo de objetivo. Caso escolhamos o controlador :math:`C(s)=5`, teremos a função de transferência em malha fechada :math:`G_{mf}=\frac{10}{s^2+8s+12}`. Dessa forma, os polos do sistema em malha fechada são :math:`s=-2` e :math:`s=-6`, sendo a resposta do sistema, para um degrau unitário :math:`r(t)=u(t)`(o qual apresenta transformada :math:`r(s)=\frac{1}{s}`), definida como segue.
+	Nesta malha de controle, podemos projetar o controlador :math:`C(s)` buscando atingir algum tipo de objetivo. Caso escolhamos o controlador :math:`C(s)=5`, teremos a função de transferência em malha fechada :math:`G_{mf}=\frac{10}{s^2+8s+12}`. Dessa forma, os polos do sistema em malha fechada são :math:`s=-2` e :math:`s=-6`, sendo a resposta do sistema, para um degrau unitário :math:`r(t)=u(t)` (o qual apresenta transformada :math:`r(s)=\frac{1}{s}`), definida como segue.
 
 	.. math:: 
 		G_{mf}=\frac{Y(s)}{R(s)}=\frac{10}{(s+2)(s+6)} \\
@@ -280,7 +280,7 @@ Se aplicarmos o teorema do valor final para o sinal de erro, podemos obter o val
 
 Essa é uma expressão genérica, que pode ser utilizada para obter o erro em regime permanente para qualquer sinal de referência.
 
-	**Exemplo 2:** Retornamos para o problema analisado no **Exemplo 1**, no qual foi obtido o erro em regime permanente de uma malha de controle para uma referência do tipo degrau. A análise feita naquele exemplo será repetido, porém, utilizando a expressão do erro em regime permanente que foi derivada nesta seção.
+	**Exemplo 7:** Retornamos para o problema analisado no **Exemplo 1**, no qual foi obtido o erro em regime permanente de uma malha de controle para uma referência do tipo degrau. A análise feita naquele exemplo será repetido, porém, utilizando a expressão do erro em regime permanente que foi derivada nesta seção.
 	
 	Para obtermos o erro em regime permanente, devemos substituir as funções de transferência que definem a malha de controle na equação a seguir.
 	

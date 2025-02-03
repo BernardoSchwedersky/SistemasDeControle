@@ -339,7 +339,7 @@ Y(s)=H(s)X(s)\end{split}\]</div>
 <section id="composicao-em-cascata">
 <h2>Composição em cascata<a class="headerlink" href="#composicao-em-cascata" title="Link permanente para este cabeçalho">#</a></h2>
 <p>Quando temos dois sistemas agrupados em série, com a saída de um dos sistemas sendo a entrada do outro, podemos realizar a composição em cascata. Um exemplo dessa estrutura é apresentado a seguir.</p>
-<figure class="align-center" style="width: 60%">
+<figure class="align-center" style="width: 50%">
 <img alt="_images/BlocoCascata.png" src="_images/BlocoCascata.png" />
 </figure>
 <p>Podemos escrever a equação que descreve cada bloco como segue.</p>
@@ -357,7 +357,7 @@ P(s)=H(s)X(s).\end{split}\]</div>
 <section id="composicao-em-paralelo">
 <h2>Composição em paralelo<a class="headerlink" href="#composicao-em-paralelo" title="Link permanente para este cabeçalho">#</a></h2>
 <p>O segundo tipo de composição é em paralelo. Quando conectamos dois sistemas com seus sinais de entrada e saída sendo os mesmos, temos uma conexão em paralelo, conforme apresentado a seguir.</p>
-<figure class="align-center" style="width: 60%">
+<figure class="align-center" style="width: 50%">
 <img alt="_images/BlocoParalelo.png" src="_images/BlocoParalelo.png" />
 </figure>
 <p>Podemos escrever a equação que define esse diagrama como segue.</p>
@@ -373,7 +373,7 @@ P(s)=H(s)X(s).\end{split}\]</div>
 <section id="composicao-em-realimentacao">
 <h2>Composição em realimentação<a class="headerlink" href="#composicao-em-realimentacao" title="Link permanente para este cabeçalho">#</a></h2>
 <p>A composição de blocos em realimentação é caracterizada pela conexão de um sinal de saída como uma das entradas do bloco, fazendo com que o sinal seja realimentado no próprio sistema. Essa estrutura é apresentada a seguir.</p>
-<figure class="align-center" style="width: 50%">
+<figure class="align-center" style="width: 40%">
 <img alt="_images/BlocoReal.png" src="_images/BlocoReal.png" />
 </figure>
 <p>Ao escrevermos a equação que representa o sistema, temos a seguinte equação.</p>
@@ -396,17 +396,14 @@ Y(s)Y(s)=\frac{G(s)}{1+G(s)}X(s).\end{split}\]</div>
 </figure>
 <p>O primeiro passo consiste em simplificar os termos que se encontram em uma das configurações convencionais. Temos um par de termos em paralelo que pode ser simplificado, e em seguida, dois termos em cascata, simplificados como segue.</p>
 <figure class="align-center" style="width: 60%">
-<img alt="_images/BlocoEx2.png" src="_images/BlocoEx2.png" />
+<img alt="_images/BlocosEx2.png" src="_images/BlocosEx2.png" />
 </figure>
-<figure class="align-center" style="width: 70%">
-<img alt="_images/BlocoEx3.png" src="_images/BlocoEx3.png" />
-</figure>
-<figure class="align-center" style="width: 70%">
-<img alt="_images/BlocoEx4.png" src="_images/BlocoEx4.png" />
+<figure class="align-center" style="width: 50%">
+<img alt="_images/BlocosEx3.png" src="_images/BlocosEx3.png" />
 </figure>
 <p>Por fim, podemos simplificar o diagrama que apresenta uma realimentação negativa, resultado no diagrama a seguir.</p>
-<figure class="align-center" style="width: 30%">
-<img alt="_images/BlocoEx5.png" src="_images/BlocoEx5.png" />
+<figure class="align-center" style="width: 45%">
+<img alt="_images/BlocosEx4.png" src="_images/BlocosEx4.png" />
 </figure>
 </div>
 </section>
@@ -464,7 +461,7 @@ Y(s)Y(s)=\frac{G(s)}{1+G(s)}X(s).\end{split}\]</div>
 <h4>Solução:<a class="headerlink" href="#id1" title="Link permanente para este cabeçalho">#</a></h4>
 <div class="toggle toggle-hidden docutils container">
 <ol class="loweralpha simple">
-<li><p><span class="math notranslate nohighlight">\(G(s)=\frac{C(s)G(s)+B(s)+\frac{1}{1+D(s)}}{1+C(s)G(s)+B(s)+\frac{1}{1+D(s)}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(G(s)=\frac{[C(s)G(s)+B(s)]\frac{1}{1+D(s)}}{1+[C(s)G(s)+B(s)]\frac{1}{1+D(s)}}\)</span></p></li>
 </ol>
 </div>
 </section>

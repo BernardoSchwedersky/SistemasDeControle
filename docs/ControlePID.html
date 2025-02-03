@@ -50,6 +50,9 @@
     <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "chtml": {"mtextInheritFont": "true", "displayAlign": "left"}})</script>
+    <script>window.MathJax = {"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "chtml": {"mtextInheritFont": "true", "displayAlign": "left"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-svg.js"></script>
     <link rel="index" title="Índice" href="genindex.html" />
     <link rel="search" title="Buscar" href="search.html" />
     <link rel="next" title="Lugar Geométrico das Raízes" href="LugarDasRaizes.html" />
@@ -263,7 +266,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -279,6 +284,55 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Conteúdo </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acoes-do-controlador-pid">Ações do Controlador PID</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acao-proporcional">Ação Proporcional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acao-integral">Ação Integral</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acao-derivativa">Ação Derivativa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacao-do-pid">Formulação do PID</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pid-paralelo-padrao-ou-classico">PID Paralelo (Padrão ou Clássico)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pid-ideal">PID Ideal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pid-serie-ou-interativo">PID Série (ou Interativo)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aspectos-da-implementacao-pratica">Aspectos da Implementação Prática</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemas-no-derivativo">Problemas no Derivativo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemas-no-integrador">Problemas no Integrador</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-sintonia">Métodos de Sintonia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sintonia-analitica">Sintonia Analítica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sintonia-tabeladas">Sintonia Tabeladas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-sugeridos">Exercícios Sugeridos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-2">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-3">Exercício 3</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-4">Exercício 4</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-5">Exercício 5</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-6">Exercício 6</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -290,7 +344,214 @@ document.write(`
                   
   <section id="controle-pid">
 <h1>Controle PID<a class="headerlink" href="#controle-pid" title="Link permanente para este cabeçalho">#</a></h1>
-<p>Usar como exemplo o controle de temperatura de um aquário.</p>
+<p>O controlador PID (Proporcional-Integral-Derivativo) é o algoritmo de controle mais utilizado na indústria, devido à vários aspectos. O principal motivo de sua ampla utilização é sua simplicidade, a qual faz com que seja mais fácil a compreensão do funcionamento do controlador e o seu ajuste. Ele combina três ações de controle distintas: a ação proporcional, a ação integral e a ação derivativa, cada uma com um papel específico no comportamento da resposta em malha fechada do sistema.</p>
+<p>Neste capítulo serão apresentadas as principais características do controlador PID, bem como, alguns métodos para sintonia de seus parâmetros. Na seção a seguir será apresentada a formulação convencional do controlador PID, considerando a configuração paralela, e também as configurações alternativas. Em seguinda, serão abordados aspectos da implementação prática do PID, como os problemas que afetam a ação derivativa e o windup do integrador. Por fim, serão apresentados alguns métodos para sintonia do controlador PID.</p>
+<section id="acoes-do-controlador-pid">
+<h2>Ações do Controlador PID<a class="headerlink" href="#acoes-do-controlador-pid" title="Link permanente para este cabeçalho">#</a></h2>
+<p>O controlador PID é uma arquitetura de controlador geral e modular, caracterizada pela presença de três parcelas distintas, as quais podem ser ajustadas individualmente. O impacto de cada parcela do controlador PID no comportamento do sistema de controle pode ser interpretado individualmente, o que facilita a compreensão do funcionamento do PID e facilita o ajuste do mesmo.</p>
+<p>Em um controlador PID, o sinal de controle é obtido pela soma do efeito de três parcelas – proporcional, integral e derivativa. À cada uma dessas parcelas é associado um parâmetro de ajuste, com o qual, é possível sintonizar a importância de cada parcela no comportamento geral do controlador. Um diagrama de blocos ilustrando a estrutura geral do controlador PID é apresentado a seguir.</p>
+<figure class="align-center" style="width: 50%">
+<img alt="_images/blocosEstrutura.png" src="_images/blocosEstrutura.png" />
+</figure>
+<section id="acao-proporcional">
+<h3>Ação Proporcional<a class="headerlink" href="#acao-proporcional" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A ação proporcional gera um sinal de controle proporcional à magnitude do erro. Quanto maior o erro, maior a ação corretiva aplicada. Essa ação pode ser representada pela equação</p>
+<div class="math notranslate nohighlight">
+\[u_P(t) = K_p e(t),\]</div>
+<p>onde <span class="math notranslate nohighlight">\(K_p\)</span> é o ganho proporcional.</p>
+<p>Ao aumentarmos a ação integral, o controlador apresenta uma resposta mais agressiva. Quando aplicado à um sistema não integrador (Tipo 0), o aumento da ação integral resultará em uma redução do erro em regime permanente (apesar de ser incapaz de eliminá-lo), e sintonias muito agressivas resultarão em oscilações.</p>
+</section>
+<section id="acao-integral">
+<h3>Ação Integral<a class="headerlink" href="#acao-integral" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A ação integral soma os erros passados e ajusta o controle para garantir que o erro médio seja zero.</p>
+<div class="math notranslate nohighlight">
+\[u_I(t) = K_i \int e(t) dt\]</div>
+<p>ou, no domínio de Laplace:</p>
+<div class="math notranslate nohighlight">
+\[U_I(s) = \frac{K_i}{s} E(s)\]</div>
+<p>onde <span class="math notranslate nohighlight">\(K_i\)</span> é o ganho integral.</p>
+</section>
+<section id="acao-derivativa">
+<h3>Ação Derivativa<a class="headerlink" href="#acao-derivativa" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A ação derivativa reage à taxa de variação do erro, ajudando a reduzir oscilações e melhorar a estabilidade.</p>
+<div class="math notranslate nohighlight">
+\[u_D(t) = K_d \frac{d e(t)}{dt}\]</div>
+<p>ou, no domínio da Transformada de Laplace:</p>
+<div class="math notranslate nohighlight">
+\[U_D(s) = K_d s E(s)\]</div>
+<p>onde <span class="math notranslate nohighlight">\(K_d\)</span> é o ganho do derivativo.</p>
+</section>
+</section>
+<section id="formulacao-do-pid">
+<h2>Formulação do PID<a class="headerlink" href="#formulacao-do-pid" title="Link permanente para este cabeçalho">#</a></h2>
+<p>Cada ação do controlador utiliza como sinal de entrada o erro entre o valor de referência e a saída do processo, <span class="math notranslate nohighlight">\(e(t)=r(t)-y(t)\)</span>, retornando em sua saída uma parcela do sinal de controle. Ao somarmos as parcelas do sinal de controle produzidas por cada parcelas do PID, teremos o sinal de controle a ser aplicado no processo. É importante notar que, por serem parcelas individuais, podemos definir versões simplificadas do PID, nas quais uma ou mais parcelas não estão presentes. Por exemplo, se não utilizarmos a parcela derivativa, nós obteremos o controlador PI (Proporcional-Integral).</p>
+<p>O controlador PID (Proporcional, Integral e Derivativo) pode ser formulado de diferentes maneiras dependendo da aplicação e da forma matemática utilizada. As três formulações principais são: <strong>paralelo, ideal e série</strong>.</p>
+<section id="pid-paralelo-padrao-ou-classico">
+<h3>PID Paralelo (Padrão ou Clássico)<a class="headerlink" href="#pid-paralelo-padrao-ou-classico" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A formulação paralela expressa o PID como a soma das três ações de controle separadas:</p>
+<div class="math notranslate nohighlight">
+\[u(t) = K_p e(t) + K_i \int e(t) dt + K_d \frac{d e(t)}{dt}\]</div>
+<p>Se obtermos a Transformada de Laplace, podemos representar o PID paralelo pela equação</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}U(s) = K_p E(s) + K_i \frac{E(s)}{s} + K_d s E(s) \\
+C(s) = \frac{U(s)}{E(s)} = K_p + \frac{K_i}{s} + K_d s\end{split}\]</div>
+<p>Essa formulação permite ajustes independentes dos ganhos proporcional <span class="math notranslate nohighlight">\(K_p\)</span>, integral <span class="math notranslate nohighlight">\(K_i\)</span> e derivativo <span class="math notranslate nohighlight">\(K_d\)</span>, sendo a mais comum para implementação digital.</p>
+</section>
+<section id="pid-ideal">
+<h3>PID Ideal<a class="headerlink" href="#pid-ideal" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A formulação ideal é uma variação da paralela, onde as três ações do PID são multiplicados por <span class="math notranslate nohighlight">\(K_p\)</span>. Dessa forma, o parâmetro <span class="math notranslate nohighlight">\(K_p\)</span> não altera apenas a parcela proporcional, e sim as três parcelas. A formulação do PID ideal é</p>
+<div class="math notranslate nohighlight">
+\[u(t) = K_p \left( e(t) + \frac{1}{T_i} \int e(t) dt + T_d \frac{d e(t)}{dt} \right)\]</div>
+<p>Ao obtermos a Transformada de Laplace, podemos representar o PID ideal como</p>
+<div class="math notranslate nohighlight">
+\[C(s) = K_p \left( 1 + \frac{1}{T_i s} + T_d s \right)\]</div>
+<p>Nesta formulação temos os parâmetros tempos de integração e derivação, <span class="math notranslate nohighlight">\(T_i\)</span> e <span class="math notranslate nohighlight">\(T_d\)</span>, ao invés dos ganhos, fazendo com que a intepretação do efeito de tal ajuste seja diferente do PID paralelo. Por exemplo, o PID ideal</p>
+<p>—</p>
+</section>
+<section id="pid-serie-ou-interativo">
+<h3>PID Série (ou Interativo)<a class="headerlink" href="#pid-serie-ou-interativo" title="Link permanente para este cabeçalho">#</a></h3>
+<p>Na formulação em série, o controlador PID é visto como o produto de três termos individuais, refletindo um efeito encadeado das ações:</p>
+<div class="math notranslate nohighlight">
+\[C(s) = K_p \left( 1 + \frac{1}{T_i s} \right) \left( 1 + T_d s \right)\]</div>
+<p>Aplicando a Transformada de Laplace, podemos representar o controlador PID série pela equação</p>
+<div class="math notranslate nohighlight">
+\[C(s) = K_p \left( 1 + \frac{1}{T_i s} + T_d s + \frac{T_d}{T_i} \right)\]</div>
+<p>Apesar de ter uma interpretação mais complicada, devido ao acoplamento entre o efeito das três ações, essa formulação é bastante usada em controladores comerciais.</p>
+</section>
+</section>
+<section id="aspectos-da-implementacao-pratica">
+<h2>Aspectos da Implementação Prática<a class="headerlink" href="#aspectos-da-implementacao-pratica" title="Link permanente para este cabeçalho">#</a></h2>
+<p>(Em breve)</p>
+<section id="problemas-no-derivativo">
+<h3>Problemas no Derivativo<a class="headerlink" href="#problemas-no-derivativo" title="Link permanente para este cabeçalho">#</a></h3>
+<p>(Em breve)</p>
+</section>
+<section id="problemas-no-integrador">
+<h3>Problemas no Integrador<a class="headerlink" href="#problemas-no-integrador" title="Link permanente para este cabeçalho">#</a></h3>
+<p>(Em breve)</p>
+</section>
+</section>
+<section id="metodos-de-sintonia">
+<h2>Métodos de Sintonia<a class="headerlink" href="#metodos-de-sintonia" title="Link permanente para este cabeçalho">#</a></h2>
+<section id="sintonia-analitica">
+<h3>Sintonia Analítica<a class="headerlink" href="#sintonia-analitica" title="Link permanente para este cabeçalho">#</a></h3>
+<p>A sintonia analítica de controladores pode ser realizada de diferentes formas. Dois métodos clássicos são o método baseado no Lugar das Raízes e o método baseado no Diagrama de Bode, os quais serão abordados em capítulos a seguir. Nesta seção nos concentraremos em formas simples de sintonia de controladores, com as quais o controlador resultante podem ser implementádo com a estrutura do PID.</p>
+<p>Partindo de uma malha de controle realimentado convencional, como a apresentada a seguir, podemos definir a função de transferência do sistema em malha fechada como</p>
+<div class="math notranslate nohighlight">
+\[G_{mf}=\frac{C(s)G(s)}{1+C(s)G(s)}.\]</div>
+<p>Se efeturmos uma manipulação algébrica, de forma a isolar <span class="math notranslate nohighlight">\(C(s)\)</span>, podemos obter o que segue</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}[1+C(s)G(s)]G_{mf}=C(s)G(s) \\
+G_{mf}=C(s)[G(s)-G(s)G_{mf}] \\
+C(s)=\frac{1}{G(s)}\frac{G_{mf}(s)}{1-G{mf}(s)}.\end{split}\]</div>
+<p>Dessa forma, podemos determinar a função de transferência do controlador em função do processo, <span class="math notranslate nohighlight">\(G(s)\)</span>, e da função de transferência em malha fechada do sistema, <span class="math notranslate nohighlight">\(G_{mf}(s)\)</span>. Se escolhermos uma função de transferência desejada para o sistema de controle em malha fechada, <span class="math notranslate nohighlight">\(G_d(s)\)</span>, podemos facilmente sintonizar um controlador ao assumirmos que <span class="math notranslate nohighlight">\(G_{mf}=G_d\)</span>.</p>
+<p>Note que o que está sendo feito nessa sintonia é o <strong>cancelamento</strong> da dinâmica do processo, já que o controlador contém, explícitamente, o inverso da função de transferência do processo. Apesar de parecer cômodo e fácil, o projeto de controladores considerando cancelamento (de polos, zeros, ou da dinâmica completa do processo) <strong>não é recomendado</strong>. A seguir são apresentados dois exemplos, um deles apresentando um caso em que a sintonia atinge o comportamento desejado, e um caso em que a o cancelamento resulta em uma malha de controle problemática.</p>
+<blockquote>
+<div><p><strong>Exemplo 1:</strong> Projeto de PI considerando cancelamento de planta.</p>
+<p>Considere um processo de aquecimento de um tanque utilizando uma resistência elétrica. A dinâmica desse sistema pode ser representada, de forma simplificada, por um sistema de 1ª ordem na forma <span class="math notranslate nohighlight">\(G(s)=\frac{2}{50s+1}\)</span>. Faremos o projeto de um controlador PI no qual a função de transferência desejada, em malha fechada, é <span class="math notranslate nohighlight">\(G_d(s)=\frac{1}{75s+1}\)</span>.</p>
+<p>Projeto: para obter um controlador por cancelamento, basta substituirmos <span class="math notranslate nohighlight">\(G_{mf}=G_d\)</span> em</p>
+<div class="math notranslate nohighlight">
+\[C(s)=\frac{1}{G(s)}\frac{G_{mf}(s)}{1-G{mf}(s)},\]</div>
+<p>o que resulta, para o problema em questão, na função de transferência</p>
+<div class="math notranslate nohighlight">
+\[C(s)=\frac{(50s+1)}{2}\frac{\frac{1}{(75s+1)}}{1-\frac{1}{75s+1}}=\frac{(50s+1)}{150s}.\]</div>
+<p>O controlador resultante apresenta um polo na origem e um zero em <span class="math notranslate nohighlight">\(1/50\)</span>. Essa é a mesma estrutura de um controlador PI, o qual pode ser representado, na forma ideal, como</p>
+<div class="math notranslate nohighlight">
+\[C_{PI}=K_p\frac{(T_i s+1)}{T_i s}=\frac{50s+1}{150s}.\]</div>
+<p>Dessa forma, temos a sintonia <span class="math notranslate nohighlight">\(T_i=50\)</span> e <span class="math notranslate nohighlight">\(K_p=1/3\)</span>.</p>
+<p><strong>Exemplo 2:</strong> Projeto de PI considerando cancelamento de planta instável. (<strong>Note que esse é um exemplo dos problemas do cancelamento</strong>)</p>
+<p><strong>Exemplo 3:</strong> Projeto de PI analítico sem cancelamento.</p>
+<p>Considerando um sistema definido por <span class="math notranslate nohighlight">\(G(s)=\frac{3}{s+10}\)</span>, iremos obter um controlador PI, na forma ideal, de forma a posicionar todos polos em malha fechada do sistema em <span class="math notranslate nohighlight">\((s+7)\)</span>.</p>
+<p>Solução: o processo, por ser um sistema de primeira ordem, apresenta apenas 1 polo, e o controlador PI, representado por <span class="math notranslate nohighlight">\(C_{PI}=K_p\frac{(T_i s+1)}{T_i s}\)</span>, apresenta um polo na origem e um zero. Se obtivermos a função de transferência em malha fechada desse sistema de controle, teremos</p>
+<div class="math notranslate nohighlight">
+\[G_{mf}(s)=\frac{\frac{3K_p}{T_i}(T_i s+1)}{(s^2+(10+3K_p)s+\frac{3K_p}{T_i})}.\]</div>
+<p>Dessa forma, vemos que o sistema, em malha fechada, apresenta dois polos. A especificação é posicionarmos os polos em <span class="math notranslate nohighlight">\((s+7)\)</span>, então, a função de transferência desejada para o sistema deverá ter o seguinte formato</p>
+<div class="math notranslate nohighlight">
+\[G_d(s)=\frac{\dots}{(s+7)(s+7)}.\]</div>
+<p>Para sintonizarmos o PI, basta igualarmos os denominadores, obtendo</p>
+<div class="math notranslate nohighlight">
+\[(s^2+(10+3K_p)s+\frac{3K_p}{T_i})=(s^2+14s+49),\]</div>
+<p>o que resulta em <span class="math notranslate nohighlight">\(K_p=4/3\)</span> e <span class="math notranslate nohighlight">\(T_i=4/49\)</span>.</p>
+</div></blockquote>
+</section>
+<section id="sintonia-tabeladas">
+<h3>Sintonia Tabeladas<a class="headerlink" href="#sintonia-tabeladas" title="Link permanente para este cabeçalho">#</a></h3>
+</section>
+</section>
+<section id="exercicios-sugeridos">
+<h2>Exercícios Sugeridos<a class="headerlink" href="#exercicios-sugeridos" title="Link permanente para este cabeçalho">#</a></h2>
+<p>Se um sistema de controle PID for projetado utilizando a configuração paralela, e a implementação prática dele for realizada utilizando um controlador comercial, o qual implementa um controlador PID na configuração ideal, obtenha as equações que convertem os parâmetros <span class="math notranslate nohighlight">\(K_p\)</span>, <span class="math notranslate nohighlight">\(K_i\)</span> e <span class="math notranslate nohighlight">\(K_d\)</span>, obtidos para um PID paralelo, nos parâmetros do PID ideal.</p>
+<section id="solucao">
+<h3>Solução:<a class="headerlink" href="#solucao" title="Link permanente para este cabeçalho">#</a></h3>
+<section id="exercicio-2">
+<h4>Exercício 2<a class="headerlink" href="#exercicio-2" title="Link permanente para este cabeçalho">#</a></h4>
+<p>Projete um controlador PI utilizando o método do ganho limite de Ziegler-Nichols para o sistema <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s^3+7s^2+10s}\)</span>. Para o controlador projetado, obtenha a função de transferência <span class="math notranslate nohighlight">\(C(s)\)</span> e desenhe o diagrama de blocos do sistema de controle.</p>
+</section>
+</section>
+<section id="id1">
+<h3>Solução:<a class="headerlink" href="#id1" title="Link permanente para este cabeçalho">#</a></h3>
+<div class="toggle toggle-hidden docutils container">
+<p><span class="math notranslate nohighlight">\(K_{cr}=70\)</span>, <span class="math notranslate nohighlight">\(\omega=\sqrt{10}\)</span> e <span class="math notranslate nohighlight">\(C(s)=\frac{31,5s(s+0,32)}{s}\)</span>.</p>
+</div>
+<section id="exercicio-3">
+<h4>Exercício 3<a class="headerlink" href="#exercicio-3" title="Link permanente para este cabeçalho">#</a></h4>
+<p>Ao iniciar o trabalho em uma indústria, você recebe como tarefa a melhoria do funcionamento de um sistema de controle definido pela função de transferência <span class="math notranslate nohighlight">\(G(s)=\frac{1}{s^2+8s}\)</span>. Avaliando o funcionamento atual do sistema, você identifica que está sendo usando um controlador do tipo PI, implementado na forma paralela, com <span class="math notranslate nohighlight">\(K_c=5\)</span> e <span class="math notranslate nohighlight">\(K_1=1\)</span>. Para avaliar o funcionamento desse sistema de controle:</p>
+<ol class="loweralpha simple">
+<li><p>Discuta se a escolha de um controlador PI foi correta, para o tipo de sistema;</p></li>
+<li><p>Obtenha a função de transferência <span class="math notranslate nohighlight">\(C(s)\)</span> do controlador;</p></li>
+<li><p>Desenhe o diagrama de blocos do sistema de controle;</p></li>
+<li><p>Obtenha a faixa de valores de <span class="math notranslate nohighlight">\(K_p\)</span> que garantem que o sistema é estável.</p></li>
+</ol>
+</section>
+</section>
+<section id="id2">
+<h3>Solução:<a class="headerlink" href="#id2" title="Link permanente para este cabeçalho">#</a></h3>
+<div class="toggle toggle-hidden docutils container">
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>Não é a escolha correta. O sistema apresenta um integrador, sendo então do tipo 1. Dessa forma, não é necessário utilizar a parcela integradora, pois o sistema já é integrador e naturalmente apresentará erro nulo em regime permanente para entradas do tipo degrau. O uso da parcela integradora apenas tornará a resposta do sistema mais lenta.</p></li>
+</ol>
+</div></blockquote>
+<ol class="loweralpha simple" start="2">
+<li><p><span class="math notranslate nohighlight">\(C(s)=\frac{5s+1}{s}\)</span></p></li>
+</ol>
+<ol class="loweralpha simple" start="4">
+<li><p>O sistema é estável para qualquer valor de <span class="math notranslate nohighlight">\(K_p&gt;\frac{1}{8}\)</span>.</p></li>
+</ol>
+</div>
+<section id="exercicio-4">
+<h4>Exercício 4<a class="headerlink" href="#exercicio-4" title="Link permanente para este cabeçalho">#</a></h4>
+<p>Projete um sistema de controle PID para o processo apresentado na figura a seguir, por meio do método da curva de reação de Ziegler-Nichols.</p>
+<figure class="align-center" style="width: 80%">
+<img alt="_images/exercicio.png" src="_images/exercicio.png" />
+</figure>
+</section>
+</section>
+<section id="id3">
+<h3>Solução:<a class="headerlink" href="#id3" title="Link permanente para este cabeçalho">#</a></h3>
+<div class="toggle toggle-hidden docutils container">
+<p><span class="math notranslate nohighlight">\(K=1\)</span>, <span class="math notranslate nohighlight">\(L\approx 0,2\)</span> e <span class="math notranslate nohighlight">\(T \approx 2,1\)</span>. Com isso, obtemos um PID na forma ideal com <span class="math notranslate nohighlight">\(K_p-12,6\)</span>, <span class="math notranslate nohighlight">\(T_i=0,4\)</span> e <span class="math notranslate nohighlight">\(T_d=0,1\)</span> pela inspeção da tabela.</p>
+</div>
+<section id="exercicio-5">
+<h4>Exercício 5<a class="headerlink" href="#exercicio-5" title="Link permanente para este cabeçalho">#</a></h4>
+<p>Imagine que você deseja empreender na área da piscicultura, criando peixes ornamentais. Apesar de alguns peixes serem capazes de se adaptar à mudanças na temperatura do ambiente, muitos são sensíveis à temperaturas muito altas ou baixas. Para isso, você relembrou da disciplina de Sistemas de Controle e resolveu criar um sistema de controle da temperatura da água dos tanques onde são criados os peixes. Após adicionar um sistema de aquecimento por resistências elétricas e conectá-lo à um controlador PID industrial, você realizou um ensaio para estimar a função de transfêrencia do sistema e obteve o seguinte diagrama de blocos para o sistema de controle realimentado.</p>
+<figure class="align-center" style="width: 70%">
+<img alt="_images/ExercicioPID.png" src="_images/ExercicioPID.png" />
+</figure>
+<p>Para facilitar o processo, você perguntou à uma ferramenta de IA generativa (LLM) qual a forma mais fácil de projetar esse controlador PID, sendo que o objetivo é acelerar a resposta do processo. A ferramenta de IA generativa refletiu “profundamente” e sugeriu projetar o controlador realizando o cancelamento da função de transferência do processo e escolher como função de transferência em malha fechada desejada, uma função de transferência rápica, como por exemplo <span class="math notranslate nohighlight">\(G_d(s)=\frac{1}{s+1}\)</span>. Levando em conta a sugestão da IA, obtenha:</p>
+<ol class="loweralpha simple">
+<li><p>A função de transferência do controlador, <span class="math notranslate nohighlight">\(C(s)\)</span>, que faz <span class="math notranslate nohighlight">\(G_{mf}=G_d\)</span>;</p></li>
+<li><p>Os parâmetros de ajuste a serem inseridos no controlador PID industrial, caso ele esteja na configuração <strong>Paralela</strong>.</p></li>
+<li><p>Obtenha as funções de transferência em malha fechada entre a referência e a saída, <span class="math notranslate nohighlight">\(\frac{Y(s)}{R(s)}\)</span>, e entre a saída e a pertubação, <span class="math notranslate nohighlight">\(\frac{Y(s)}{P(s)}\)</span>. Explique porquê a velocidade de resposta para uma pertubação é mais lenta que a resposta à um degrau de referência.</p></li>
+<li><p>Discuta se o método sujerido pela IA é adequado e quais os possíveis problemas que podem ser encontrados sintonizando um processo dessa maneira;</p></li>
+</ol>
+</section>
+<section id="exercicio-6">
+<h4>Exercício 6<a class="headerlink" href="#exercicio-6" title="Link permanente para este cabeçalho">#</a></h4>
+<p>Você percebeu que a sugestão de método de sintonia fornecida pela IA generativa pode ser problemática em alguns casos, então resolveu refazer o projeto. Para isso, você estabeleceu como objetivo projetar um controlador PI definido pela função de transferência <span class="math notranslate nohighlight">\(C(s)=\frac{K_p(T_i s+1)}{T_i s}\)</span>. Neste projeto, você estabeleceu que é desejado obter um sistema sem sobressinal, no qual, a resposta é definida por um par de polos em <span class="math notranslate nohighlight">\((s+0,005)\)</span>. Realize  projeto, obtendo o controlador que alcança tal especificação e mostre que o sistema em malha fechada apresenta o comportamento desejado.</p>
+</section>
+</section>
+</section>
 </section>
 
 
@@ -332,6 +593,61 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Conteúdo
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#acoes-do-controlador-pid">Ações do Controlador PID</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acao-proporcional">Ação Proporcional</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acao-integral">Ação Integral</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#acao-derivativa">Ação Derivativa</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulacao-do-pid">Formulação do PID</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pid-paralelo-padrao-ou-classico">PID Paralelo (Padrão ou Clássico)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pid-ideal">PID Ideal</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pid-serie-ou-interativo">PID Série (ou Interativo)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aspectos-da-implementacao-pratica">Aspectos da Implementação Prática</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemas-no-derivativo">Problemas no Derivativo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problemas-no-integrador">Problemas no Integrador</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metodos-de-sintonia">Métodos de Sintonia</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sintonia-analitica">Sintonia Analítica</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sintonia-tabeladas">Sintonia Tabeladas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicios-sugeridos">Exercícios Sugeridos</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solucao">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-2">Exercício 2</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-3">Exercício 3</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-4">Exercício 4</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Solução:</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-5">Exercício 5</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#exercicio-6">Exercício 6</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
