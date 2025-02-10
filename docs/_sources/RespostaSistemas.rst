@@ -316,7 +316,7 @@ Solução:
 	
 	a) :math:`G(s)=\frac{1}{0,95s+1}`.
     
-	b) :math:`G(s)=\frac{2}{0,25s+1}`.
+	b) :math:`G(s)=\frac{16,56}{s^2+2,6s+3,31}`.
 
 -----------	
 Exercício 3
@@ -363,7 +363,7 @@ Solução:
 Exercício 4
 -----------
 
-Considerando o modelo obtido para o forno de produção de vidro, obtido no exercício da seção sobre sistemas de 1ª e 2ª ordem, obtenha a função de transferência em malha fechada que aceleraria o processo em 5\% e garantiria um sobressinal máximo de 3\%.
+Considerando o modelo obtido para o forno de produção de vidro, obtido no exercício da seção sobre sistemas de 1ª e 2ª ordem, obtenha a função de transferência em malha fechada que aceleraria o processo em :math:`5\%` e garantiria um sobressinal máximo de :math:`3\%`.
 
 -----------	
 Exercício 5
@@ -379,7 +379,7 @@ Exercício 6
 Sistemas de alta ordem podem ser, em muitos casos, aproximados por sistemas de ordem inferior. Baseado nisso, esboce a resposta ao degrau para o sistema cuja função de transferência é representada por:
 
 .. math::
-	G(s)=\frac{1800}{(s+3)(s+20)(s+30)(s+35)}
+	Polo em :math:`s=-3`. :math:`G(s)=\frac{0,0286}{s+3}`.
 
 Solução:
 --------

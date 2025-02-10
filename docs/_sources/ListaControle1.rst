@@ -24,7 +24,7 @@ Solução:
 
 	a) :math:`G(s)=\frac{1}{s^2+7s+10}`, polos em :math:`s=-2` e :math:`s=-5` e nenhum zero.
 	
-	b) :math:`G(s)=\frac{s^2+3}{s+10}`, polos em :math:`s=-10` e zeros em :math:`s=\sqrt{3}s` e :math:`s=-\sqrt{3}s`.
+	b) :math:`G(s)=\frac{s^2+3}{s+10}`, polos em :math:`s=-10` e zeros em :math:`s=\sqrt{3}j` e :math:`s=-\sqrt{3}j`.
 	
 	c) :math:`G(s)=\frac{s^2+10}{s^3+3s^2+30s+10}`, polos em :math:`s=-0,34`, :math:`s=-1,3+j5,2` e :math:`s=-1,3-j5,2`, e zero em :math:`s=-10`.	
 	
@@ -91,7 +91,7 @@ Solução:
 	
 	a) :math:`G(s)=\frac{1}{0,95s+1}`.
     
-	b) :math:`G(s)=\frac{2}{0,25s+1}`.
+	b) :math:`G(s)=\frac{16,56}{s^2+2,6s+3,31}`.
 
 -----------	
 Exercício 3
@@ -160,7 +160,7 @@ Solução:
 
 .. container:: toggle, toggle-hidden
 
-	Polos em :math:`s=0,06+j0,041` e :math:`s=0,06-j0,041`. :math:`G(s)=\frac{0,073^2}{s^2+2*0,82*0,073+0,073^2}`.
+	Polo em :math:`s=-3`. :math:`G(s)=\frac{0,0286}{s+3}`.
     
 
 	
@@ -279,7 +279,7 @@ Solução:
     
     b) Polos em 0 e -4. Marginalmente estável.
 
-    c) Polos em :math:`-2+\sqrt{2}/2$ e $-2-\sqrt{2}/2`. Estável.
+    c) Polos em :math:`-2+\sqrt{2}/2` e :math:`-2-\sqrt{2}/2`. Estável.
 
 
 -----------

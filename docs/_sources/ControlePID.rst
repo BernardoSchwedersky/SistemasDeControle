@@ -179,9 +179,9 @@ Note que o que está sendo feito nessa sintonia é o **cancelamento** da dinâmi
 		
 	Dessa forma, temos a sintonia :math:`T_i=50` e :math:`K_p=1/3`.
 
-	**Exemplo 2:** Projeto de PI considerando cancelamento de planta instável. (**Note que esse é um exemplo dos problemas do cancelamento**)
+	**Exemplo 2:** Projeto de PID considerando cancelamento de planta instável. (**Note que esse é um exemplo dos problemas do cancelamento**)
 	
-
+	Vamos considerar neste exemplo, um sistema instável em malha aberta, o qual é definido por :math:`G(s)=\frac{12}{s(s-3)}`
 	
 	
 	**Exemplo 3:** Projeto de PI analítico sem cancelamento.

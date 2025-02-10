@@ -189,7 +189,7 @@ Solução:
 
 	a) :math:`G(s)=\frac{1}{s^2+7s+10}`, polos em :math:`s=-2` e :math:`s=-5` e nenhum zero.
 	
-	b) :math:`G(s)=\frac{s^2+3}{s+10}`, polos em :math:`s=-10` e zeros em :math:`s=\sqrt{3}s` e :math:`s=-\sqrt{3}s`.
+	b) :math:`G(s)=\frac{s^2+3}{s+10}`, polos em :math:`s=-10` e zeros em :math:`s=\sqrt{3}j` e :math:`s=-\sqrt{3}j`.
 	
 	c) :math:`G(s)=\frac{s^2+10}{s^3+3s^2+30s+10}`, polos em :math:`s=-0,34`, :math:`s=-1,3+j5,2` e :math:`s=-1,3-j5,2`, e zero em :math:`s=-10`.	
 	

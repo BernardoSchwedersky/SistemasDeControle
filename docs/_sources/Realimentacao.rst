@@ -139,7 +139,7 @@ A seguir são apresentados dois exemplos da utilização do método de Routh-Hur
 	s⁰                                
 	=============    =========    ========= 
 
-	Caso faltem coeficientes para preencher o último elemento da segunda linha, devemos preencher com :math:`0`. Cada elemento das próximas linhas deve ser obtido utilizando a equação :math:`b_i = - (1/b_{i-1,1}) * \det([[a_{1,1}, a_{1,i+1}],[a_{2,1}, a_{2,i+1}]])`. Isso é equivalente à obtermos o determinante da matriz quadrada localizada diretamente acima e à direita do elemento calculado, e dividirmos o resultado pelo primerio elemento da linha acima multiplicado por :math:`-1`. Para o elemento da primeira coluna e terceira linha, devemos obter o determinante :math:`\begin{vmatrix}1 & 3 \\ 2 & 4\end{vmatrix}=24`, e dividirmos por :math:`-2`, o que resulta em
+	Caso faltem coeficientes para preencher o último elemento da segunda linha, devemos preencher com :math:`0`. Cada elemento das próximas linhas deve ser obtido utilizando a equação :math:`a_{i,j} = - (1/a_{i-1,1}) * \det([[a_{i-2,j}, a_{i-2,j+1}];[a_{i-1,j}, a_{i-1,j+1}]])`. Isso é equivalente à obtermos o determinante da matriz quadrada localizada diretamente acima e à direita do elemento calculado, e dividirmos o resultado pelo primerio elemento da linha acima multiplicado por :math:`-1`. Para o elemento da primeira coluna e terceira linha, devemos obter o determinante :math:`\begin{vmatrix}1 & 3 \\ 6 & -10\end{vmatrix}=-14`, dividirmos por :math:`3`, e multiplicarmos por :math:`-1`, o que resulta em
 
 	=============    =========    =========  
 	Potência de s     Coluna 1     Coluna 2 
@@ -432,7 +432,7 @@ Solução:
     
     b) Polos em 0 e -4. Marginalmente estável.
 
-    c) Polos em :math:`-2+\sqrt{2}/2$ e $-2-\sqrt{2}/2`. Estável.
+    c) Polos em :math:`-2+\sqrt{2}/2` e :math:`-2-\sqrt{2}/2`. Estável.
 
 
 **Exercício 3:** Utilizando o critério de Routh-Hurwitz, avalie para quais valores de :math:`k` o sistema a seguir é estável.
